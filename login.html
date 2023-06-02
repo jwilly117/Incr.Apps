@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>Sales Lead UI</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/css/bootstrap.min.css">
+
+  <link rel="stylesheet" href="style.css">
+
+  <!-- <script src="login.js"></script> -->
+
+  <!-- Sidebar Script -->
+  <script>
+      function toggleSidebar() {
+      var sidebar = document.getElementById('sidebar');
+      sidebar.classList.toggle('collapsed');
+    }
+  </script>
+
+  <style>
+        #sidebar {
+      width: 270px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      background-color: #3a89d8;
+      transition: left 0.3s ease-in-out;
+      color: white;
+      padding-left: 15px;
+    }
+
+    #sidebar.collapsed {
+      left: -250px;
+    }
+  </style>
+
+
+</head>
+
+
+
+<!-- The following program is to create a sales lead in LogistixAI from a phone, tablet, or any other device
+using the most constants possible for the given application. This will provide versitility, ease of use, and
+most importantly availability to anyone who needs to put in a lead for any reason, be it the Home depot API
+being down, not to mention that all Remarkable, Vantage, and private jobs will have to be put in manually until 
+those branches are more established and there are things like a customer facing portal that we can offer.  -->
+
+<!-- So far, this is just the UI, I need to compare with what I have done at home in Javascript and put it all
+together. -->
+
+<!-- Outcomes
+1. Customer is created in AI with phone number, email, and address
+2. A lead with the appropriate order source is created in Logistix, and the appropriate flags applied to these jobs
+3. For all HD bath jobs, the link to HD service center should populated via custom API into logistix.
+5. 5 Links should appear, 
+  1. A link to the customers new sales lead
+  2. A link to the HD Service center project, if it is from HD source
+  3. A link to the customer profile in Logistix
+  4. A link to the address on google maps ;)
+  5. A button for phone interfaces that will allow the user to immediately call the customer
+*** Things to consider
+  > Need to check for customer names, numbers, and addresses perhaps that are already in the system, no duplicates
+  > Need a standardized way to start labeling private jobs, and all internals, think about how Logistix has unique
+      ID's for every job, reguardless of the source or if they already have one or not. 
+  > ....
+
+-->
+
+
+<body>
+  <div id="sidebar">
+    <br><br>
+    <h3>🛠  Toolbar</h3>
+    <hr>
+    <ul>
+      <li>New Sales Lead</li>
+      <br>
+      <li>Schedule Viewer</li>
+      <br>
+      <li>Paperwork Templates</li>
+      <br>
+      <li>Support Request</li>
+      <br>
+      <li>Help / Feedback</li>
+      <br>
+    </ul>
+  </div>
+  <hr>
+
+
+  <div class="container">
+    <button type="button" style="margin-left: 160px;" class="btn btn-warning" onclick="toggleSidebar()">👓</button>
+
+    <div class="row justify-content-center">
+      
+      <div class="col-md-8 mt-5">
+        <img src="images/incredible Logo.png" alt="">
+        <hr><br>
+        <h3 class="text-center"><strong>New Sales Lead</strong></h3>
+
+        <form>
+          <div class="mb-3">
+            <label for="email" class="form-label">Customer Name</label>
+            <span><input type="email" class="form-control" id="FirstName" placeholder="First Name"><input type="email" class="form-control" id="LastName" placeholder="Last Name"></span>
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Phone Number</label>
+            <input type="password" class="form-control" id="password" placeholder="Enter Phone Number">
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" placeholder="Enter email">
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Customer Address</label>
+            <input type="email" class="form-control" id="street" placeholder="Street">
+            <input type="email" class="form-control" id="City" placeholder="City">
+            <input type="email" class="form-control" id="Zip" placeholder="Zip">
+          </div>
+
+            <hr>
+
+          <div class="mb-3 text-center group">
+            <label class="form-label source">Source : <div>   </div></label>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="role" id="role1" value="Home Depot">
+              <label class="form-check-label" for="role1">
+                Home Depot
+              </label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="role" id="role2" value="Remarkable">
+              <label class="form-check-label" for="role2">
+                Remarkable
+              </label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="role" id="role3" value="Vantage">
+              <label class="form-check-label" for="role3">
+                Vantage
+              </label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="role" id="role4" value="Private / Other">
+              <label class="form-check-label" for="role4">
+                Private / Other
+              </label>
+            </div>
+          </div>
+          <hr>
+          <div class="mb-3">
+            <p>Please input any optional notes below, including special customer requests, or anything the scheduler might need to know. If you are importing a job from HD SS, please include those notes here</p>
+            
+            <div class="row justify-content-center mt-5">
+              <label class="form-label">Optional Notes : </label>
+                <textarea class="form-control" rows="5" placeholder="Enter your feedback"></textarea>
+             
+            </div>
+            
+            <!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo officiis consectetur odio doloremque eum. Dignissimos esse culpa magnam architecto quis rem. In saepe nemo rem, quibusdam vitae iusto nam eos.</p> -->
+          </div>
+          <div class="text-center" id="submitbutton">
+            <button type="submit" style="width: 250px" class="btn btn-primary">Create Customer and Lead</button>
+          </div>
+          <br>
+          
+        </form>
+      </div>
+
+    </div>
+    
+  </div>
+
+
+
+  <!-- Bootstrap JS -->
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/js/bootstrap.bundle.min.js"></script>
+</body>
+<footer class="footer mt-5 text-center">
+
+  <p>&copy; 2023 JW / Incredible / LogistixAI. Only for Internal use. All rights reserved</p>
+ 
+</footer>
+</html>
