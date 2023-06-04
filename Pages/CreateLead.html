@@ -77,7 +77,9 @@ together. -->
 <body>
   <div id="sidebar">
     <br><br>
-    <h3>🛠  Toolbar</h3>
+    <div class="row justify-content-center">
+    <h3 style="padding-left: 55px; font-weight: bolder;">🛠  Tools</h3>
+    </div>
     <hr>
     <ul>
       <li><a href="#">New Sales Lead</a></li>
@@ -245,7 +247,7 @@ together. -->
           document.getElementById('customerButton').addEventListener('click', function() {
             if(bearerToken == null){
               alert("Please Get a Bearer Token");
-              Return;
+              return;
             }
             console.log('Button 2 clicked');
             createCustomer();
@@ -259,13 +261,17 @@ together. -->
             // JavaScript code for button click event handling
           document.getElementById('helpmebutton').addEventListener('click', function() {
             console.log('Button tester clicked');
-            alert("Help Button Clicked")
+            alert("Coming Soon 😢")
+            // Maybe go find the code from the original paperwork Submission thingy
             
-            // getBearer();
-            
-            // Populate the text field with the response data
-            // Add your custom code here for Button 1 click event
           });
+
+          document.getElementById('customerAndPOButton').addEventListener('click', function() {
+            console.log('Button tester clicked');
+            alert("Button Functionality Coming Soon 🐸")
+            // Most of this will be constants except the source and the notes
+          });
+
 
 
           // Need to grab the text values and store them in variables
