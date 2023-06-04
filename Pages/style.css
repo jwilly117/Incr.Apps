@@ -61,3 +61,19 @@ a{
     color: aqua;
     font-size: large;
 }
+
+#bearerConfirm{
+    background-color: grey;
+    border-radius: 8px;
+    color: white;
+}
+
+#textfield2{
+    border-radius: 5px;
+    background-color: grey;
+    color: white;
+}
+
+#buttonsToHide{
+    display: block;
+}

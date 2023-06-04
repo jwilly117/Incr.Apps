@@ -8,6 +8,8 @@
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/css/bootstrap.min.css">
 
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
   <link rel="stylesheet" href="style.css">
 
   <!-- <script src="login.js"></script> -->
@@ -90,6 +92,10 @@ together. -->
       <li><a href="badge.html">Installer Badges</a></li>
       <br>
     </ul>
+    <div class="text-center">
+      <button type="submit" id="getBearerButton" style="width: 200px" class="btn btn-warning">Bearer</button>
+      <hr>
+      <input type="text" id="bearerConfirm" placeholder="Token" style="width: 80%">    </div>
   </div>
   <hr>
 
@@ -107,11 +113,11 @@ together. -->
         <form>
           <div class="mb-3">
             <label for="email" class="form-label">Customer Name</label>
-            <span><input type="email" class="form-control" id="FirstName" placeholder="First Name"><input type="email" class="form-control" id="LastName" placeholder="Last Name"></span>
+            <span><input type="text" class="form-control" id="FirstName" placeholder="First Name"><input type="text" class="form-control" id="LastName" placeholder="Last Name"></span>
           </div>
           <div class="mb-3">
             <label for="password" class="form-label">Phone Number</label>
-            <input type="password" class="form-control" id="password" placeholder="Enter Phone Number">
+            <input type="text" class="form-control" id="phone" placeholder="Enter Phone Number">
           </div>
           <div class="mb-3">
             <label for="email" class="form-label">Email</label>
@@ -119,9 +125,9 @@ together. -->
           </div>
           <div class="mb-3">
             <label for="email" class="form-label">Customer Address</label>
-            <input type="email" class="form-control" id="street" placeholder="Street">
-            <input type="email" class="form-control" id="City" placeholder="City">
-            <input type="email" class="form-control" id="Zip" placeholder="Zip">
+            <input type="text" class="form-control" id="street" placeholder="Street">
+            <input type="text" class="form-control" id="city" placeholder="City">
+            <input type="text" class="form-control" id="zip" placeholder="Zip">
           </div>
 
             <hr>
@@ -165,18 +171,181 @@ together. -->
             
             <!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo officiis consectetur odio doloremque eum. Dignissimos esse culpa magnam architecto quis rem. In saepe nemo rem, quibusdam vitae iusto nam eos.</p> -->
           </div>
-          <div class="text-center" id="submitbutton">
-            <button type="submit" style="width: 250px" class="btn btn-primary">Create Customer and Lead</button>
-          </div>
-          <br>
+        
+          <hr>
+        
           
         </form>
+
+        <div class="text-center" id="buttonsToHide">
+          <button id="helpmebutton" class="btn btn-success">Help </button> || 
+          <button id="customerButton" style="width: 250px" class="btn btn-info">Create Customer</button> ||
+           <button id="customerAndPOButton" style="width: 250px" class="btn btn-info">Create Customer and Lead</button> 
+        </div>
+
+        <br>
+        <hr>
+        <span>Customer URL:</span><input type="text" id="textfield2" placeholder="Customer internal GUID will appear here" style="width: 100%">
+
+
       </div>
 
     </div>
     
   </div>
 
+  <!-- ---------------------------------------------------------------------------------------------------------- -->
+  <!-- ---------------------------------------------------------------------------------------------------------- -->
+
+  <!-- I am going to temporarily keep all of JS here and once it is working locally,
+     then I will move it to a remote file, and eventually behind an API-->
+
+     <script>
+
+        var bearerToken;
+
+        const data = {
+            "userName": "jakesapi@logistixai.com",
+            "password": "B=n!v;(]89hCL5VH"
+        }
+
+      function getBearer() {
+          axios.post('https://api.logistixai.com/api/users/v1/login', data)
+          .then(response => {
+        
+            console.log("The Bearer token is " );
+            console.log("=================================");
+            console.log(response.data.access_token);
+          //   alert(response.data.access_token);
+        
+            bearerToken = response.data.access_token;
+            document.getElementById('bearerConfirm').value = bearerToken;
+            countdownTimer(3599);
+            
+          })
+          .catch(error => {
+            console.error(error);
+          });
+        }
+
+      
+         // JavaScript code for button click event handling
+          document.getElementById('getBearerButton').addEventListener('click', function() {
+            console.log('Button 1 clickefdsafdasd');
+            getBearer();
+            
+            // Populate the text field with the response data
+            // Add your custom code here for Button 1 click event
+          });
+
+          document.getElementById('customerButton').addEventListener('click', function() {
+            if(bearerToken == null){
+              alert("Please Get a Bearer Token");
+              Return;
+            }
+            console.log('Button 2 clicked');
+            createCustomer();
+            var divv = document.getElementById("buttonsToHide");
+            divv.style.display = "none"
+
+
+ 
+          });
+
+            // JavaScript code for button click event handling
+          document.getElementById('helpmebutton').addEventListener('click', function() {
+            console.log('Button tester clicked');
+            alert("Help Button Clicked")
+            
+            // getBearer();
+            
+            // Populate the text field with the response data
+            // Add your custom code here for Button 1 click event
+          });
+
+
+          // Need to grab the text values and store them in variables
+
+          function createCustomer(){
+
+            var firstName = document.getElementById("FirstName").value;
+            var lastName = document.getElementById("LastName").value;
+            var full = (firstName + "_" + lastName);
+
+            var phone = document.getElementById("phone").value;
+            var email = document.getElementById("email").value;
+
+            var street = document.getElementById("street").value;
+            var city = document.getElementById("city").value;
+            var zip = document.getElementById("zip").value;
+
+
+
+            console.log(firstName);
+
+
+            const token = bearerToken;
+            const data2 = {
+                "contactTypeId":1,
+                "contactFirstName":firstName,
+                "contactLastName":lastName,
+                "contactBusinessName":full,
+                "contactEntityTypeId":1,
+                "addresses":
+                    [{"addressTypeId":3,
+                    "addressType":"PHYSICAL",
+                    "addressLine1":street,
+                    "addressLine2":null,
+                    "addressLine3":null,
+                    "addressLine4":null,
+                    "addressLine5":null,
+                    "city": city,
+                    "state":"Georgia",
+                    "postalCode": zip,
+                    "country":null}
+                    ],
+                "emails":
+                    [{"emailAddress": email,
+                    "emailTypeId":2,
+                    "emailType": "PERSONAL"}
+                    ],
+                "phoneNos":
+                    [{"phoneNumber": phone,
+                    "phoneNumberTypeId":6,
+                    "phoneNumberType":"MOBILE",
+                    "countryCode":"+1",
+                    "smsFl":true}
+                    ],
+                "websites":[]
+            };
+
+            const headers = {
+            'Authorization': `Bearer ${token}`
+            };
+
+            axios.post('https://api.logistixai.com/api/serviceproviders/v1/b0e1556e-a666-496b-a627-a81cf58a623d/customer', data2, { headers })
+            .then(response => {
+                console.log('Response:', response.data);
+                var customerGUID = response.data.result;
+                // document.getElementById('textfield2').value = customerGUID;
+                var customerLink = "https://portal.logistixai.com/customer/profile/b0e1556e-a666-496b-a627-a81cf58a623d/" + customerGUID;
+                console.log(customerLink)
+                document.getElementById('textfield2').value = customerLink;
+
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+
+            
+        }
+
+
+     </script>
+
+
+  <!-- ---------------------------------------------------------------------------------------------------------- -->
+  <!-- ---------------------------------------------------------------------------------------------------------- -->
 
 
   <!-- Bootstrap JS -->
