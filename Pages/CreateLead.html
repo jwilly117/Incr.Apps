@@ -192,6 +192,8 @@ together. -->
         <br>
         <hr>
         <span>Customer URL:</span><input type="text" id="textfield2" placeholder="Customer internal GUID will appear here" style="width: 100%">
+        <br>
+        <span>HD Service URL:</span><input type="text" id="textfield3" placeholder="HD internal GUID will appear here" style="width: 100%">
 
 
       </div>
@@ -251,8 +253,6 @@ together. -->
             }
             console.log('Button 2 clicked');
             createCustomer();
-            var divv = document.getElementById("buttonsToHide");
-            divv.style.display = "none"
 
 
  
@@ -280,7 +280,7 @@ together. -->
 
             var firstName = document.getElementById("FirstName").value;
             var lastName = document.getElementById("LastName").value;
-            var full = (firstName + "_" + lastName);
+            var full = (firstName + " " + lastName);
 
             var phone = document.getElementById("phone").value;
             var email = document.getElementById("email").value;
@@ -340,11 +340,18 @@ together. -->
                 // document.getElementById('textfield2').value = customerGUID;
                 var customerLink = "https://portal.logistixai.com/customer/profile/b0e1556e-a666-496b-a627-a81cf58a623d/" + customerGUID;
                 console.log(customerLink)
+                var HomeDepotLink = "https://homeservices.my.site.com/sp/s/global-search/" + full;
                 document.getElementById('textfield2').value = customerLink;
+                document.getElementById('textfield3').value = customerLink;
+                var divv = document.getElementById("buttonsToHide");
+            divv.style.display = "none"
 
             })
             .catch(error => {
                 console.error('Error:', error);
+                document.getElementById('textfield2').value = "An Error Has Occurred, This is an Invalid Request";
+                document.getElementById('textfield3').value = "An Error Has Occurred, This is an Invalid Request";
+                alert("🦆 Bad API Request, Please check your fields\n and try again, or Contact Jake")
             });
 
             
