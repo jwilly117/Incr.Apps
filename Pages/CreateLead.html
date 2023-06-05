@@ -167,11 +167,16 @@ together. -->
           </div>
           <hr>
           <div class="mb-3">
+
             <p>Please input any optional notes below, including special customer requests, or anything the scheduler might need to know. If you are importing a job from HD SS, please include those notes here</p>
             
             <div class="row justify-content-center mt-5">
+              <label for="LeadNumber" class="form-label">Lead Number (Required for HD)</label>
+              <input type="text" style="width: 90%;" class="form-control" id="LeadNumber" placeholder="This Number Will begin with an F">
+              <br>
+
               <label class="form-label">Optional Notes : </label>
-                <textarea class="form-control" style="width:90%" rows="5" placeholder="Enter your feedback"></textarea>
+                <textarea class="form-control" style="width:90%" rows="5" id="jobnotes" placeholder="Enter your feedback"></textarea>
              
             </div>
             
@@ -209,6 +214,8 @@ together. -->
      then I will move it to a remote file, and eventually behind an API-->
 
      <script>
+
+        var customerGuid;
 
         var bearerToken;
 
@@ -267,8 +274,9 @@ together. -->
           });
 
           document.getElementById('customerAndPOButton').addEventListener('click', function() {
-            console.log('Button tester clicked');
-            alert("Button Functionality Coming Soon 🐸")
+            console.log('Customer lead created -- clicked');
+            alert("I realllllllly hope this works 🤞 🐸")
+            // createLead();
             // Most of this will be constants except the source and the notes
           });
 
@@ -336,16 +344,16 @@ together. -->
             axios.post('https://api.logistixai.com/api/serviceproviders/v1/b0e1556e-a666-496b-a627-a81cf58a623d/customer', data2, { headers })
             .then(response => {
                 console.log('Response:', response.data);
-                var customerGUID = response.data.result;
+                customerGUID = response.data.result;
                 // document.getElementById('textfield2').value = customerGUID;
                 var customerLink = "https://portal.logistixai.com/customer/profile/b0e1556e-a666-496b-a627-a81cf58a623d/" + customerGUID;
                 console.log(customerLink)
                 var HomeDepotLink = "https://homeservices.my.site.com/sp/s/global-search/" + full;
                 document.getElementById('textfield2').value = customerLink;
                 document.getElementById('textfield3').value = HomeDepotLink;
-                var divv = document.getElementById("buttonsToHide");
+                var divv = document.getElementById("customerButton");
             divv.style.display = "none"
-
+              return customerGUID;
             })
             .catch(error => {
                 console.error('Error:', error);
@@ -361,6 +369,129 @@ together. -->
      </script>
 
 
+
+     <!-- Now the script to create a lead -->
+     <script>
+
+    
+
+            // Remember to link in CustomerGuid into this script tag somehow (or compile it all into one)
+            function createLead(){
+
+              // All Variables
+            var firstName = document.getElementById("FirstName").value;
+            var lastName = document.getElementById("LastName").value;
+            var full = (firstName + " " + lastName);
+
+            var phone = document.getElementById("phone").value;
+            var email = document.getElementById("email").value;
+
+            var street = document.getElementById("street").value;
+            var city = document.getElementById("city").value;
+            var zip = document.getElementById("zip").value;
+
+            var jobnotes = document.getElementById("jobnotes").value;
+            var LeadNumber = document.getElementById("LeadNumber").value;
+
+            const token = bearerToken;
+
+            const headers = {
+                  'Authorization': `Bearer ${token}`
+                };
+
+
+
+
+        const data3 = {
+          "customerId":customerGUID,
+          "addressId":102440,
+          "phoneNumberId":102000,
+          "emailId":71467,
+          "stateId":11,
+          "marketId":928,
+          "lineOfBusinessId":[
+              {
+                "id":"fb71e705-be7e-453f-b30d-1ea0cf2021d0",
+                "name":"HD SF&I"
+              }
+          ],
+          "orderSourceId":"cbfaf0e0-93bc-48d0-876a-20cc37476cc0",
+          "hasExternalSourceId":true,
+          "externalSourceId": LeadNumber,
+          "services":[
+              {
+                "lineOfBusinessId":"fb71e705-be7e-453f-b30d-1ea0cf2021d0",
+                "serviceMasterId":"4e7a1137-86c4-428b-9941-47a1550b1c27",
+                "lineItems":[
+                    {
+                      "description":jobnotes,
+                      "lineItemId":"b8e6a1ca-2a5b-4bdf-888a-1239163526fc",
+                      "locationId":"4925c7ed-9423-4db3-a6ee-d3fee9cb5cd6",
+                      "lineItemName":"In Home Consult",
+                      "lineItemTime":2
+                    }
+                ]
+              }
+          ],
+          "lineOfBusinessList":[
+              "fb71e705-be7e-453f-b30d-1ea0cf2021d0"
+          ],
+          "PickUpLocation":{
+              "contactTypeId":1,
+              "contactFirstName":"Home Depot Leads",
+              "originFacilityAliasID":"0001",
+              "contactEntityTypeId":1,
+              "addresses":[
+                {
+                    "addressLine1":"5852 Conner Rd",
+                    "addressLine2":null,
+                    "state":"Georgia",
+                    "city":"Flowery Branch",
+                    "postalCode":"30542"
+                }
+              ],
+              "emails":[
+                {
+                    "emailAddress":"jake+test@incredibleinstallations.com",
+                    "emailTypeId":1,
+                    "emailType":"WORK"
+                }
+              ],
+              "phoneNos":[
+                {
+                    "phoneNumber":"7705401127",
+                    "phoneNumberTypeId":1,
+                    "phoneNumberType":"WORK",
+                    "countryCode":"+1",
+                    "smsFl":true
+                }
+              ],
+              "storeNumber":"0001"
+          },
+          "emailIds":[
+              71467
+          ]
+        }
+                axios.post('https://api.logistixai.com/api/orders/V5', data3, { headers })
+                .then(response => {
+                        console.log('Response:', response.data);
+                        divv.style.display = "none"
+
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        document.getElementById('textfield2').value = "An Error Has Occurred, This is an Invalid Request";
+                        document.getElementById('textfield3').value = "An Error Has Occurred, This is an Invalid Request";
+                        alert("🦆 Bad API Request, Please check your fields\n and try again, or Contact Jake")
+                    });
+
+
+                
+
+      }
+
+
+     </script>
   <!-- ---------------------------------------------------------------------------------------------------------- -->
   <!-- ---------------------------------------------------------------------------------------------------------- -->
 
