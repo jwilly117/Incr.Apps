@@ -44,6 +44,82 @@
   </style>
 
 
+
+
+  <style>
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateX(100%);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .slide-in {
+      animation: slideIn 0.85s ease-in-out;
+      animation-delay: 0.2s;
+      opacity: 0;
+    }
+
+    /* Add a class to trigger the animation on page load */
+    .trigger-animation {
+      animation-name: slideIn;
+      opacity: 1;
+    }
+
+    /* ------------------------------------------------------------------------------------------ */
+
+    @keyframes slideIn2 {
+      from {
+        opacity: 0;
+        transform: translateX(-700%);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .slide-in2 {
+      animation: slideIn2 1.5s ease-in-out;
+      animation-delay: 0.2s;
+      opacity: 0;
+    }
+
+    /* Add a class to trigger the animation on page load */
+    .trigger-animation2 {
+      animation-name: slideIn2;
+      opacity: 1;
+    }
+
+
+  </style>
+
+<script>
+      // Trigger the animation on page load
+        window.addEventListener('load', function() {
+        var elements = document.getElementsByClassName('slide-in');
+        console.log(elements);
+        for (var i = 0; i < elements.length; i++) {
+        elements[i].classList.add('trigger-animation');
+        }
+      });
+
+
+            // Trigger the animation on page load
+        window.addEventListener('load', function() {
+        var elements = document.getElementsByClassName('slide-in2');
+        console.log(elements);
+        for (var i = 0; i < elements.length; i++) {
+        elements[i].classList.add('trigger-animation2');
+        }
+      });
+</script>
+
+
 </head>
 
 
@@ -111,31 +187,31 @@ together. -->
 
       
       <div class="col-md-8 mt-5">
-        <img src="../images/incredible Logo.png" alt="">
+        <img src="../images/incredible Logo.png" class="slide-in" alt="">
 
-        <button type="button" id="sideButton" class="btn btn-warning" onclick="toggleSidebar()">👓</button>
+        <button type="button" id="sideButton" class="btn btn-warning slide-in2" onclick="toggleSidebar()">👓</button>
 
         <hr><br>
-        <h3 class="text-center"><strong>New Sales Lead</strong></h3>
+        <h3 class="text-center slide-in"><strong>New Sales Lead</strong></h3>
 
         <form>
           <div class="mb-3">
-            <label for="email" class="form-label">Customer Name</label>
-            <span><input type="text" class="form-control" id="FirstName" placeholder="First Name" ><input type="text" class="form-control" id="LastName" placeholder="Last Name"></span>
+            <label for="email" class="form-label slide-in">Customer Name</label>
+            <span><input type="text" class="form-control slide-in" id="FirstName" placeholder="First Name" ><input type="text" class="form-control slide-in" id="LastName" placeholder="Last Name"></span>
+          </div>
+          <div class="mb-3,">
+            <label for="password" class="form-label slide-in">Phone Number</label>
+            <input type="text" class="form-control slide-in" id="phone" placeholder="Enter Phone Number">
           </div>
           <div class="mb-3">
-            <label for="password" class="form-label">Phone Number</label>
-            <input type="text" class="form-control" id="phone" placeholder="Enter Phone Number">
+            <label for="email" class="form-label slide-in">Email</label>
+            <input type="email" class="form-control slide-in" id="email" placeholder="Enter email" >
           </div>
           <div class="mb-3">
-            <label for="email" class="form-label">Email</label>
-            <input type="email" class="form-control" id="email" placeholder="Enter email" >
-          </div>
-          <div class="mb-3">
-            <label for="email" class="form-label">Customer Address</label>
-            <input type="text" class="form-control" id="street" placeholder="Street" >
-            <input type="text" class="form-control" id="city" placeholder="City" >
-            <input type="text" class="form-control" id="zip" placeholder="Zip" >
+            <label for="email" class="form-label slide-in">Customer Address</label>
+            <input type="text" class="slide-in form-control" id="street" placeholder="Street" >
+            <input type="text" class="slide-in form-control" id="city" placeholder="City" >
+            <input type="text" class="slide-in form-control" id="zip" placeholder="Zip" >
           </div>
 
             <hr>
