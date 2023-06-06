@@ -119,21 +119,21 @@ together. -->
         <form>
           <div class="mb-3">
             <label for="email" class="form-label">Customer Name</label>
-            <span><input type="text" class="form-control" id="FirstName" placeholder="First Name"><input type="text" class="form-control" id="LastName" placeholder="Last Name"></span>
+            <span><input type="text" class="form-control" id="FirstName" placeholder="First Name" value="Jake"><input type="text" class="form-control" id="LastName" placeholder="Last Name" value="Weeeyamms"></span>
           </div>
           <div class="mb-3">
             <label for="password" class="form-label">Phone Number</label>
-            <input type="text" class="form-control" id="phone" placeholder="Enter Phone Number">
+            <input type="text" class="form-control" id="phone" placeholder="Enter Phone Number" value="9999999999">
           </div>
           <div class="mb-3">
             <label for="email" class="form-label">Email</label>
-            <input type="email" class="form-control" id="email" placeholder="Enter email">
+            <input type="email" class="form-control" id="email" placeholder="Enter email" value="jakenbake@gmail.com">
           </div>
           <div class="mb-3">
             <label for="email" class="form-label">Customer Address</label>
-            <input type="text" class="form-control" id="street" placeholder="Street">
-            <input type="text" class="form-control" id="city" placeholder="City">
-            <input type="text" class="form-control" id="zip" placeholder="Zip">
+            <input type="text" class="form-control" id="street" placeholder="Street" value="5851 Conner Road">
+            <input type="text" class="form-control" id="city" placeholder="City" value="Flowery Branch">
+            <input type="text" class="form-control" id="zip" placeholder="Zip" value="30542">
           </div>
 
             <hr>
@@ -172,7 +172,7 @@ together. -->
             
             <div class="row justify-content-center mt-5">
               <label for="LeadNumber" class="form-label">Lead Number (Required for HD)</label>
-              <input type="text" style="width: 90%;" class="form-control" id="LeadNumber" placeholder="This Number Will begin with an F">
+              <input type="text" style="width: 90%;" class="form-control" id="LeadNumber"  placeholder="This Number Will begin with an F">
               <br>
 
               <label class="form-label">Optional Notes : </label>
@@ -191,7 +191,7 @@ together. -->
         <div class="text-center" id="buttonsToHide">
           <button id="helpmebutton" class="btn btn-success">Help </button> || 
           <button id="customerButton" style="width: 250px" class="btn btn-info">Create Customer</button> ||
-           <button id="customerAndPOButton" style="width: 250px" class="btn btn-info">Create Customer and Lead</button> 
+           <button id="customerAndPOButton" style="width: 250px" class="btn btn-info">Create Lead</button> 
         </div>
 
 
@@ -199,6 +199,8 @@ together. -->
         <span>Customer URL:</span><input type="text" id="textfield2" placeholder="Customer internal GUID will appear here" style="width: 100%">
         <br>
         <span>HD Service URL:</span><input type="text" id="textfield3" placeholder="HD internal GUID will appear here" style="width: 100%">
+        <br>
+        <span>Logistix Internal #:</span><input type="text" id="textfield5" placeholder="This is the Etteo Order ID" style="width: 100%">
 
 
       </div>
@@ -215,9 +217,35 @@ together. -->
 
      <script>
 
-        var customerGuid;
+          // function getCustomerInfo(){
+
+
+          // const token = bearerToken;
+
+          // const headers = {
+          //         'Authorization': `Bearer ${token}`
+          //       };
+
+          // var customerAPIURL = "https://api.logistixai.com/api/serviceproviders/v1/b0e1556e-a666-496b-a627-a81cf58a623d/customer/" + customerGUID;
+
+          // axios.get(customerAPIURL, { headers })
+          //     .then(response => {
+          //             console.log('Response:', response.data);
+                      
+
+          //         })
+          //         .catch(error => {
+          //             console.error('Error:', error);
+
+          //         });
+
+
+          // }
+
+
 
         var bearerToken;
+        var customerGUID;
 
         const data = {
             "userName": "jakesapi@logistixai.com",
@@ -235,7 +263,7 @@ together. -->
         
             bearerToken = response.data.access_token;
             document.getElementById('bearerConfirm').value = bearerToken;
-            countdownTimer(3599);
+            // countdownTimer(3599);
             
           })
           .catch(error => {
@@ -243,15 +271,17 @@ together. -->
           });
         }
 
-      
-         // JavaScript code for button click event handling
-          document.getElementById('getBearerButton').addEventListener('click', function() {
-            console.log('Button 1 clickefdsafdasd');
-            getBearer();
+        
+        getBearer();
+
+        //  // JavaScript code for button click event handling
+        //   document.getElementById('getBearerButton').addEventListener('click', function() {
+        //     console.log('Button 1 clickefdsafdasd');
+        //     getBearer();
             
-            // Populate the text field with the response data
-            // Add your custom code here for Button 1 click event
-          });
+        //     // Populate the text field with the response data
+        //     // Add your custom code here for Button 1 click event
+        //   });
 
           document.getElementById('customerButton').addEventListener('click', function() {
             if(bearerToken == null){
@@ -276,7 +306,7 @@ together. -->
           document.getElementById('customerAndPOButton').addEventListener('click', function() {
             console.log('Customer lead created -- clicked');
             alert("I realllllllly hope this works 🤞 🐸")
-            // createLead();
+            createLead();
             // Most of this will be constants except the source and the notes
           });
 
@@ -353,7 +383,11 @@ together. -->
                 document.getElementById('textfield3').value = HomeDepotLink;
                 var divv = document.getElementById("customerButton");
             divv.style.display = "none"
-              return customerGUID;
+
+            console.log("Customer Guid is: " + customerGUID)
+            getCustomerInfo(customerGUID);
+
+              // return customerGUID;
             })
             .catch(error => {
                 console.error('Error:', error);
@@ -362,16 +396,56 @@ together. -->
                 alert("🦆 Bad API Request, Please check your fields\n and try again, or Contact Jake")
             });
 
-            
-        }
+
+           }   
 
 
-     </script>
+
+
+
+
+    // <!--Code to get the customer information generated internally in logistix -->
+
+
+      function getCustomerInfo(guid){
+
+
+        const token = bearerToken;
+
+        const headers = {
+                'Authorization': `Bearer ${token}`
+              };
+
+        var customerAPIURL = "https://api.logistixai.com/api/serviceproviders/v1/b0e1556e-a666-496b-a627-a81cf58a623d/customer/" + guid;
+
+        axios.get(customerAPIURL, { headers })
+            .then(response => {
+                    console.log('Response:', response.data);
+                    
+
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+
+                });
+
+
+      }
+
+
+
+
+    </script>
 
 
 
      <!-- Now the script to create a lead -->
      <script>
+
+          var LeadNumber = "";
+          // Variable for external link
+
+
 
     
 
@@ -391,7 +465,7 @@ together. -->
             var zip = document.getElementById("zip").value;
 
             var jobnotes = document.getElementById("jobnotes").value;
-            var LeadNumber = document.getElementById("LeadNumber").value;
+            LeadNumber = document.getElementById("LeadNumber").value;
 
             const token = bearerToken;
 
@@ -399,15 +473,20 @@ together. -->
                   'Authorization': `Bearer ${token}`
                 };
 
+            var addressID =  102661;
+            var phoneNumberID =  102229;
+            var emailID =  71637;
+            var stateID =  11;
 
+             
 
 
         const data3 = {
-          "customerId":customerGUID,
-          "addressId":102440,
-          "phoneNumberId":102000,
-          "emailId":71467,
-          "stateId":11,
+          "customerId":"1b5e1476-2c83-4e7c-aa94-4009719e7953",
+          "addressId":addressID,
+          "phoneNumberId":phoneNumberID,
+          "emailId":emailID,
+          "stateId":stateID,
           "marketId":928,
           "lineOfBusinessId":[
               {
@@ -475,7 +554,9 @@ together. -->
                 axios.post('https://api.logistixai.com/api/orders/V5', data3, { headers })
                 .then(response => {
                         console.log('Response:', response.data);
-                        divv.style.display = "none"
+                        // divv.style.display = "none"
+                        document.getElementById('textfield5').value = response.data.result.etteoOrderId;
+
 
                     })
                     .catch(error => {
@@ -489,6 +570,72 @@ together. -->
                 
 
       }
+
+
+      function updateExternalLink(){
+
+
+          var externalLink = "https://scs-lowes.microsoftcrmportals.com/detail-management/details/detail-information/?id=f7d87c26-2bf8-ed11-8847-002248310b03" + LeadNumber;
+
+          const token = bearerToken;
+
+          const headers = {
+                'Authorization': `Bearer ${token}`
+              };
+
+          const data4 = 
+          {
+            "notes":[
+                {
+                  "note":""
+                },
+                {
+                  "note":""
+                }
+            ],
+            "imsUrl":externalLink,
+            "workOrderCost":[
+                {
+                  "itemNumber":"",
+                  "unitCost":""
+                }
+            ],
+            "activities":[
+                {
+                  "subject":"",
+                  "status":"",
+                  "type":" ",
+                  "dueDate":"",
+                  "crewLeading":""
+                }
+            ],
+            "jobPayments":[
+                {
+                  "paymentNumber":"",
+                  "requestedAmount":"",
+                  "paymentDescription":"",
+                  "type":"",
+                  "status":""
+                }
+            ]
+          }
+
+          var apiurl = "https://api.logistixai.com/api/orders/v5/" + LeadNumber
+
+          // Post to API
+          axios.post('https://api.logistixai.com/api/orders/v5/', data4, { headers })
+            .then(response => {
+                    console.log('Response:', response.data);
+                    
+
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+
+                });
+
+
+}
 
 
      </script>
