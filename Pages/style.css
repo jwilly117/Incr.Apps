@@ -2,7 +2,8 @@
     font-weight: bolder;
 }
 body{
-    background-color: rgb(255, 247, 204);
+    background-color: rgb(72, 72, 72);
+    color: rgb(182, 182, 182);
 }
 
 img{
@@ -10,7 +11,7 @@ img{
 }
 
 footer{
-    background-color: rgb(217, 217, 217);
+    background-color: rgb(88, 88, 88);
     padding-top: 15px;
     padding-bottom: 10px;
     font-weight: bold;
@@ -97,4 +98,14 @@ button{
     border-radius: 5px;
     background-color: rgb(162, 162, 162);
     color: white;
+}
+
+.form-control{
+    background-color: rgb(149, 166, 179);
+    color: white;
+    
+}
+
+.form-control::placeholder{
+    color: rgb(40, 39, 39);
 }
