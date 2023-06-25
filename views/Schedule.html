@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Hourly Calendar</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    .card {
+      background-color: #ffffff;
+      padding: 10px;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      border: 2px solid blue;
+    }
+    body{
+        background-color: rgb(166, 255, 255);
+    }
+    .container{
+        background-color: rgb(158, 158, 161);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2>Hourly Calendar</h2>
+        <table class="table">
+          <tr>
+            <th>Time</th>
+            <th>Event</th>
+          </tr>
+          <tr>
+            <td>8 AM</td>
+            <td>
+              <div class="card">
+                <h3>Event 1</h3>
+                <p>Some details about Event 1</p>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>9 AM</td>
+            <td>
+              <div class="card">
+                <h3>Event 2</h3>
+                <p>Some details about Event 2</p>
+              </div>
+            </td>
+          </tr>
+          <!-- Repeat the above row for each hour from 8 AM to 7 PM -->
+        </table>
+      </div>
+    </div>
+  </div>
+
+  https://maps.googleapis.com/maps/api/streetview?size={width}x{height}&location={latitude},{longitude}&key={API_KEY}
+
+
+
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
