@@ -10,6 +10,10 @@
             max-width: 500px;
             margin: 0 auto;
         }
+
+        .spinner {
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -33,7 +37,12 @@
                     <label for="phone" class="form-label">Height</label>
                     <input type="text" class="form-control" id="height" placeholder="Enter height">
                 </div>
-                <button type="submit" class="btn btn-primary">Download PDF</button>
+                <button type="submit" class="btn btn-primary" id="submitBtn">Download PDF</button>
+                <div class="spinner" id="spinner">
+                    <div class="spinner-border" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>
             </form>
         </div>
     </div>
@@ -45,6 +54,13 @@
     <script>
         async function populateAndDownloadPDF(event) {
             event.preventDefault();
+
+            const submitBtn = document.getElementById('submitBtn');
+            const spinner = document.getElementById('spinner');
+
+            submitBtn.disabled = true; // Disable the submit button
+            spinner.style.display = 'block'; // Show the spinner
+
 
             const name = document.getElementById('name').value;
             const email = document.getElementById('Location').value;
@@ -78,13 +94,20 @@
             const blob = new Blob([modifiedPdfBytes], { type: 'application/pdf' });
             const url = URL.createObjectURL(blob);
 
+            var filename = name + ".pdf"
+
             const downloadLink = document.createElement('a');
             downloadLink.href = url;
-            downloadLink.download = 'populated_form.pdf';
+            downloadLink.download = filename;
             downloadLink.click();
 
             // Clean up the URL object
             URL.revokeObjectURL(url);
+
+
+                        // Hide the spinner and enable the submit button
+                        spinner.style.display = 'none';
+            submitBtn.disabled = false;
         }
     </script>
 </body>
