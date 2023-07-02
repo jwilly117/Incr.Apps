@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bootstrap Form Example</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        /* Additional custom styles */
+        .form-container {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="form-container">
+            <h1>Storm Door Detail</h1>
+            <form onsubmit="populateAndDownloadPDF(event)">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Customer Name</label>
+                    <input type="text" class="form-control" id="name" placeholder="Enter your name">
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Location</label>
+                    <input type="text" class="form-control" id="Location" placeholder="Enter your email">
+                </div>
+                <div class="mb-3">
+                    <label for="phone" class="form-label">Width</label>
+                    <input type="text" class="form-control" id="width" placeholder="Enter width">
+                </div>
+                <div class="mb-3">
+                    <label for="phone" class="form-label">Height</label>
+                    <input type="text" class="form-control" id="height" placeholder="Enter height">
+                </div>
+                <button type="submit" class="btn btn-primary">Download PDF</button>
+            </form>
+        </div>
+    </div>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- pdf-lib JS -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/pdf-lib@3.5.0/dist/pdf-lib.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js" integrity="sha512-z8IYLHO8bTgFqj+yrPyIJnzBDf7DDhWwiEsk4sY+Oe6J2M+WQequeGS7qioI5vT6rXgVRb4K1UVQC5ER7MKzKQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        async function populateAndDownloadPDF(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('Location').value;
+            const phone = document.getElementById('width').value;
+            const message = document.getElementById('height').value;
+
+            // Fetch the PDF template
+            const response = await fetch('../pdf/StormEditable.pdf');
+            const pdfData = await response.arrayBuffer();
+
+            // Create a new PDFDocument
+            const pdfDoc = await PDFLib.PDFDocument.load(pdfData);
+
+            // Get the form fields in the PDF
+            const form = pdfDoc.getForm();
+            const nameField = form.getTextField('customerName');
+            const emailField = form.getTextField('location');
+            const phoneField = form.getTextField('width');
+            const messageField = form.getTextField('height');
+
+            // Set the values of the form fields
+            nameField.setText(name);
+            emailField.setText(email);
+            phoneField.setText(phone);
+            messageField.setText(message);
+
+            // Save the modified PDF
+            const modifiedPdfBytes = await pdfDoc.save();
+
+            // Create a download link
+            const blob = new Blob([modifiedPdfBytes], { type: 'application/pdf' });
+            const url = URL.createObjectURL(blob);
+
+            const downloadLink = document.createElement('a');
+            downloadLink.href = url;
+            downloadLink.download = 'populated_form.pdf';
+            downloadLink.click();
+
+            // Clean up the URL object
+            URL.revokeObjectURL(url);
+        }
+    </script>
+</body>
+</html>
