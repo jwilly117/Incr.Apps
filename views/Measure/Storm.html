@@ -75,7 +75,7 @@
             const message = document.getElementById('height').value;
 
             // Fetch the PDF template
-            const response = await fetch('../pdf/StormEditable.pdf');
+            const response = await fetch('pdf/StormEditable.pdf');
             const pdfData = await response.arrayBuffer();
 
             // Create a new PDFDocument
