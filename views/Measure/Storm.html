@@ -7,8 +7,10 @@
     <style>
         /* Additional custom styles */
         .form-container {
-            max-width: 500px;
+            /* max-width: 500px; */
+            padding-top: 35px;
             margin: 0 auto;
+            padding: 20px;
         }
 
         .spinner {
@@ -24,34 +26,40 @@
 </head>
 <body>
     <div class="container">
-        <div class="form-container">
-            <h1>Storm Door Detail</h1>
-            <form onsubmit="populateAndDownloadPDF(event)">
-                <div class="mb-3">
-                    <label for="name" class="form-label">Customer Name</label>
-                    <input type="text" class="form-control" id="name" placeholder="Enter your name">
-                </div>
-                <div class="mb-3">
-                    <label for="email" class="form-label">Location</label>
-                    <input type="text" class="form-control" id="Location" placeholder="Enter your email">
-                </div>
-                <div class="mb-3">
-                    <label for="phone" class="form-label">Width</label>
-                    <input type="text" class="form-control" id="width" placeholder="Enter width">
-                </div>
-                <div class="mb-3">
-                    <label for="phone" class="form-label">Height</label>
-                    <input type="text" class="form-control" id="height" placeholder="Enter height">
-                </div>
-                <button type="submit" class="btn btn-primary" id="submitBtn">Download PDF</button>
-                <br><hr>
-                <div class="spinner" id="spinner">
-                    <div class="spinner-border" role="status">
-                        <span class="visually-hidden">Loading...</span>
+        <div class="row justify-content-center">
+            <div class="form-container">
+                <img src="../../images/incredible Logo.png" class="slide-in" alt="">
+                <br><br><hr>
+                <h1>Storm Door Detail</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias rem inventore dolorum ullam a illum exercitationem aspernatur voluptate animi possimus? Sit odio et dolorem facilis ut modi! Facere, iure atque?</p>
+                <form onsubmit="populateAndDownloadPDF(event)">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Customer Name</label>
+                        <input type="text" class="form-control" id="name" placeholder="Enter your name">
                     </div>
-                </div>
-            </form>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Location</label>
+                        <input type="text" class="form-control" id="Location" placeholder="Enter your email">
+                    </div>
+                    <div class="mb-3">
+                        <label for="phone" class="form-label">Width</label>
+                        <input type="text" class="form-control" id="width" placeholder="Enter width">
+                    </div>
+                    <div class="mb-3">
+                        <label for="phone" class="form-label">Height</label>
+                        <input type="text" class="form-control" id="height" placeholder="Enter height">
+                    </div>
+                    <button type="submit" class="btn btn-primary" id="submitBtn">Download PDF</button>
+                    <br><hr>
+                    <div class="spinner" id="spinner">
+                        <div class="spinner-border" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
+
     </div>
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
