@@ -38,6 +38,14 @@
                         <input type="text" class="form-control" id="name" placeholder="Enter Customer name">
                     </div>
                     <div class="mb-3">
+                        <label for="name" class="form-label">Job Number</label>
+                        <input type="text" class="form-control" id="jobnumber" placeholder="Enter Job Number">
+                    </div>
+                    <div class="mb-3">
+                        <label for="date" class="form-label">Date</label>
+                        <input type="date" class="form-control" id="date" readonly>
+                    </div>
+                    <div class="mb-3">
                         <label for="email" class="form-label">Location</label>
                         <input type="text" class="form-control" id="Location" placeholder="Enter the location of the door Ex: Garage">
                     </div>
@@ -48,6 +56,10 @@
                     <div class="mb-3">
                         <label for="phone" class="form-label">Height</label>
                         <input type="text" class="form-control" id="height" placeholder="Enter height">
+                    </div>
+                    <div class="mb-3">
+                        <label for="notes" class="form-label">Notes</label>
+                        <textarea class="form-control" id="notes" rows="6" placeholder="Enter your notes / extra labor or extra materials"></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary" id="submitBtn">Download PDF</button>
                     <br><hr>
@@ -78,9 +90,13 @@
 
 
             const name = document.getElementById('name').value;
+            const jobnumber = document.getElementById('jobnumber').value;
             const email = document.getElementById('Location').value;
             const phone = document.getElementById('width').value;
             const message = document.getElementById('height').value;
+            const notes = document.getElementById('notes').value;
+
+            
 
             // Fetch the PDF template
             const response = await fetch('pdf/StormEditable.pdf');
@@ -92,15 +108,28 @@
             // Get the form fields in the PDF
             const form = pdfDoc.getForm();
             const nameField = form.getTextField('customerName');
+            const jobnumberField = form.getTextField('jobnumber');
             const emailField = form.getTextField('location');
             const phoneField = form.getTextField('width');
             const messageField = form.getTextField('height');
+            const dateField = form.getTextField('dateField');
+            const notesField = form.getTextField('notes');
+
 
             // Set the values of the form fields
             nameField.setText(name);
+            jobnumberField.setText(jobnumber);
             emailField.setText(email);
             phoneField.setText(phone);
             messageField.setText(message);
+            notesField.setText(notes);
+
+             // Populate the date field with the current date
+             const currentDate = new Date();
+            const formattedDate = currentDate.toISOString().split('T')[0]; // Format: YYYY-MM-DD
+            dateField.setText(formattedDate);
+
+            form.flatten();
 
             // Save the modified PDF
             const modifiedPdfBytes = await pdfDoc.save();
