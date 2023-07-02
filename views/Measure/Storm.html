@@ -22,6 +22,21 @@
         .form-container,body{
             background-color: rgb(149, 197, 243);
         }
+        .form-control{
+            height: 50px;
+            width: 95%;
+            align-items: center;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+        .mb-3{
+            align-items: center;
+            justify-content: center;
+        }
+        .form-label{
+            font-weight: bold;
+            margin-left: 9px;
+        }
     </style>
 </head>
 <body>
@@ -59,7 +74,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="notes" class="form-label">Notes</label>
-                        <textarea class="form-control" id="notes" rows="6" placeholder="Enter your notes / extra labor or extra materials"></textarea>
+                        <textarea class="form-control" id="notes" rows="6" style="height: auto;" placeholder="Enter your notes / extra labor or extra materials"></textarea>
                     </div>
                     <br>    
                     <button type="submit" class="btn btn-primary" style="width: 230px; height: 50px; font-weight: bold;" id="submitBtn">Download PDF  ⬇</button> 
