@@ -10,7 +10,7 @@
             /* max-width: 500px; */
             padding-top: 35px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 20px; height: auto;
         }
         img{
             width: 100%;
@@ -24,7 +24,7 @@
             background-color: rgb(149, 197, 243);
         }
         .form-container,body{
-            background-color: rgb(116, 119, 122);
+            background-color: rgb(150, 204, 197);
         }
         .form-control{
             height: 60px;
@@ -46,13 +46,20 @@
         padding-top: 15px;
         padding-bottom: 10px;
         font-weight: bolder;
+        position: fixed;
+        left: 0;
+            bottom: 0;
+            width: 100%;
+}
+body{
+    /* max-height: fit-content; */
 }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="row justify-content-center">
-            <div class="form-container">
+            <div class="form-container" style="height: auto;">
                 <br>
                 <img src="../../images/incredible Logo.png" class="slide-in" alt="">
                 <br><br><hr>
@@ -96,6 +103,11 @@
                         </div>
                     </div>
                 </form>
+                <footer class="footer text-center" style="margin-top: 10px;">
+
+                    <p>&copy; 2023 JW / Incredible   ~    Only for Internal use. All rights reserved</p>
+                   <BR><BR><BR><BR></BR>
+                  </footer><br><hr>
             </div>
         </div>
 
@@ -182,10 +194,6 @@
         }
     </script>
 
-    <footer class="footer mt-5 text-center">
-
-        <p>&copy; 2023 JW / Incredible   ~    Only for Internal use. All rights reserved</p>
-       <BR><BR><BR><BR></BR>
-      </footer><br><hr>
+    
 </body>
 </html>
