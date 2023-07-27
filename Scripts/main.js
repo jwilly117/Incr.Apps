@@ -309,7 +309,7 @@ function createLead(customerid,addressid,phonenumberid,emailid){
 
  function updateExternalLink(lead){
 
-     console.log("fjdlsa;fjkdl;sjafkld" + LeadNumber);
+     console.log("Lead Number" + LeadNumber);
 
      var externalLink = "https://homeservices.my.site.com/sp/s/global-search/" + lead;
 
@@ -354,6 +354,7 @@ function createLead(customerid,addressid,phonenumberid,emailid){
              "status":""
            }
        ]
+
      }
 
      const flagdata = 
