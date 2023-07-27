@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bootstrap Form Example</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        /* Additional custom styles */
+        .form-container {
+            /* max-width: 500px; */
+            padding-top: 35px;
+            margin: 0 auto;
+            padding: 20px; height: auto;
+        }
+        img{
+            width: 100%;
+        }
+
+
+        .spinner {
+            display: none;
+        }
+        .container{
+            background-color: rgb(149, 197, 243);
+        }
+        .form-container,body{
+            background-color: rgb(248, 252, 218);
+        }
+        .form-control{
+            height: 60px;
+            width: 95%;
+            align-items: center;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+        .mb-3{
+            align-items: center;
+            justify-content: center;
+        }
+        .form-label{
+            font-weight: bold;
+            margin-left: 9px;
+        }
+        footer{
+        background-color: rgb(109, 105, 105);
+        padding-top: 15px;
+        padding-bottom: 10px;
+        font-weight: bolder;
+        position: fixed;
+        left: 0;
+            bottom: 0;
+            width: 100%;
+}
+.center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* height: 100vh; */
+        }
+        .btn{
+            width: 90%;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="form-container" style="height: auto;">
+                <br><hr>
+                <img src="../../images/incredible Logo.png" class="slide-in" alt="">
+                <br><br><hr>
+                <h1>Fillable-Form Measure Sheets</h1>
+                <p>Please use the form below to perform your measurements for a storm door. Once you have filled out the form, click the download button at the bottom for a completed detail, which you can then upload to the Job to close it out. This form is a work in progress and we are working to improve functionality in the near future. </p>
+                <br><br>
+                <div class="center">
+                    <a href="Storm.html" class="btn btn-secondary">Storm Doors</a>
+                </div>
+                <hr><br>
+                <div class="center">
+                    <a href="Exterior.html" class="btn btn-secondary">Exterior Doors (WIP)</a>
+                </div>
+                <hr><br>
+                <div class="center">
+                    <a href="Window.html" class="btn btn-secondary">Windows  (WIP)</a>
+                </div>
+                <hr><br>
+                <div class="center">
+                    <a href="Shower.html" class="btn btn-secondary">Shower Doors  (WIP)</a>
+                </div>
+                <hr>
+                <footer class="footer text-center" style="margin-top: 10px;">
+
+                    <p>&copy; 2023 JW / Incredible   ~    Only for Internal use. All rights reserved</p>
+                   <BR><BR><BR><BR></BR>
+                  </footer><br><hr>
+            </div>
+        </div>
+
+    </div>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- pdf-lib JS -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/pdf-lib@3.5.0/dist/pdf-lib.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js" integrity="sha512-z8IYLHO8bTgFqj+yrPyIJnzBDf7DDhWwiEsk4sY+Oe6J2M+WQequeGS7qioI5vT6rXgVRb4K1UVQC5ER7MKzKQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        async function populateAndDownloadPDF(event) {
+            event.preventDefault();
+
+            const submitBtn = document.getElementById('submitBtn');
+            const spinner = document.getElementById('spinner');
+
+            submitBtn.disabled = true; // Disable the submit button
+            spinner.style.display = 'block'; // Show the spinner
+
+
+            const name = document.getElementById('name').value;
+            const jobnumber = document.getElementById('jobnumber').value;
+            const email = document.getElementById('Location').value;
+            const phone = document.getElementById('width').value;
+            const message = document.getElementById('height').value;
+            const notes = document.getElementById('notes').value;
+
+            
+
+            // Fetch the PDF template
+            const response = await fetch('pdf/StormEditable.pdf');
+            const pdfData = await response.arrayBuffer();
+
+            // Create a new PDFDocument
+            const pdfDoc = await PDFLib.PDFDocument.load(pdfData);
+
+            // Get the form fields in the PDF
+            const form = pdfDoc.getForm();
+            const nameField = form.getTextField('customerName');
+            const jobnumberField = form.getTextField('jobnumber');
+            const emailField = form.getTextField('location');
+            const phoneField = form.getTextField('width');
+            const messageField = form.getTextField('height');
+            const dateField = form.getTextField('dateField');
+            const notesField = form.getTextField('notes');
+
+
+            // Set the values of the form fields
+            nameField.setText(name);
+            jobnumberField.setText(jobnumber);
+            emailField.setText(email);
+            phoneField.setText(phone);
+            messageField.setText(message);
+            notesField.setText(notes);
+
+             // Populate the date field with the current date
+             const currentDate = new Date();
+            const formattedDate = currentDate.toISOString().split('T')[0]; // Format: YYYY-MM-DD
+            dateField.setText(formattedDate);
+
+            form.flatten();
+
+            // Save the modified PDF
+            const modifiedPdfBytes = await pdfDoc.save();
+
+            // Create a download link
+            const blob = new Blob([modifiedPdfBytes], { type: 'application/pdf' });
+            const url = URL.createObjectURL(blob);
+
+            var filename = name + ".pdf"
+
+            const downloadLink = document.createElement('a');
+            downloadLink.href = url;
+            downloadLink.download = filename;
+            downloadLink.click();
+
+            // Clean up the URL object
+            URL.revokeObjectURL(url);
+
+
+                        // Hide the spinner and enable the submit button
+                        spinner.style.display = 'none';
+            submitBtn.disabled = false;
+        }
+    </script>
+
+    
+</body>
+</html>
