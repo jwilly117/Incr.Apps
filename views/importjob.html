@@ -76,7 +76,7 @@
         // Here is where I will make the Axios POST
         const data3 = 
         {
-        "jobId": "785312976",
+        "jobId": field1Value,
         "jobType": "job"
         } 
                 axios.post('https://api.logistixai.com/api/orders/v5/import', data3, { headers })
@@ -98,7 +98,6 @@
 
       // Clear the text fields
       document.getElementById('field1').value = '';
-      document.getElementById('field2').value = '';
     }
   </script>
 
