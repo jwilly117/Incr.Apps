@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Text Fields Example</title>
+  <!-- Include Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+
+    <style>
+        body{
+            background-color: rgb(166, 206, 241);
+        }
+
+    </style>
+
+
+
+</head>
+<body>
+  <div class="container">
+    <br><br><br>
+    <h1>Import Job Into LogistixAI</h1>
+    <p>This tool is used to manually import a job into logistixAI. Please check the job number in logistix to see if it is there BEFORE using this tool. However, the system should flag it as a duplicate and refuse to make another order. 
+<hr>
+
+    </p>
+    <h5>Please allow up to 30 seconds for the job to appear in Logistix</h5>
+
+    <form>
+      <div class="form-group">
+        <label for="field1">Job Number</label>
+        <input type="text" class="form-control" id="field1" name="field1">
+      </div>
+
+      <!-- <div class="form-group">
+        <label for="field2">URL</label>
+        <input type="text" class="form-control" id="field2" name="field2">
+      </div> -->
+
+      <button type="button" class="btn btn-primary" onclick="handleSubmit()">Import!</button>
+    </form>
+  </div>
+
+
+  <!-- Include Bootstrap JS -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+
+  <!-- Include Bootstrap JS -->
+  <script src="../Scripts/main.js"></script>
+  
+  <script>
+    var bearerToken;
+
+    
+
+    function handleSubmit() {
+      // Retrieve the values from the text fields
+      var field1Value = document.getElementById('field1').value;
+      
+      // Perform any desired actions with the values
+      console.log('Field 1 value:', field1Value);
+      
+      // Add your custom logic here
+      const token = bearerToken;
+
+        const headers = {
+            'Authorization': `Bearer ${token}`
+        };
+
+
+        // Here is where I will make the Axios POST
+        const data3 = 
+        {
+        "jobId": "785312976",
+        "jobType": "job"
+        } 
+                axios.post('https://api.logistixai.com/api/orders/v5/import', data3, { headers })
+                .then(response => {
+                       console.log(response);
+
+
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        
+                    });
+
+      
+      // Example: Display an alert with the values
+      // alert('Field 1 value: ' + field1Value + '\nField 2 value: ' + field2Value);
+
+
+
+      // Clear the text fields
+      document.getElementById('field1').value = '';
+      document.getElementById('field2').value = '';
+    }
+  </script>
+
