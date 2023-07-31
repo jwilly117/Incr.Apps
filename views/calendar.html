@@ -21,20 +21,27 @@
     }
     th{
       background-color: #9eb8f4;
+      border-radius: 5px;
     }
     .weeklyTable{
         margin: 10px;
+        border-radius: 5px;
+
     }
        /* CSS for setting the height of table cells */
        table.table-fixed-height td,
     table.table-fixed-height {
       height: 180px;
       vertical-align: middle;
+      border-radius: 5px;
+
     }
 
     table.nested-table th {
       height: auto;
       font-size: small;
+      border-radius: 5px;
+
     }
 
         /* CSS for the icon container */
@@ -88,6 +95,10 @@
     .highlight-monday .flatpickr-day:not(.flatpickr-disabled).flatpickr-day--monday {
       background-color: #F76A8C;
       color: #fff;
+    }
+    td{
+      border-radius: 5px;
+
     }
     .modal, .fade {
   /* display: flex !important; */
@@ -221,17 +232,17 @@
                     </thead>
                     <tbody>
                       <tr>
-                        <td>cells</td>
-                        <td>Cell </td>
-                        <td>Cell </td>
-                        <td>Cell </td>
-                        <td>Cell </td>
-                        <td>Cell</td>
-                        <td>Cell</td>
-                        <td>Cell</td>
-                        <td>Cell</td>
-                        <td>Cell</td>
-                        <td>Cell</td>
+                        <td id="I1-1-8am">I1-1-8am</td>
+                        <td id="I1-1-9am">I1-1-9am</td>
+                        <td id="I1-1-10am">I1-1-10am</td>
+                        <td id="I1-1-11am">I1-1-11am</td>
+                        <td id="I1-1-12pm">I1-1-12pm</td>
+                        <td id="I1-1-1pm">I1-1-1pm</td>
+                        <td id="I1-1-2pm">I1-1-2pm</td>
+                        <td id="I1-1-3pm">I1-1-3pm</td>
+                        <td id="I1-1-4pm">I1-1-4pm</td>
+                        <td id="I1-1-5pm">I1-1-5pm</td>
+                        <td id="I1-1-6pm">I1-1-6pm</td>
                       </tr>
                     </tbody>
                   </table>
@@ -255,17 +266,17 @@
                   </thead>
                     <tbody>
                       <tr>
-                        <td>Cell 1-1</td>
-                        <td>Cell 1-2</td>
-                        <td>Cell 1-3</td>
-                        <td>Cell 1-4</td>
-                        <td>Cell 1-5</td>
-                        <td>Cell 1-6</td>
-                        <td>Cell 1-7</td>
-                        <td>Cell 1-8</td>
-                        <td>Cell 1-9</td>
-                        <td>Cell 1-10</td>
-                        <td>Cell 1-11</td>
+                        <td id="I1-2-8am">Cell 1-1</td>
+                        <td id="I1-2-9am">Cell 1-2</td>
+                        <td id="I1-2-10am">Cell 1-3</td>
+                        <td id="I1-2-11am">Cell 1-4</td>
+                        <td id="I1-2-12pm">Cell 1-5</td>
+                        <td id="I1-2-1pm">Cell 1-6</td>
+                        <td id="I1-2-2pm">Cell 1-7</td>
+                        <td id="I1-2-3pm">Cell 1-8</td>
+                        <td id="I1-2-4pm">Cell 1-9</td>
+                        <td id="I1-2-5pm">Cell 1-10</td>
+                        <td id="I1-2-6pm">Cell 1-11</td>
                       </tr>
                     </tbody>
                   </table>
@@ -404,7 +415,8 @@ var realTime;
       console.log("Selected Date:", dateStr);
       realTime = dateStr + "T00:00:00.000Z"
       console.log(realTime);
-      submitData();
+      submitDataMonday(brandon);
+      // submitDataTuesday();
       document.getElementById("mondayHeader").textContent = "Monday  :   " + dateStr;
 
     },
