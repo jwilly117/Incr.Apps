@@ -16,12 +16,23 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr@4.6.3/dist/flatpickr.min.css">
 
   <style>
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100; /* Optional: Use z-index to control the layering of elements */
+    }
     .container{
+
       justify-content: center;
       align-items: center;
     }
     body{
-        background-color: rgb(144, 182, 215);
+      margin-top: 120px;
+        background-color: rgb(164, 185, 238);
+        transition: background-color 0.5s ease; /* Add the transition property */
+
     }
     th{
       background-color: #9eb8f4;
@@ -103,8 +114,13 @@
     }
     td{
       border-radius: 5px;
+      transition: background-color 0.8s ease; /* Add the transition property */
 
     }
+    td:hover{
+      background-color: #787c83;
+    }
+    
     .modal, .fade {
   /* display: flex !important; */
   align-items: center;
