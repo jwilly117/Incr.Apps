@@ -3,10 +3,10 @@
   var bearerToken;
 
   var brandon ="ade739e2-b4a6-4103-ad3e-2a6f2a626561";
-  var reed;
-  var jeanne;
+  var reed = "e77ac0e1-190e-464f-8827-de037afbcb14";
+  var jeanne = "42efd3a1-3cd5-496c-bd8b-5eed211ac22b";
   var paul = "b1233c01-4c7f-4a5a-885b-535967b7f923";
-  var gabe;
+  var gabe = "42efd3a1-3cd5-496c-bd8b-5eed211ac22b";
   var ryan;
 
   const data = {
@@ -249,13 +249,13 @@ function getBearer() {
   function submitDataTuesday(tech, installerNumber) {
     console.log("This is the beearer token")
     console.log(bearerToken);
-    // Your API endpoint URL
+    // Your API endpoint URLs
     // const apiUrl = 'https://api.logistixai.com/api/orders/v1/fetch-route-board';
 
     // Sample data to be sent to the API
     const dataTuesday = 
 {
-    "serviceDate": "2023-07-25T00:00:00.000Z",
+    "serviceDate": "2023-07-26T00:00:00.000Z",
     "marketId": 928,
     "stateId": 11,
     "serviceProviders": [
