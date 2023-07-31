@@ -25,7 +25,7 @@ function getBearer() {
         //   alert(response.data.access_token);
 
         bearerToken = response.data.access_token;
-        document.getElementById("bearerConfirm").value = bearerToken;
+        // document.getElementById("bearerConfirm").value = bearerToken;
         // countdownTimer(3599);
       })
       .catch((error) => {
@@ -34,7 +34,7 @@ function getBearer() {
   }
   
 
-// =========================================================================================
+// ========================================================================================= 
 // =========================================================================================
 
 //    Create Customer - Only needs basic information, no guids

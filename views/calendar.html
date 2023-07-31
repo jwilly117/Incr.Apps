@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Basic Bootstrap Page</title>
+  <!-- Add Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+   <!-- Add Font Awesome CSS -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- <script src="../Scripts/main.js"></script> -->
+
+  <!-- Add Date Picker CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr@4.6.3/dist/flatpickr.min.css">
+
+  <style>
+    body{
+        background-color: rgb(136, 175, 210);
+    }
+    th{
+      background-color: #9eb8f4;
+    }
+    .weeklyTable{
+        margin: 10px;
+    }
+       /* CSS for setting the height of table cells */
+       table.table-fixed-height td,
+    table.table-fixed-height {
+      height: 180px;
+      vertical-align: middle;
+    }
+
+    table.nested-table th {
+      height: auto;
+      font-size: small;
+    }
+
+        /* CSS for the icon container */
+        .icon-container {
+      position: relative;
+      float: right;
+      margin-top: 10px;
+      height: 40px;
+    }
+    .icon{
+      height: 100px;
+      font-size: 24px;
+    }
+    .flatpickr-calendar {
+      background-color: #767474;
+      color: #fff;
+    }
+
+    .flatpickr-month {
+      background-color: #333;
+    }
+
+    .flatpickr-days {
+      background-color: #222;
+    }
+
+    .flatpickr-weekdays {
+      background-color: #444;
+    }
+
+    .flatpickr-day {
+      color: #fff;
+    }
+
+    .flatpickr-prev-month, .flatpickr-next-month {
+      color: #aaa;
+    }
+
+    .flatpickr-today {
+      background-color: #666;
+    }
+
+    .flatpickr-confirm, .flatpickr-clear, .flatpickr-time {
+      background-color: #555;
+      color: #fff;
+    }
+
+    .flatpickr-input, .flatpickr-calendar.open {
+      border-color: #333;
+    }
+    .highlight-monday .flatpickr-day:not(.flatpickr-disabled).flatpickr-day--monday {
+      background-color: #F76A8C;
+      color: #fff;
+    }
+    
+  </style>
+</head>
+<body>
+
+<header>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <img style="width: 15%; margin-right: 40px;" src="../images/incredible Logo.png" alt="Incredible">
+    <!-- <a class="navbar-brand" href="#">Your Logo</a> -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Contact</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<div class="container mt-4">
+  <h1>Weekly Calendar Scheduler View - Prototype 1</h1>
+  <p>Basic outline of a statically populated table for a weekly view. - Need to make dynamic and populate based on arguments</p>
+  <hr>
+  <p>
+    Things to do: Each installer will need a time table from 8am - 6pm, which makes for 11 slots throughout there day. 11 tiny little squares
+  </p>
+  <form>
+    <button type="submit" class="btn btn-secondary" onclick="submitData()">Submit Test Times</button>
+    <br><hr>
+    <div class="form-group">
+      <h5>Select Week - Always pick a Monday</h5>
+      <input type="text" style="width: 250px;" class="form-control" id="datepicker" placeholder="Select a date">    </div>
+  </form>
+
+
+</div>
+
+<div class="weeklyTable">
+
+    <table class="table table-bordered table-fixed-height">
+        <tbody>
+            <thead>
+                <tr>
+                  <th>Installer</th>
+                  <th id="mondayHeader" style="font-size: larger;">Monday</th>
+                  <th style="font-size: larger;">Tuesday</th>
+                  <th style="font-size: larger;">Wednesday</th>
+                  <th style="font-size: larger;">Thursday</th>
+                  <th style="font-size: larger;">Friday</th>
+                  <!-- <th>Header 7</th> -->
+                </tr>
+              </thead>
+          <tr>
+            <td style="width: 100px;">Inst. 1 - Brandon Simmons</td>
+            <td>
+                <table class="nested-table">
+                    <thead>
+                      <tr>
+                        <th>8am</th>
+                        <th>9am</th>
+                        <th>10am</th>
+                        <th>11am
+                          <!-- <div class="icon-container">
+                            Information Icon from Font Awesome
+                            <i class="fas fa-info-circle icon" title="Additional Information" data-toggle="modal" data-target="#infoModal"></i>
+                          </div> -->
+                        </th>
+                        <th>12pm</th>
+                        <th>1pm</th>
+                        <th>2pm</th>
+                        <th>3pm</th>
+                        <th>4pm</th>
+                        <th>5pm</th>
+                        <th>6pm</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td id="I1-0-8am">Cell 1-1</td>
+                        <td id="I1-0-9am">Cell 1-2</td>
+                        <td id="I1-0-10am">Cell 1-3</td>
+                        <td id="I1-0-11am">
+                          <div id="11am">
+                            Cell 1-4
+                          </div>
+
+                        </td>
+                        <td id="I1-0-12pm">Cell 1-5</td>
+                        <td id="I1-0-1pm">Cell 1-6</td>
+                        <td id="I1-0-2pm">Cell 1-7</td>
+                        <td id="I1-0-3pm">Cell 1-8</td>
+                        <td id="I1-0-4pm">Cell 1-9</td>
+                        <td id="I1-0-5pm">Cell 1-10</td>
+                        <td id="I1-0-6pm">Cell 1-11</td>
+                      </tr>
+                    </tbody>
+                  </table>
+            </td>
+            <td>
+                <table class="nested-table">
+                  <thead>
+                      <tr>
+                        <th>8am</th>
+                        <th>9am</th>
+                        <th>10am</th>
+                        <th>11am</th>
+                        <th>12pm</th>
+                        <th>1pm</th>
+                        <th>2pm</th>
+                        <th>3pm</th>
+                        <th>4pm</th>
+                        <th>5pm</th>
+                        <th>6pm</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>cells</td>
+                        <td>Cell </td>
+                        <td>Cell </td>
+                        <td>Cell </td>
+                        <td>Cell </td>
+                        <td>Cell</td>
+                        <td>Cell</td>
+                        <td>Cell</td>
+                        <td>Cell</td>
+                        <td>Cell</td>
+                        <td>Cell</td>
+                      </tr>
+                    </tbody>
+                  </table>
+            </td>
+            <td>
+                <table class="nested-table">
+                  <thead>
+                    <tr>
+                      <th>8am</th>
+                      <th>9am</th>
+                      <th>10am</th>
+                      <th>11am</th>
+                      <th>12pm</th>
+                      <th>1pm</th>
+                      <th>2pm</th>
+                      <th>3pm</th>
+                      <th>4pm</th>
+                      <th>5pm</th>
+                      <th>6pm</th>
+                    </tr>
+                  </thead>
+                    <tbody>
+                      <tr>
+                        <td>Cell 1-1</td>
+                        <td>Cell 1-2</td>
+                        <td>Cell 1-3</td>
+                        <td>Cell 1-4</td>
+                        <td>Cell 1-5</td>
+                        <td>Cell 1-6</td>
+                        <td>Cell 1-7</td>
+                        <td>Cell 1-8</td>
+                        <td>Cell 1-9</td>
+                        <td>Cell 1-10</td>
+                        <td>Cell 1-11</td>
+                      </tr>
+                    </tbody>
+                  </table>
+            </td>
+            <td>
+                <table class="nested-table">
+                  <thead>
+                    <tr>
+                      <th>8am</th>
+                      <th>9am</th>
+                      <th>10am</th>
+                      <th>11am</th>
+                      <th>12pm</th>
+                      <th>1pm</th>
+                      <th>2pm</th>
+                      <th>3pm</th>
+                      <th>4pm</th>
+                      <th>5pm</th>
+                      <th>6pm</th>
+                    </tr>
+                  </thead>
+                    <tbody>
+                      <tr>
+                        <td>Cell 1-1</td>
+                        <td>Cell 1-2</td>
+                        <td>Cell 1-3</td>
+                        <td>Cell 1-4</td>
+                        <td>Cell 1-5</td>
+                        <td>Cell 1-6</td>
+                        <td>Cell 1-7</td>
+                        <td>Cell 1-8</td>
+                        <td>Cell 1-9</td>
+                        <td>Cell 1-10</td>
+                        <td>Cell 1-11</td>
+                      </tr>
+                    </tbody>
+                  </table>
+            </td>
+            <td>
+                <table class="nested-table">
+                  <thead>
+                    <tr>
+                      <th>8am</th>
+                      <th>9am</th>
+                      <th>10am</th>
+                      <th>11am</th>
+                      <th>12pm</th>
+                      <th>1pm</th>
+                      <th>2pm</th>
+                      <th>3pm</th>
+                      <th>4pm</th>
+                      <th>5pm</th>
+                      <th>6pm</th>
+                    </tr>
+                  </thead>
+                    <tbody>
+                      <tr>
+                        <td>Cell 1-1</td>
+                        <td>Cell 1-2</td>
+                        <td>Cell 1-3</td>
+                        <td>Cell 1-4</td>
+                        <td>Cell 1-5</td>
+                        <td>Cell 1-6</td>
+                        <td>Cell 1-7</td>
+                        <td>Cell 1-8</td>
+                        <td>Cell 1-9</td>
+                        <td>Cell 1-10</td>
+                        <td>Cell 1-11</td>
+                      </tr>
+                    </tbody>
+                  </table>
+            </td>
+            <!-- <td>Cell 7</td> -->
+          </tr>
+          <tr>
+            <td>Cell 8</td>
+            <td>Cell 9</td>
+            <td>Cell 10</td>
+            <td>Cell 11</td>
+            <td>Cell 12</td>
+            <td>Cell 13</td>
+            <!-- <td>Cell 14</td> -->
+          </tr>
+          <tr>
+            <td>Cell 15</td>
+            <td>Cell 16</td>
+            <td>Cell 17</td>
+            <td>Cell 18</td>
+            <td>Cell 19</td>
+            <td>Cell 20</td>
+            <!-- <td>Cell 21</td> -->
+          </tr>
+          <tr>
+            <td>Cell 22</td>
+            <td>Cell 23</td>
+            <td>Cell 24</td>
+            <td>Cell 25</td>
+            <td>Cell 26</td>
+            <td>Cell 27</td>
+            <!-- <td>Cell 28</td> -->
+          </tr>
+          <tr>
+            <td>Cell 29</td>
+            <td>Cell 30</td>
+            <td>Cell 31</td>
+            <td>Cell 32</td>
+            <td>Cell 33</td>
+            <td>Cell 34</td>
+            <!-- <td>Cell 35</td> -->
+          </tr>
+        </tbody>
+      </table>
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+  <script src="zbrandontest.js"></script>
+
+  <!-- Add Date Picker JS -->
+<!-- Add Flatpickr JS -->
+<script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.3/dist/flatpickr.min.js"></script>
+<!-- Add Flatpickr localization (optional) -->
+<script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.3/dist/l10n/en.js"></script> <!-- Replace 'xx' with your language code, e.g., 'fr' for French -->
+
+
+
+<script>
+
+var realTime;
+  // Initialize Flatpickr Date Picker
+  flatpickr("#datepicker", {
+    dateFormat: "Y-m-d", // Format the date as 'YYYY-MM-DD'
+    // You can add more options here to customize the date picker as needed
+    onChange: function(selectedDates, dateStr, instance) {
+      // Log the selected date to the console
+      console.log("Selected Date:", dateStr);
+      realTime = dateStr + "T00:00:00.000Z"
+      console.log(realTime);
+      submitData();
+      document.getElementById("mondayHeader").textContent = "Monday  :   " + dateStr;
+
+    },
+    
+    
+    
+  });
+</script>
+ 
+
+<!-- Info Modal -->
+<div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="infoModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="infoModalLabel">Additional Information</h5>
+        
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- Add the content you want to display in the modal here -->
+        <p style="text-align: center;"><strong>More Job information</strong></p>
+        <hr>  
+        <p id="name">
+
+        </p>
+        <p id="moreInfo">
+          
+        </p>
+        <p id="phone">
+
+        </p>
+        <hr>
+        <p id="lineItems">
+
+        </p>
+        <p id="description">
+          
+        </p>
+      </div>
+      <div class="modal-footer">
+        <a href="https://www.google.com/maps/place/25+Senoya+Ct,+Senoia,+GA+30276" class="btn btn-warning" target="_blank">Open in Maps</a>
+
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Add Bootstrap JS and jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
