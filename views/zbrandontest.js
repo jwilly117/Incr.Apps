@@ -7,12 +7,13 @@
   var jeanne = "42efd3a1-3cd5-496c-bd8b-5eed211ac22b";
   var paul = "b1233c01-4c7f-4a5a-885b-535967b7f923";
   var gabe = "42efd3a1-3cd5-496c-bd8b-5eed211ac22b";
-  var ryan;
+  var ryan = "e77ac0e1-190e-464f-8827-de037afbcb14";
 
   const data = {
     "userName": "jakesapi@logistixai.com",
     "password": "B=n!v;(]89hCL5VH"
 }
+
 
 
 function getBearer() {
@@ -198,6 +199,9 @@ function getBearer() {
 
           document.getElementById(currentID).textContent = element.slotTime;
         } else {
+          var secret = element.jobs[0].orderId;
+          document.getElementById(currentID).setAttribute("data-value", secret);
+          // console.log(currentID.dataset.value);
           // var firstLast = response.data.result.markets[0].serviceProviders[0].resources[1].slots[3].jobs[0].customer.contactFirstName +
           // " " +
           // response.data.result.markets[0].serviceProviders[0].resources[1].slots[3].jobs[0].customer.contactLastName 
@@ -214,7 +218,7 @@ function getBearer() {
 
           document.getElementById(currentID).setAttribute("data-toggle", "modal");
           document.getElementById(currentID).setAttribute("data-target", "#infoModal");
-
+          
 
         }
       });
@@ -1095,6 +1099,39 @@ function getBearer() {
       console.log(error);
     });
 
+  }
+
+  function getOrderInfo(guid) {
+    const token = bearerToken;
+  
+    const headers = {
+      Authorization: `Bearer ${token}`,
+    };
+  
+    var customerAPIURL =
+      "https://api.logistixai.com/api/orders/V5/" +
+      guid;
+  
+    axios
+      .get(customerAPIURL, { headers })
+      .then((response) => {
+        console.log("Response:", response.data);
+
+
+
+        // This is where we will populate the Modal :D
+        
+      
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  }
+
+  function showCellValue(cell){
+    var guid = cell.dataset.value;
+    console.log(guid);
+    getOrderInfo(guid);
   }
 
   getBearer();

@@ -214,22 +214,22 @@
                     </thead>
                     <tbody>
                       <tr>
-                        <td id="I1-0-8am">Cell 1-1</td>
-                        <td id="I1-0-9am">Cell 1-2</td>
-                        <td id="I1-0-10am">Cell 1-3</td>
+                        <td id="I1-0-8am"  onclick="showCellValue(this)">Cell 1-1</td>
+                        <td id="I1-0-9am" onclick="showCellValue(this)">Cell 1-2</td>
+                        <td id="I1-0-10am"   onclick="showCellValue(this)">Cell 1-3</td>
                         <td id="I1-0-11am">
                           <div id="11am">
                             Cell 1-4
                           </div>
 
                         </td>
-                        <td id="I1-0-12pm">Cell 1-5</td>
-                        <td id="I1-0-1pm">Cell 1-6</td>
-                        <td id="I1-0-2pm">Cell 1-7</td>
-                        <td id="I1-0-3pm">Cell 1-8</td>
-                        <td id="I1-0-4pm">Cell 1-9</td>
-                        <td id="I1-0-5pm">Cell 1-10</td>
-                        <td id="I1-0-6pm">Cell 1-11</td>
+                        <td id="I1-0-12pm" onclick="showCellValue(this)">Cell 1-5</td>
+                        <td id="I1-0-1pm" onclick="showCellValue(this)">Cell 1-6</td>
+                        <td id="I1-0-2pm" onclick="showCellValue(this)">Cell 1-7</td>
+                        <td id="I1-0-3pm" onclick="showCellValue(this)">Cell 1-8</td>
+                        <td id="I1-0-4pm" onclick="showCellValue(this)">Cell 1-9</td>
+                        <td id="I1-0-5pm" onclick="showCellValue(this)">Cell 1-10</td>
+                        <td id="I1-0-6pm" onclick="showCellValue(this)">Cell 1-11</td>
                       </tr>
                     </tbody>
                   </table>
@@ -253,17 +253,17 @@
                     </thead>
                     <tbody>
                       <tr>
-                        <td id="I1-1-8am">I1-1-8am</td>
-                        <td id="I1-1-9am">I1-1-9am</td>
-                        <td id="I1-1-10am">I1-1-10am</td>
-                        <td id="I1-1-11am">I1-1-11am</td>
-                        <td id="I1-1-12pm">I1-1-12pm</td>
-                        <td id="I1-1-1pm">I1-1-1pm</td>
-                        <td id="I1-1-2pm">I1-1-2pm</td>
-                        <td id="I1-1-3pm">I1-1-3pm</td>
-                        <td id="I1-1-4pm">I1-1-4pm</td>
-                        <td id="I1-1-5pm">I1-1-5pm</td>
-                        <td id="I1-1-6pm">I1-1-6pm</td>
+                        <td id="I1-1-8am" onclick="showCellValue(this)">I1-1-8am</td>
+                        <td id="I1-1-9am" onclick="showCellValue(this)">I1-1-9am</td>
+                        <td id="I1-1-10am" onclick="showCellValue(this)">I1-1-10am</td>
+                        <td id="I1-1-11am" onclick="showCellValue(this)">I1-1-11am</td>
+                        <td id="I1-1-12pm" onclick="showCellValue(this)">I1-1-12pm</td>
+                        <td id="I1-1-1pm" onclick="showCellValue(this)">I1-1-1pm</td>
+                        <td id="I1-1-2pm" onclick="showCellValue(this)">I1-1-2pm</td>
+                        <td id="I1-1-3pm" onclick="showCellValue(this)">I1-1-3pm</td>
+                        <td id="I1-1-4pm" onclick="showCellValue(this)">I1-1-4pm</td>
+                        <td id="I1-1-5pm" onclick="showCellValue(this)">I1-1-5pm</td>
+                        <td id="I1-1-6pm" onclick="showCellValue(this)">I1-1-6pm</td>
                       </tr>
                     </tbody>
                   </table>
@@ -894,20 +894,193 @@
           </tr>
           <tr>
             <td>Installer 5: Gabe</td>
-            <td>Cell 30</td>
-            <td>Cell 31</td>
-            <td>Cell 32</td>
-            <td>Cell 33</td>
-            <td>Cell 34</td>
+            <td>
+              <table class="nested-table">
+                <thead>
+                  <tr>
+                    <th>8am</th>
+                    <th>9am</th>
+                    <th>10am</th>
+                    <th>11am</th>
+                    <th>12pm</th>
+                    <th>1pm</th>
+                    <th>2pm</th>
+                    <th>3pm</th>
+                    <th>4pm</th>
+                    <th>5pm</th>
+                    <th>6pm</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td id="I5-0-8am">Cell 1-1</td>
+                    <td id="I5-0-9am">Cell 1-2</td>
+                    <td id="I5-0-10am">Cell 1-3</td>
+                    <td id="I5-0-11am">CellCell</td>
+                    <td id="I5-0-12pm">Cell 1-5</td>
+                    <td id="I5-0-1pm">Cell 1-6</td>
+                    <td id="I5-0-2pm">Cell 1-7</td>
+                    <td id="I5-0-3pm">Cell 1-8</td>
+                    <td id="I5-0-4pm">Cell 1-9</td>
+                    <td id="I5-0-5pm">Cell 1-10</td>
+                    <td id="I5-0-6pm">Cell 1-11</td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+            
+            <td>
+              <table class="nested-table">
+                <thead>
+                  <tr>
+                    <th>8am</th>
+                    <th>9am</th>
+                    <th>10am</th>
+                    <th>11am</th>
+                    <th>12pm</th>
+                    <th>1pm</th>
+                    <th>2pm</th>
+                    <th>3pm</th>
+                    <th>4pm</th>
+                    <th>5pm</th>
+                    <th>6pm</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td id="I5-1-8am">Cell 1-1</td>
+                    <td id="I5-1-9am">Cell 1-2</td>
+                    <td id="I5-1-10am">Cell 1-3</td>
+                    <td id="I5-1-11am">CellCell</td>
+                    <td id="I5-1-12pm">Cell 1-5</td>
+                    <td id="I5-1-1pm">Cell 1-6</td>
+                    <td id="I5-1-2pm">Cell 1-7</td>
+                    <td id="I5-1-3pm">Cell 1-8</td>
+                    <td id="I5-1-4pm">Cell 1-9</td>
+                    <td id="I5-1-5pm">Cell 1-10</td>
+                    <td id="I5-1-6pm">Cell 1-11</td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+            
+            
+            <td>
+              <table class="nested-table">
+                <thead>
+                  <tr>
+                    <th>8am</th>
+                    <th>9am</th>
+                    <th>10am</th>
+                    <th>11am</th>
+                    <th>12pm</th>
+                    <th>1pm</th>
+                    <th>2pm</th>
+                    <th>3pm</th>
+                    <th>4pm</th>
+                    <th>5pm</th>
+                    <th>6pm</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td id="I5-2-8am">Cell 1-1</td>
+                    <td id="I5-2-9am">Cell 1-2</td>
+                    <td id="I5-2-10am">Cell 1-3</td>
+                    <td id="I5-2-11am">CellCell</td>
+                    <td id="I5-2-12pm">Cell 1-5</td>
+                    <td id="I5-2-1pm">Cell 1-6</td>
+                    <td id="I5-2-2pm">Cell 1-7</td>
+                    <td id="I5-2-3pm">Cell 1-8</td>
+                    <td id="I5-2-4pm">Cell 1-9</td>
+                    <td id="I5-2-5pm">Cell 1-10</td>
+                    <td id="I5-2-6pm">Cell 1-11</td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+
+            <td>
+              <table class="nested-table">
+                <thead>
+                  <tr>
+                    <th>8am</th>
+                    <th>9am</th>
+                    <th>10am</th>
+                    <th>11am</th>
+                    <th>12pm</th>
+                    <th>1pm</th>
+                    <th>2pm</th>
+                    <th>3pm</th>
+                    <th>4pm</th>
+                    <th>5pm</th>
+                    <th>6pm</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td id="I5-3-8am">Cell 1-1</td>
+                    <td id="I5-3-9am">Cell 1-2</td>
+                    <td id="I5-3-10am">Cell 1-3</td>
+                    <td id="I5-3-11am">CellCell</td>
+                    <td id="I5-3-12pm">Cell 1-5</td>
+                    <td id="I5-3-1pm">Cell 1-6</td>
+                    <td id="I5-3-2pm">Cell 1-7</td>
+                    <td id="I5-3-3pm">Cell 1-8</td>
+                    <td id="I5-3-4pm">Cell 1-9</td>
+                    <td id="I5-3-5pm">Cell 1-10</td>
+                    <td id="I5-3-6pm">Cell 1-11</td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+            <td>
+           
+              <table class="nested-table">
+                <thead>
+                  <tr>
+                    <th>8am</th>
+                    <th>9am</th>
+                    <th>10am</th>
+                    <th>11am</th>
+                    <th>12pm</th>
+                    <th>1pm</th>
+                    <th>2pm</th>
+                    <th>3pm</th>
+                    <th>4pm</th>
+                    <th>5pm</th>
+                    <th>6pm</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td id="I5-4-8am">Cell 1-1</td>
+                    <td id="I5-4-9am">Cell 1-2</td>
+                    <td id="I5-4-10am">Cell 1-3</td>
+                    <td id="I5-4-11am">CellCell</td>
+                    <td id="I5-4-12pm">Cell 1-5</td>
+                    <td id="I5-4-1pm">Cell 1-6</td>
+                    <td id="I5-4-2pm">Cell 1-7</td>
+                    <td id="I5-4-3pm">Cell 1-8</td>
+                    <td id="I5-4-4pm">Cell 1-9</td>
+                    <td id="I5-4-5pm">Cell 1-10</td>
+                    <td id="I5-4-6pm">Cell 1-11</td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+            
             <!-- <td>Cell 35</td> -->
           </tr>
         </tbody>
       </table>
 
 </div>
+
+<script src="zbrandontest.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-  <script src="zbrandontest.js"></script>
+
 
   <!-- Add Date Picker JS -->
 <!-- Add Flatpickr JS -->
@@ -933,6 +1106,7 @@ var realTime;
       submitDataMonday(paul, 2);
       submitDataMonday(reed, 3);
       submitDataMonday(jeanne, 4);
+      submitDataMonday(ryan, 5);
       // submitDataTuesday();
       document.getElementById("mondayHeader").textContent = "Monday  :   " + dateStr;
 
@@ -944,7 +1118,7 @@ var realTime;
 
 <!-- Info Modal -->
 <div class="modal fade" id="infoModal" tabindex="-1"  role="dialog" aria-labelledby="infoModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
     <div class="modal-content" style="background-color: #d3d0d0;">
       <div class="modal-header">
         <h5 class="modal-title"  id="infoModalLabel">Additional Information</h5>
@@ -955,7 +1129,7 @@ var realTime;
       </div>
       <div class="modal-body">
         <!-- Add the content you want to display in the modal here -->
-        <p style="text-align: center;"><strong>More Job information</strong></p>
+        <h3 style="text-align: center;"><strong>More Job information</strong></h3>
         <hr>  
         <p id="name">
 
