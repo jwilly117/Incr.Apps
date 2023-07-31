@@ -1,13 +1,13 @@
 
 
-  function showAlert() {
-    // alert("You clicked the Submit button!");
-
-    // We will need to make the call here to get the routing table, then parse out the results into the table values
-   
-  }
-
   var bearerToken;
+
+  var brandon ="ade739e2-b4a6-4103-ad3e-2a6f2a626561";
+  var reed;
+  var jeanne;
+  var paul = "b1233c01-4c7f-4a5a-885b-535967b7f923";
+  var gabe;
+  var ryan;
 
   const data = {
     "userName": "jakesapi@logistixai.com",
@@ -33,14 +33,7 @@ function getBearer() {
       });
   }
 
- var brandon ="ade739e2-b4a6-4103-ad3e-2a6f2a626561";
- var reed;
- var jeanne;
- var paul;
- var gabe;
- var ryan;
-
-  function submitDataMonday(tech) {
+  function submitDataMonday(tech, installerNumber) {
     console.log(bearerToken);
     // Your API endpoint URL
     // const apiUrl = 'https://api.logistixai.com/api/orders/v1/fetch-route-board';
@@ -194,7 +187,7 @@ function getBearer() {
       var slots = response.data.result.markets[0].serviceProviders[0].resources[1].slots;
       slots.forEach(element => {
         console.log(element.slotTime);
-        var currentID = "I1-0-" + element.slotTime;
+        var currentID = "I"+installerNumber+"-0-" + element.slotTime;
         console.log(currentID);
         
 
@@ -249,11 +242,11 @@ function getBearer() {
     });
 
     
-    submitDataTuesday(tech);
+    submitDataTuesday(tech, installerNumber);
 
   }
 
-  function submitDataTuesday(tech) {
+  function submitDataTuesday(tech, installerNumber) {
     console.log("This is the beearer token")
     console.log(bearerToken);
     // Your API endpoint URL
@@ -408,7 +401,7 @@ function getBearer() {
       var slots = response.data.result.markets[0].serviceProviders[0].resources[1].slots;
       slots.forEach(element => {
         console.log(element.slotTime);
-        var currentID = "I1-1-" + element.slotTime;
+        var currentID = "I"+installerNumber+"-1-" + element.slotTime;
         console.log(currentID);
         
 
@@ -462,12 +455,12 @@ function getBearer() {
       console.log(error);
     });
 
-    submitDataWednesday(tech);
+    submitDataWednesday(tech, installerNumber);
 
 
   }
 
-  function submitDataWednesday(tech){
+  function submitDataWednesday(tech, installerNumber){
     console.log("This is the beearer token")
     console.log(bearerToken);
     // Your API endpoint URL
@@ -622,7 +615,7 @@ function getBearer() {
       var slots = response.data.result.markets[0].serviceProviders[0].resources[1].slots;
       slots.forEach(element => {
         console.log(element.slotTime);
-        var currentID = "I1-2-" + element.slotTime;
+        var currentID = "I"+installerNumber+"-2-" + element.slotTime;
         console.log(currentID);
         
 
@@ -676,18 +669,20 @@ function getBearer() {
       console.log(error);
     });
 
+    submitDataThursday(tech, installerNumber);
+
   }
 
-  function submitDataThursday(tech){
+  function submitDataThursday(tech, installerNumber){
     console.log("This is the beearer token")
     console.log(bearerToken);
     // Your API endpoint URL
     // const apiUrl = 'https://api.logistixai.com/api/orders/v1/fetch-route-board';
 
     // Sample data to be sent to the API
-    const dataWednesday = 
+    const dataThursday = 
 {
-    "serviceDate": "2023-07-26T00:00:00.000Z",
+    "serviceDate": "2023-07-20T00:00:00.000Z",
     "marketId": 928,
     "stateId": 11,
     "serviceProviders": [
@@ -823,7 +818,7 @@ function getBearer() {
           };
 
     axios
-    .post("https://api.logistixai.com/api/orders/v1/fetch-route-board", dataWednesday, {headers})
+    .post("https://api.logistixai.com/api/orders/v1/fetch-route-board", dataThursday, {headers})
     .then((response) => {
       console.log("The Bearer token is ");
       console.log(response.data.result.markets[0].serviceProviders[0].resources[1].slots);
@@ -833,7 +828,7 @@ function getBearer() {
       var slots = response.data.result.markets[0].serviceProviders[0].resources[1].slots;
       slots.forEach(element => {
         console.log(element.slotTime);
-        var currentID = "I1-2-" + element.slotTime;
+        var currentID = "I"+installerNumber+"-3-" + element.slotTime;
         console.log(currentID);
         
 
@@ -887,18 +882,20 @@ function getBearer() {
       console.log(error);
     });
 
+    submitDataFriday(tech, installerNumber);
+
   }
 
-  function submitDataFriday(tech){
+  function submitDataFriday(tech, installerNumber){
     console.log("This is the beearer token")
     console.log(bearerToken);
     // Your API endpoint URL
     // const apiUrl = 'https://api.logistixai.com/api/orders/v1/fetch-route-board';
 
     // Sample data to be sent to the API
-    const dataWednesday = 
+    const dataFriday = 
 {
-    "serviceDate": "2023-07-26T00:00:00.000Z",
+    "serviceDate": "2023-07-14T00:00:00.000Z",
     "marketId": 928,
     "stateId": 11,
     "serviceProviders": [
@@ -1034,7 +1031,7 @@ function getBearer() {
           };
 
     axios
-    .post("https://api.logistixai.com/api/orders/v1/fetch-route-board", dataWednesday, {headers})
+    .post("https://api.logistixai.com/api/orders/v1/fetch-route-board", dataFriday, {headers})
     .then((response) => {
       console.log("The Bearer token is ");
       console.log(response.data.result.markets[0].serviceProviders[0].resources[1].slots);
@@ -1044,7 +1041,7 @@ function getBearer() {
       var slots = response.data.result.markets[0].serviceProviders[0].resources[1].slots;
       slots.forEach(element => {
         console.log(element.slotTime);
-        var currentID = "I1-2-" + element.slotTime;
+        var currentID = "I"+installerNumber+"-4-" + element.slotTime;
         console.log(currentID);
         
 

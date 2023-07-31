@@ -300,17 +300,17 @@
                   </thead>
                     <tbody>
                       <tr>
-                        <td>Cell 1-1</td>
-                        <td>Cell 1-2</td>
-                        <td>Cell 1-3</td>
-                        <td>Cell 1-4</td>
-                        <td>Cell 1-5</td>
-                        <td>Cell 1-6</td>
-                        <td>Cell 1-7</td>
-                        <td>Cell 1-8</td>
-                        <td>Cell 1-9</td>
-                        <td>Cell 1-10</td>
-                        <td>Cell 1-11</td>
+                        <td id="I1-3-8am">Cell 1-1</td>
+                        <td id="I1-3-9am">Cell 1-2</td>
+                        <td id="I1-3-10am">Cell 1-3</td>
+                        <td id="I1-3-11am">Cell 1-4</td>
+                        <td id="I1-3-12pm">Cell 1-5</td>
+                        <td id="I1-3-1pm">Cell 1-6</td>
+                        <td id="I1-3-2pm">Cell 1-7</td>
+                        <td id="I1-3-3pm">Cell 1-8</td>
+                        <td id="I1-3-4pm">Cell 1-9</td>
+                        <td id="I1-3-5pm">Cell 1-10</td>
+                        <td id="I1-3-6pm">Cell 1-11</td>
                       </tr>
                     </tbody>
                   </table>
@@ -334,17 +334,17 @@
                   </thead>
                     <tbody>
                       <tr>
-                        <td>Cell 1-1</td>
-                        <td>Cell 1-2</td>
-                        <td>Cell 1-3</td>
-                        <td>Cell 1-4</td>
-                        <td>Cell 1-5</td>
-                        <td>Cell 1-6</td>
-                        <td>Cell 1-7</td>
-                        <td>Cell 1-8</td>
-                        <td>Cell 1-9</td>
-                        <td>Cell 1-10</td>
-                        <td>Cell 1-11</td>
+                        <td id="I1-4-8am">Cell 1-1</td>
+                        <td id="I1-4-9am">Cell 1-2</td>
+                        <td id="I1-4-10am">Cell 1-3</td>
+                        <td id="I1-4-11am">Cell 1-4</td>
+                        <td id="I1-4-12pm">Cell 1-5</td>
+                        <td id="I1-4-1pm">Cell 1-6</td>
+                        <td id="I1-4-2pm">Cell 1-7</td>
+                        <td id="I1-4-3pm">Cell 1-8</td>
+                        <td id="I1-4-4pm">Cell 1-9</td>
+                        <td id="I1-4-5pm">Cell 1-10</td>
+                        <td id="I1-4-6pm">Cell 1-11</td>
                       </tr>
                     </tbody>
                   </table>
@@ -352,8 +352,43 @@
             <!-- <td>Cell 7</td> -->
           </tr>
           <tr>
-            <td>Cell 8</td>
-            <td>Cell 9</td>
+            <td>
+              Installer 2: Paul W.
+            </td>
+            <td>
+              <table class="nested-table">
+                <thead>
+                  <tr>
+                    <th>8am</th>
+                    <th>9am</th>
+                    <th>10am</th>
+                    <th>11am</th>
+                    <th>12pm</th>
+                    <th>1pm</th>
+                    <th>2pm</th>
+                    <th>3pm</th>
+                    <th>4pm</th>
+                    <th>5pm</th>
+                    <th>6pm</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td id="I2-0-8am">Cell 1-1</td>
+                    <td id="I2-0-9am">Cell 1-2</td>
+                    <td id="I2-0-10am">Cell 1-3</td>
+                    <td id="I2-0-11am">CellCell</td>
+                    <td id="I2-0-12pm">Cell 1-5</td>
+                    <td id="I2-0-1pm">Cell 1-6</td>
+                    <td id="I2-0-2pm">Cell 1-7</td>
+                    <td id="I2-0-3pm">Cell 1-8</td>
+                    <td id="I2-0-4pm">Cell 1-9</td>
+                    <td id="I2-0-5pm">Cell 1-10</td>
+                    <td id="I2-0-6pm">Cell 1-11</td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
             <td>Cell 10</td>
             <td>Cell 11</td>
             <td>Cell 12</td>
@@ -415,13 +450,12 @@ var realTime;
       console.log("Selected Date:", dateStr);
       realTime = dateStr + "T00:00:00.000Z"
       console.log(realTime);
-      submitDataMonday(brandon);
+      submitDataMonday(brandon, 1);
+      submitDataMonday(paul, 2);
       // submitDataTuesday();
       document.getElementById("mondayHeader").textContent = "Monday  :   " + dateStr;
 
     },
-    
-    
     
   });
 </script>
