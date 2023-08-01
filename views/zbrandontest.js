@@ -206,7 +206,7 @@ function getBearer() {
           // " " +
           // response.data.result.markets[0].serviceProviders[0].resources[1].slots[3].jobs[0].customer.contactLastName 
           document.getElementById(currentID).textContent = element.jobs[0].customer.contactFirstName + " " + element.jobs[0].customer.contactLastName;
-          document.getElementById(currentID).style.backgroundColor = "lightblue";
+          document.getElementById(currentID).style.backgroundColor = "#ffbc90";
           // element.style.backgroundColor = "lightblue";
           document.getElementById("moreInfo").textContent = element.jobs[0].customer.addresses[0].addressLine1;
           document.getElementById("phone").textContent = element.jobs[0].customer.phoneNos[0].phoneNumber;
@@ -420,7 +420,7 @@ function getBearer() {
           // " " +
           // response.data.result.markets[0].serviceProviders[0].resources[1].slots[3].jobs[0].customer.contactLastName 
           document.getElementById(currentID).textContent = element.jobs[0].customer.contactFirstName + " " + element.jobs[0].customer.contactLastName;
-          document.getElementById(currentID).style.backgroundColor = "lightblue";
+          document.getElementById(currentID).style.backgroundColor = "#ffbc90";
           // element.style.backgroundColor = "lightblue";
           document.getElementById("moreInfo").textContent = element.jobs[0].customer.addresses[0].addressLine1;
           document.getElementById("phone").textContent = element.jobs[0].customer.phoneNos[0].phoneNumber;
@@ -634,7 +634,7 @@ function getBearer() {
           // " " +
           // response.data.result.markets[0].serviceProviders[0].resources[1].slots[3].jobs[0].customer.contactLastName 
           document.getElementById(currentID).textContent = element.jobs[0].customer.contactFirstName + " " + element.jobs[0].customer.contactLastName;
-          document.getElementById(currentID).style.backgroundColor = "lightblue";
+          document.getElementById(currentID).style.backgroundColor = "#ffbc90";
           // element.style.backgroundColor = "lightblue";
           document.getElementById("moreInfo").textContent = element.jobs[0].customer.addresses[0].addressLine1;
           document.getElementById("phone").textContent = element.jobs[0].customer.phoneNos[0].phoneNumber;
@@ -847,7 +847,7 @@ function getBearer() {
           // " " +
           // response.data.result.markets[0].serviceProviders[0].resources[1].slots[3].jobs[0].customer.contactLastName 
           document.getElementById(currentID).textContent = element.jobs[0].customer.contactFirstName + " " + element.jobs[0].customer.contactLastName;
-          document.getElementById(currentID).style.backgroundColor = "lightblue";
+          document.getElementById(currentID).style.backgroundColor = "#ffbc90";
           // element.style.backgroundColor = "lightblue";
           document.getElementById("moreInfo").textContent = element.jobs[0].customer.addresses[0].addressLine1;
           document.getElementById("phone").textContent = element.jobs[0].customer.phoneNos[0].phoneNumber;
@@ -1060,7 +1060,7 @@ function getBearer() {
           // " " +
           // response.data.result.markets[0].serviceProviders[0].resources[1].slots[3].jobs[0].customer.contactLastName 
           document.getElementById(currentID).textContent = element.jobs[0].customer.contactFirstName + " " + element.jobs[0].customer.contactLastName;
-          document.getElementById(currentID).style.backgroundColor = "lightblue";
+          document.getElementById(currentID).style.backgroundColor = "#ffbc90";
           // element.style.backgroundColor = "lightblue";
           document.getElementById("moreInfo").textContent = element.jobs[0].customer.addresses[0].addressLine1;
           document.getElementById("phone").textContent = element.jobs[0].customer.phoneNos[0].phoneNumber;
