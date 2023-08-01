@@ -1120,7 +1120,10 @@ function getBearer() {
 
 
         // This is where we will populate the Modal :D
-        
+        document.getElementById("name").textContent = response.data.result.order.contacts[0].contactBusinessName;
+        document.getElementById("moreInfo").textContent = response.data.result.order.contacts[0].addresses[0].addressLine1;
+        document.getElementById("phone").textContent = response.data.result.order.contacts[0].phoneNos[0].phoneNumber;
+
       
       })
       .catch((error) => {
