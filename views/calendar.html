@@ -163,6 +163,11 @@
       border-width: 0.3em; /* Adjust border width */
 
     }
+    .fade-in-image {
+      opacity: 0;
+      transition: opacity 1.5s ease; /* Adjust the transition duration and easing function as needed */
+    }
+    
 
     
   </style>
@@ -193,7 +198,7 @@
     <div class="ml-auto">
       <a href="#" class="btn btn-link">
         
-        <i class="fa-solid fa-user-gear" style="color: rgb(70, 255, 230); font-size: 23px;"><span style="margin-left: 20px;">Jake W.</span></i> <!-- Font Awesome user icon -->
+        <i class="fa-solid fa-user-gear" style="color: rgb(70, 255, 230); font-size: 20px;"><span style="margin-left: 20px;">Jake W.</span></i> <!-- Font Awesome user icon -->
       </a>
     </div>
   </nav>
@@ -201,7 +206,7 @@
 
 
 <div class="container mt-4">
-  <img src="../images/Logistix_Logo (1).png"  style="margin-left: 170px; width:50%; justify-content: center; align-items: center; display: flex;" alt="">
+  <img src="../images/Logistix_Logo (1).png"  style="margin-left: 170px; width:50%; justify-content: center; align-items: center; display: flex;" alt="" class="fade-in-image">
   <h1> <i class="fa-solid fa-calendar-days"></i> ~  Weekly Calendar Scheduler View - Prototype 1</h1>
   <p>Populated using routing board api, arguments are passed in on a per login basis taken from session storage</p>
   <hr>
@@ -242,8 +247,6 @@
       </div>
     </div>
   </form>
-
-
 
 
 
@@ -1189,7 +1192,7 @@ var realTime;
     onChange: function(selectedDates, dateStr, instance) {
 
       showLoadingSpinner(); // Show the loading spinner when the date changes
-      setTimeout(hideLoadingSpinner, 7000); // Simulating a delay of 2 seconds, hide the loading spinner
+      setTimeout(hideLoadingSpinner, 8000); // Simulating a delay of 2 seconds, hide the loading spinner
       // Log the selected date to the console
       console.log("Selected Date:", dateStr);
       realTime = dateStr + "T00:00:00.000Z"
@@ -1205,6 +1208,8 @@ var realTime;
     },
     
   });
+
+
 </script>
 
 
@@ -1298,6 +1303,13 @@ var realTime;
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+  // Fade-in the image on page load
+  $(document).ready(function () {
+    $(".fade-in-image").css("opacity", "1");
+  });
+</script>
 
 </body>
 </html>
