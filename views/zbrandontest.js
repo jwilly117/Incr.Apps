@@ -1173,7 +1173,7 @@ function getBearer() {
 
   function viewTotals(){
     document.getElementById("counter").textContent = "Weekly Total: " + counter;
-
+    console.log("This is a test");
   }
 
 
