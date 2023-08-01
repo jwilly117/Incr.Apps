@@ -36,6 +36,7 @@ function getBearer() {
   }
 
   function submitDataMonday(tech, installerNumber) {
+    counter = 0;
     console.log(bearerToken);
     // Your API endpoint URL
     // const apiUrl = 'https://api.logistixai.com/api/orders/v1/fetch-route-board';
@@ -1171,9 +1172,12 @@ function getBearer() {
     getOrderInfo(guid);
   }
 
+
+
   function viewTotals(){
     document.getElementById("counter").textContent = "Weekly Total: " + counter;
     console.log("This is a test");
+
   }
 
 

@@ -140,6 +140,29 @@
       border-bottom: 3px solid #3d3d3d; /* Bottom border */
 
     }
+    .loading-spinner {
+      display: none;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 9999;
+      /* color: red; */
+    }
+    
+    /* Customize the size and color of the spinner */
+    .custom-spinner {
+      padding-top: 17px;
+      width: 4rem;
+      height: 4rem;
+    }
+
+    .custom-spinner .spinner-border {
+      color: #ecb02e;
+      border-style: dashed; /* Use 'double' for a different spinner style */
+      border-width: 0.3em; /* Adjust border width */
+
+    }
 
     
   </style>
@@ -194,12 +217,37 @@
           </div>
           <div class="col-md-6">
             <span style="font-size: larger; font-weight: bolder; margin-left: 200px;" id="counter"></span>
+            
           </div>
         </div>
       </div>
 <hr>
-      <input type="text" style="margin-left:200px; width: 490px; height: 50px;" class="form-control" id="datepicker" placeholder="                              Please select a Monday to Start"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-7">
+            <input type="text" style="margin-left:180px; width: 490px; height: 50px;" class="form-control flatpickr-input" id="datepicker" placeholder="                              Please select a Monday to Start" readonly="readonly">
+          </div>
+          <div class="col-md-3">
+            <div class="loading-spinner custom-spinner">
+              <div style="color: rgb(228, 165, 49); font-size: larger;" class="spinner-border" role="status">
+                <span class="sr-only">Loading...</span>
+              </div>
+            </div>
+          
+          </div>
+        </div>
+        
+          
+        
+      </div>
+    </div>
   </form>
+
+
+
+
+
+
 
 
 </div>
@@ -1123,12 +1171,25 @@
 
 <script>
 
+    // Show the loading spinner
+    function showLoadingSpinner() {
+    $(".loading-spinner").css("display", "block");
+  }
+
+  // Hide the loading spinner
+  function hideLoadingSpinner() {
+    $(".loading-spinner").css("display", "none");
+  }
+
 var realTime;
   // Initialize Flatpickr Date Picker
   flatpickr("#datepicker", {
     dateFormat: "Y-m-d", // Format the date as 'YYYY-MM-DD'
     // You can add more options here to customize the date picker as needed
     onChange: function(selectedDates, dateStr, instance) {
+
+      showLoadingSpinner(); // Show the loading spinner when the date changes
+      setTimeout(hideLoadingSpinner, 7000); // Simulating a delay of 2 seconds, hide the loading spinner
       // Log the selected date to the console
       console.log("Selected Date:", dateStr);
       realTime = dateStr + "T00:00:00.000Z"
