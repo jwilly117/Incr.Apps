@@ -1116,15 +1116,39 @@ function getBearer() {
       .get(customerAPIURL, { headers })
       .then((response) => {
         console.log("Response:", response.data);
-
+        
+        var hdurl = response.data.result.order.orderSource.externalOrderId;
+        
+        const link1 = document.getElementById("LogLink");
+        const link2 = document.getElementById("HDLink");
+        var url1 = "https://portal.logistixai.com/order/detail/" + guid;
+        var url2 = "https://homeservices.my.site.com/sp/s/global-search/" + hdurl;
+        link1.href = url1;
+        link2.href = url2;
 
 
         // This is where we will populate the Modal :D
-        document.getElementById("name").textContent = response.data.result.order.contacts[0].contactBusinessName;
-        document.getElementById("moreInfo").textContent = response.data.result.order.contacts[0].addresses[0].addressLine1;
-        document.getElementById("phone").textContent = response.data.result.order.contacts[0].phoneNos[0].phoneNumber;
+        document.getElementById("name").textContent = "👤 " + response.data.result.order.contacts[0].contactBusinessName;
+        document.getElementById("moreInfo").textContent = "🏠 " + response.data.result.order.contacts[0].addresses[0].addressLine1;
+        document.getElementById("phone").textContent = "📞 " + response.data.result.order.contacts[0].phoneNos[0].phoneNumber;
+        var status = response.data.result.orderStatus;
+        if(status == "Sold"){
+          status = "SOLD! " + "💵💶💷";
+          document.getElementById("status").textContent = "Lead Status: " + status;
+        }
+        else{
+          document.getElementById("status").textContent = "Lead Status: " + status;
 
-      
+        }
+
+        
+        document.getElementById("lineItems").textContent = "Services: 📝 "  + response.data.result.order.services[0].serviceMasterName
+        document.getElementById("description").textContent = response.data.result.order.services[0].serviceLineItems[0].description;
+        document.getElementById("flags").textContent = "Flags 🚩: "  + response.data.result.order.flags[0].flagType;
+        var note = response.data.result.order.notes[0].noteData;
+        document.getElementById("LastNote").textContent = note;
+
+
       })
       .catch((error) => {
         console.error("Error:", error);

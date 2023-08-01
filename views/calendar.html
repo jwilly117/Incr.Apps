@@ -16,6 +16,10 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr@4.6.3/dist/flatpickr.min.css">
 
   <style>
+    p{
+      font-weight: bold;
+      font-size:large;
+    }
     header {
       position: fixed;
       top: 0;
@@ -153,12 +157,19 @@
         </li>
       </ul>
     </div>
+
+    <div class="ml-auto">
+      <a href="#" class="btn btn-link">
+        
+        <i class="fa-solid fa-user-gear" style="color: rgb(70, 255, 230); font-size: 23px;"><span style="margin-left: 20px;">Jake W.</span></i> <!-- Font Awesome user icon -->
+      </a>
+    </div>
   </nav>
 </header>
 
 <div class="container mt-4">
   <img src="../images/Logistix_Logo (1).png"  style="margin-left: 150px; width:60%; justify-content: center; align-items: center; display: flex;" alt="">
-  <h1>Weekly Calendar Scheduler View - Prototype 1</h1>
+  <h1> <i class="fa-solid fa-calendar-days"></i> ~  Weekly Calendar Scheduler View - Prototype 1</h1>
   <p>Populated using routing board api, arguments are passed in on a per login basis taken from session storage</p>
   <hr>
 
@@ -1119,7 +1130,7 @@ var realTime;
 <!-- Info Modal -->
 <div class="modal fade" id="infoModal" tabindex="-1"  role="dialog" aria-labelledby="infoModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-    <div class="modal-content" style="background-color: #d3d0d0;">
+    <div class="modal-content" style="background-color: #baaeae;">
       <div class="modal-header">
         <h5 class="modal-title"  id="infoModalLabel">Additional Information</h5>
         
@@ -1131,27 +1142,71 @@ var realTime;
         <!-- Add the content you want to display in the modal here -->
         <h3 style="text-align: center;"><strong><img src="../images/Home-Depot-Symbols.png"> Lead information</strong></h3>
         <hr>  
-        <p id="name">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6">
+              <p id="name">
 
-        </p>
-        <p id="moreInfo">
-          
-        </p>
-        <p id="phone">
+              </p>
+              <p id="moreInfo">
+                
+              </p>
+              <p id="phone">
+      
+              </p>
+            </div>
+            <div class="col-md-6">
+              <p id="status">
 
-        </p>
+              </p>
+              <p id="flags">
+
+              </p>
+              <br>
+            </div>
+          </div>
+        </div>
+        
         <hr>
-        <p id="lineItems">
+        <p style="text-align: center;" id="lineItems">
 
         </p>
-        <p id="description">
+        <br>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-2">
+               <p>Description:</p>
+            </div>
+            <div class="col-md-10">
+              <p id="description">
           
-        </p>
-      </div>
-      <div class="modal-footer">
-        <a href="https://www.google.com/maps/place/25+Senoya+Ct,+Senoia,+GA+30276" class="btn btn-warning" target="_blank">Open in Maps</a>
+              </p>
+            </div>
+          </div>
+        </div>
+        
+        <hr>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-2">
+               <p>Last Note:</p>
+            </div>
+            <div class="col-md-10">
+              <p id="LastNote">
 
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </p>
+            </div>
+          </div>
+        </div>
+        
+
+      </div>
+
+      <div class="modal-footer">
+        <a id="HDLink" href="" style="border-color: black;" class="btn btn-warning" target="_blank"><strong>Open in HD Service Center ➡️</strong></a>
+        <a id="LogLink" href="" style="border-color: black;"  class="btn btn-info" target="_blank"><strong>Open in Logistix ➡️</strong></a>
+
+        <button type="button" style="border-color: black;" class="btn btn-secondary" data-dismiss="modal">Close ❌</button>
       </div>
     </div>
   </div>
