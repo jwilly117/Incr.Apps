@@ -1,4 +1,5 @@
 
+  var counter = 0;
 
   var bearerToken;
 
@@ -199,6 +200,7 @@ function getBearer() {
 
           document.getElementById(currentID).textContent = element.slotTime;
         } else {
+          counter++;
           var secret = element.jobs[0].orderId;
           document.getElementById(currentID).setAttribute("data-value", secret);
           // console.log(currentID.dataset.value);
@@ -416,6 +418,7 @@ function getBearer() {
 
           document.getElementById(currentID).textContent = element.slotTime;
         } else {
+          counter++;
           // var firstLast = response.data.result.markets[0].serviceProviders[0].resources[1].slots[3].jobs[0].customer.contactFirstName +
           // " " +
           // response.data.result.markets[0].serviceProviders[0].resources[1].slots[3].jobs[0].customer.contactLastName 
@@ -630,6 +633,7 @@ function getBearer() {
 
           document.getElementById(currentID).textContent = element.slotTime;
         } else {
+          counter++;
           // var firstLast = response.data.result.markets[0].serviceProviders[0].resources[1].slots[3].jobs[0].customer.contactFirstName +
           // " " +
           // response.data.result.markets[0].serviceProviders[0].resources[1].slots[3].jobs[0].customer.contactLastName 
@@ -843,6 +847,7 @@ function getBearer() {
 
           document.getElementById(currentID).textContent = element.slotTime;
         } else {
+          counter++;
           // var firstLast = response.data.result.markets[0].serviceProviders[0].resources[1].slots[3].jobs[0].customer.contactFirstName +
           // " " +
           // response.data.result.markets[0].serviceProviders[0].resources[1].slots[3].jobs[0].customer.contactLastName 
@@ -1056,6 +1061,7 @@ function getBearer() {
 
           document.getElementById(currentID).textContent = element.slotTime;
         } else {
+          counter++;
           // var firstLast = response.data.result.markets[0].serviceProviders[0].resources[1].slots[3].jobs[0].customer.contactFirstName +
           // " " +
           // response.data.result.markets[0].serviceProviders[0].resources[1].slots[3].jobs[0].customer.contactLastName 
@@ -1082,6 +1088,8 @@ function getBearer() {
       // console.log(firstLast);
       var element = document.getElementById("I1-0-11am");
 
+      viewTotals();
+
         // Change the background color
         // element.style.backgroundColor = "lightblue";
         // element.style.font_weigt = "bolder";
@@ -1098,6 +1106,8 @@ function getBearer() {
     .catch((error) => {
       console.log(error);
     });
+
+
 
   }
 
@@ -1160,6 +1170,12 @@ function getBearer() {
     console.log(guid);
     getOrderInfo(guid);
   }
+
+  function viewTotals(){
+    document.getElementById("counter").textContent = "Weekly Total: " + counter;
+
+  }
+
 
   getBearer();
   // setTimeout(submitData, 2000);
