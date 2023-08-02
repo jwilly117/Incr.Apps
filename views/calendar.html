@@ -36,7 +36,7 @@
       align-items: center;
     }
     body{
-      margin-top: 120px;
+      margin-top: 90px;
         background-color: rgb(86, 126, 186);
         transition: background-color 0.5s ease; /* Add the transition property */
 
@@ -192,6 +192,39 @@
     .card-title{
       font-size: small;
     }
+    .col-lg-6 {
+      position: relative;
+      /* padding-right: 15px; /* Adjust as needed */
+      /* padding-left: 15px; Adjust as needed  */
+      border: #18262a;
+      border-width: 2px;
+      border-color: #18262a;
+      background-color: #b1eeff;;
+      border-radius: 20px;
+      margin: 15px;
+      width: 20%;
+    }
+    .col-lg-5 {
+      position: relative;
+      /* padding-right: 15px; /* Adjust as needed */
+      /* padding-left: 15px; Adjust as needed  */
+      border: #18262a;
+      border-width: 2px;
+      border-color: #18262a;
+      background-color: #b1eeff;
+      border-radius: 20px;
+      margin: 15px;
+      width: 20%;
+    }
+
+    .col-lg-6:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 100%;
+      border-left: 1px solid #ccc; /* Vertical line color and style */
+    }
 
     
   </style>
@@ -208,10 +241,10 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item active">
-          <!-- <a class="nav-link" href="#">Home</a> -->
+          <a class="nav-link" style="font-size: larger; font-weight: bold; color: #222;" href="https://jwilly117.github.io/Incr.Apps/views/importjob.html">IMS - Import</a>
         </li>
         <li class="nav-item">
-          <!-- <a class="nav-link" href="#">About</a> -->
+          <a class="nav-link" style="font-size: larger; font-weight: bold; color: #222; margin-left: 50px;" href="https://jwilly117.github.io/Incr.Apps/views/CreateLead.html">SFI - Create</a>
         </li>
         <li class="nav-item">
           <!-- <a class="nav-link" href="#">Contact</a> -->
@@ -233,7 +266,7 @@
 
 
   <div class="row">
-    <div class="col-lg-6">
+    <div class="col-lg-5">
         <!-- This will be the information on the left -->
 
         <img src="../images/Logistix_Logo (1).png"  style="margin-left: 170px; width:30%; justify-content: center; align-items: center; display: flex;" alt="" class="fade-in-image">
@@ -281,7 +314,7 @@
       
 
     </div>
-    <div class="col-lg-6" >
+    <div class="col-lg-6 second" >
       <!-- <h1>This is a test of the schedulers</h1> -->
       <div class="row" style="display: flex; justify-content: center;">
         <h4>Drag and Drop Scheduling **Work In Progress**</h4>
