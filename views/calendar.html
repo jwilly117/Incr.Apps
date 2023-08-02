@@ -50,6 +50,11 @@
         border-radius: 5px;
 
     }
+    table{
+      box-shadow: 4px 4px 5px 5px rgba(0, 0, 0, 0.3);
+
+    }
+
        /* CSS for setting the height of table cells */
        table.table-fixed-height td,
     table.table-fixed-height {
@@ -141,6 +146,7 @@
 .navbar {
       background: linear-gradient(to right, #aaa9a7, #18262a); /* Gradient background */
       border-bottom: 3px solid #3d3d3d; /* Bottom border */
+      box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.3);
 
     }
     .loading-spinner {
@@ -161,7 +167,7 @@
     }
 
     .custom-spinner .spinner-border {
-      color: #ecb02e;
+      color: #7a0303;
       border-style: dashed; /* Use 'double' for a different spinner style */
       border-width: 0.3em; /* Adjust border width */
 
@@ -232,8 +238,17 @@
       margin: 15px;
       width: 20%;
     }
+    .box-Shadow {
+      box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.3);
+    }
+    .card{
+      box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.3);
 
+    }
+    .modal-content{
+      box-shadow: 0px 0px 20px 20px rgba(215, 95, 10, 0.674);
 
+    }
     
   </style>
 </head>
@@ -274,7 +289,7 @@
 
 
   <div class="row">
-    <div class="col-lg-4">
+    <div class="col-lg-4 box-Shadow" >
         <!-- This will be the information on the left -->
 
         <img src="../images/Logistix_Logo (1).png"  style="margin-left: 170px; width:30%; justify-content: center; align-items: center; display: flex;" alt="" class="fade-in-image">
@@ -301,7 +316,7 @@
             <div class="container">
 
               <div class="row">
-                <div class="col-md-7">
+                <div class="col-md-7 ">
                   <input type="text" style="margin-left:80px; width: 470px; height: 50px;" class="form-control flatpickr-input" id="datepicker" placeholder="                        Please select a Monday to Start" readonly="readonly">
                 </div>
                 <div class="col-md-3">
@@ -326,7 +341,7 @@
       
 
     </div>
-    <div class="col-lg-5 second" >
+    <div class="col-lg-5 second box-Shadow" >
       <!-- <h1>This is a test of the schedulers</h1> -->
       <div class="row" style="display: flex; justify-content: center;">
         <h4>Drag and Drop Scheduling **Work In Progress**</h4>
@@ -344,7 +359,7 @@
 
       
     </div>
-    <div class = "col-lg-2" style="padding: 20px;">
+    <div class = "col-lg-2 box-Shadow" style="padding: 20px;">
 
       <h4>Tool #3 - To be determined based on feedback</h4>
       <br><hr>
