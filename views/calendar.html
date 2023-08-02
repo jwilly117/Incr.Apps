@@ -111,7 +111,7 @@
 
     .flatpickr-input, .flatpickr-calendar.open {
       border-color: #333;
-      margin-left: 100px; /* Adjust this value to move the date picker to the right */
+      /* margin-left: 10px; Adjust this value to move the date picker to the right */
 
     }
     .highlight-monday .flatpickr-day:not(.flatpickr-disabled).flatpickr-day--monday {
@@ -167,7 +167,28 @@
       opacity: 0;
       transition: opacity 1.5s ease; /* Adjust the transition duration and easing function as needed */
     }
-    
+    /* Custom CSS to style the cards */
+    #cardContainer {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .card {
+      width: 100px;
+      height: 150px;
+      margin: 10px;
+      background-color: #ffbc90;
+      color: rgb(30, 30, 30);
+      cursor: grab; /* Set cursor to indicate draggable */
+      /* font-size: 230px; */
+
+    }
+    .card-text{
+      font-size: small;
+    }
+    .card-title{
+      font-size: small;
+    }
 
     
   </style>
@@ -205,54 +226,80 @@
 </header>
 
 
-<div class="container mt-4">
-  <img src="../images/Logistix_Logo (1).png"  style="margin-left: 170px; width:50%; justify-content: center; align-items: center; display: flex;" alt="" class="fade-in-image">
-  <h1> <i class="fa-solid fa-calendar-days"></i> ~  Weekly Calendar Scheduler View - Prototype 1</h1>
-  <p>Populated using routing board api, arguments are passed in on a per login basis taken from session storage</p>
-  <hr>
+<div class="container-fluid" style="padding-left: 500px; padding-right: 500px;">
 
-  <form>
-    <!-- <button type="submit" class="btn btn-secondary" onclick="submitData()">Submit Test Times</button> -->
-    
-    <div class="form-group">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6">
-            <h5>Select Week - Always pick a Monday to begin the week.</h5>
-          </div>
-          <div class="col-md-6">
-            <span style="font-size: larger; font-weight: bolder; margin-left: 200px;" id="counter"></span>
-            
-          </div>
-        </div>
-      </div>
-<hr>
-      <div class="container">
-        <div class="row">
-          <div class="col-md-7">
-            <input type="text" style="margin-left:180px; width: 490px; height: 50px;" class="form-control flatpickr-input" id="datepicker" placeholder="                              Please select a Monday to Start" readonly="readonly">
-          </div>
-          <div class="col-md-3">
-            <div class="loading-spinner custom-spinner">
-              <div style="color: rgb(228, 165, 49); font-size: larger;" class="spinner-border" role="status">
-                <span class="sr-only">Loading...</span>
+
+  <div class="row">
+    <div class="col-lg-6">
+        <!-- This will be the information on the left -->
+
+        <img src="../images/Logistix_Logo (1).png"  style="margin-left: 170px; width:30%; justify-content: center; align-items: center; display: flex;" alt="" class="fade-in-image">
+        <h3> <i class="fa-solid fa-calendar-days"></i> ~  Weekly Calendar Scheduler View - Prototype 1</h3>
+        <p>Populated using routing board api, arguments are passed in on a per login basis taken from session storage</p>
+        <hr>
+      
+        <form>
+          <!-- <button type="submit" class="btn btn-secondary" onclick="submitData()">Submit Test Times</button> -->
+          
+          <div class="form-group">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-6">
+                  <h6>Select Week - Always pick a Monday to begin the week.</h6>
+                </div>
+                <div class="col-md-6">
+                  <span style="font-size: larger; font-weight: bolder; margin-left: 200px;" id="counter"></span>
+                  
+                </div>
               </div>
             </div>
-          
+      <hr>
+            <div class="container">
+
+              <div class="row">
+                <div class="col-md-7">
+                  <input type="text" style="margin-left:80px; width: 470px; height: 50px;" class="form-control flatpickr-input" id="datepicker" placeholder="                        Please select a Monday to Start" readonly="readonly">
+                </div>
+                <div class="col-md-3">
+                  <div class="loading-spinner custom-spinner">
+                    <div style="color: rgb(228, 165, 49); font-size: larger;" class="spinner-border" role="status">
+                      <span class="sr-only">Loading...</span>
+                    </div>
+                  </div>
+                
+                </div>
+              </div>
+              
+                
+              
+            </div>
           </div>
-        </div>
-        
-          
-        
-      </div>
+        </form>
+      
+
     </div>
-  </form>
+    <div class="col-lg-6" >
+      <!-- <h1>This is a test of the schedulers</h1> -->
+      <div class="row" style="display: flex; justify-content: center;">
+        <h4>Drag and Drop Scheduling **Work In Progress**</h4>
+      </div>
+      <div class="row" style="display: flex; justify-content: center;">
+        <hr>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis nam voluptas cum dolores illum nemo dolorum consectetur non, aliquam quae! Sequi aliquid harum voluptas cupiditate voluptatem. Ducimus deleniti voluptate ipsum. </p>
+        <hr>
+      </div>
+      <div class="row">
+        <div class="container" id="cardContainer">
+          <!-- Cards will be dynamically added here -->
+        </div>
+      </div>
+
+      
+    </div>
 
 
-
-
-
-
+  </div>
+  
 </div>
 
 <div class="weeklyTable">
@@ -1204,6 +1251,7 @@ var realTime;
       submitDataMonday(ryan, 5);
       // submitDataTuesday();
       document.getElementById("mondayHeader").textContent = "Monday  :   " + dateStr;
+      
 
     },
     
@@ -1309,6 +1357,69 @@ var realTime;
   $(document).ready(function () {
     $(".fade-in-image").css("opacity", "1");
   });
+</script>
+
+<script>
+  // Function to create and load Bootstrap cards
+  function loadCards() {
+    const cardData = [
+      { title: "Card 1", content: "Place holder Lead 1." },
+      { title: "Card 2", content: "Place holder Lead 2." },
+      { title: "Card 3", content: "Place holder Lead 3." },
+      { title: "Card 4", content: "Place holder Lead 4." },
+      { title: "Card 5", content: "Place holder Lead 5." },
+      { title: "Card 6", content: "Place holder Lead 6." },
+      { title: "Card 7", content: "Place holder Lead 6." },
+      { title: "Card 8", content: "Place holder Lead 6." },
+      // Add more card data as needed
+    ];
+
+    const cardContainer = document.getElementById("cardContainer");
+
+    cardData.forEach((card, index) => {
+      const cardHTML = `
+        <div class="card" draggable="true" ondragstart="dragStart(event)" id="card${index}">
+          <div class="card-body">
+            <h5 class="card-title">${card.title}</h5>
+            <p class="card-text">${card.content}</p>
+          </div>
+        </div>
+      `;
+
+      cardContainer.innerHTML += cardHTML;
+    });
+  }
+
+  // Load the cards once the page is fully loaded
+  window.addEventListener("load", loadCards);
+
+  // Drag start event handler
+  function dragStart(event) {
+    event.dataTransfer.setData("text/plain", event.target.id);
+    event.dropEffect = "move";
+  }
+
+  function dragOver(event) {
+    event.preventDefault();
+    event.dataTransfer.dropEffect = "move";
+  }
+  
+    // Drop event handler
+    function drop(event) {
+    event.preventDefault();
+    const data = event.dataTransfer.getData("text/plain");
+    const target = event.target;
+
+    if (target.classList.contains("card")) {
+      target.parentElement.insertBefore(document.getElementById(data), target);
+    } else if (target.classList.contains("card-body")) {
+      target.parentElement.parentElement.insertBefore(document.getElementById(data), target.parentElement);
+    }
+  }
+
+  // Add the drag over and drop event listeners to the card container
+  document.getElementById("cardContainer").addEventListener("dragover", dragOver);
+  document.getElementById("cardContainer").addEventListener("drop", drop);
 </script>
 
 </body>
