@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>EXT Sheet</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        /* Additional custom styles */
+        .form-container {
+            /* max-width: 500px; */
+            padding-top: 35px;
+            margin: 0 auto;
+            padding: 20px; height: auto;
+        }
+        img{
+            width: 95%;
+        }
+
+
+        .spinner {
+            display: none;
+        }
+        .container{
+            background-color: rgb(55, 87, 117);
+        }
+        .form-container,body{
+            background-color: rgb(243, 186, 167);
+        }
+        .form-control{
+            height: 60px;
+            width: 95%;
+            align-items: center;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+
+        .mb-3{
+            align-items: center;
+            justify-content: center;
+            margin-left: 25px;
+            margin-bottom: 900px;
+        }
+        .form-label{
+            font-weight: bold;
+            margin-left: 9px;
+        }
+        footer{
+        background-color: rgb(134, 132, 132);
+        padding-top: 15px;
+        padding-bottom: 10px;
+        font-weight: bolder;
+        position: fixed;
+        left: 0;
+            bottom: 0;
+            width: 100%;
+}
+body{
+    /* max-height: fit-content; */
+    margin-left: 20px;
+}
+
+label{
+    font-size: larger;
+}
+    </style>
+</head>
+<body>
+    <div class="container-flex">
+        <div class="row justify-content-center">
+            <div class="form-container" style="height: auto;">
+                <br><hr>
+                <img src="../../images/incredible Logo.png" class="slide-in" alt="">
+                <br><br><hr>
+                <h1>Exterior Door Detail Worksheet ✏</h1>
+                <p>Please use the form below to perform your measurements for a storm door. Once you have filled out the form, click the download button at the bottom for a completed detail, which you can then upload to the Job to close it out. This form is a work in progress and we are working to improve functionality in the near future. </p>
+                <hr>
+                <h3>Job and Customer Information</h3>
+                <br>
+                <form onsubmit="populateAndDownloadPDF(event)">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Customer Name</label>
+                        <input type="text" class="form-control" id="name" placeholder="Enter Customer name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Job Number</label>
+                        <input type="text" class="form-control" id="jobnumber" placeholder="Enter Job Number">
+                    </div>
+                    <div class="mb-3">
+                        <label for="date" class="form-label">Date  **Auto</label>
+                        <input type="date" class="form-control" id="date" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Location</label>
+                        <input type="text" class="form-control" id="Location" placeholder="Enter the location of the door Ex: Garage">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="notes" class="form-label">Notes</label>
+                        <textarea class="form-control" id="notes" rows="5" style="height: auto;" placeholder="Enter your notes / extra labor or extra materials"></textarea>
+                    </div>
+                  
+                    <!-- <button type="submit" class="btn btn-primary" style="width: 230px; height: 50px; font-weight: bold;" id="submitBtn">Download PDF ~ 📝</button>  -->
+                    <br><hr>
+                    <div class="spinner" id="spinner">
+                        <div class="spinner-border" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                    </div>
+                </form>
+
+                <!-- Materials Form -------------------------------------------------------- -->
+                <!-- ----------------------------------------------------------------------- -->
+
+                <hr>
+                <h3>Job Materials Needed </h3>
+                <br>
+                <form onsubmit="populateAndDownloadPDF(event)">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">MDF CASE 366 2-1/4-INX5/8-INX7-FT</label>
+                        <input type="text" class="form-control" id="M1" placeholder="Enter Amount Needed">
+                    </div>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">MDFCASE 356 2-1/4-INX5/8-INX7-FT</label>
+                        <input type="text" class="form-control" id="M2" placeholder="Enter Amount Needed">
+                    </div>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">PFJ BKMD 180 2-INX1-1/4-INX7-FT </label>
+                        <input type="text" class="form-control" id="M3" placeholder="Enter Amount Needed">
+                    </div>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">PFJ CASE 1 3-1/2IN X 1-1/16IN 8FT</label>
+                        <input type="text" class="form-control" id="M4" placeholder="Enter Amount Needed">
+                    </div>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">PFJ CASE 14 3 1/4 X 5/8 8'</label>
+                        <input type="text" class="form-control" id="M5" placeholder="Enter Amount Needed">
+                    </div>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">PFJ CSE327 2-1/4-INX11/16-INX7-FT</label>
+                        <input type="text" class="form-control" id="M6" placeholder="Enter Amount Needed">
+                    </div>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">PFJ CSE445 3-1/4-INX11/16-INX8-FT </label>
+                        <input type="text" class="form-control" id="M7" placeholder="Enter Amount Needed">
+                    </div>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">PFJCASE366 2-1/4-INX11/16-INX7-FT</label>
+                        <input type="text" class="form-control" id="M8" placeholder="Enter Amount Needed">
+                    </div>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">PFJCSE 356 2-1/4-INX11/16-INX7-FT </label>
+                        <input type="text" class="form-control" id="M9" placeholder="Enter Amount Needed">
+                    </div>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">PN CSE 327 2-1/4-INX11/16-INX7-FT</label>
+                        <input type="text" class="form-control" id="M10" placeholder="Enter Amount Needed">
+                    </div>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">PN CSE 327 2-1/4-INX11/16-INX8-FT</label>
+                        <input type="text" class="form-control" id="M11" placeholder="Enter Amount Needed">
+                    </div>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">PNCSE 327 2-1/4-INX11/16-INX10-FT</label>
+                        <input type="text" class="form-control" id="M12" placeholder="Enter Amount Needed">
+                    </div>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">PNECAS356 2-1/4-INX11/16-INX10-FT</label>
+                        <input type="text" class="form-control" id="M13" placeholder="Enter Amount Needed">
+                    </div>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">PNECAS366 2-1/4-INX11/16-INX10-FT</label>
+                        <input type="text" class="form-control" id="M14" placeholder="Enter Amount Needed">
+                    </div>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">PNECASE356 2-1/4-INX11/16-INX7-FT</label>
+                        <input type="text" class="form-control" id="M15" placeholder="Enter Amount Needed">
+                    </div>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">PNECASE366 2-1/4-INX11/16-INX7-FT</label>
+                        <input type="text" class="form-control" id="M16" placeholder="Enter Amount Needed">
+                    </div>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">PNECASE366 2-1/4-INX11/16-INX8-FT </label>
+                        <input type="text" class="form-control" id="M17" placeholder="Enter Amount Needed">
+                    </div>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">RML 8-FT WHITE PVC BRICK MOULDING </label>
+                        <input type="text" class="form-control" id="M18" placeholder="Enter Amount Needed">
+                    </div>
+
+
+                    <br>    
+                    <!-- <button type="submit" class="btn btn-primary" style="width: 230px; height: 50px; font-weight: bold;" id="submitBtn">Download PDF ~ 📝</button>  -->
+                    <br><hr>
+                    <div class="spinner" id="spinner">
+                        <div class="spinner-border" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                    </div>
+                </form>
+
+                <!-- Additional Labor -------------------------------------------------------- -->
+                <!-- ----------------------------------------------------------------------- -->
+
+
+                <div class="mb-3">
+                    <label for="name" class="form-label">PLEASEREPLACE</label>
+                    <input type="text" class="form-control" id="M18" placeholder="Enter Amount Needed">
+                </div>
+
+                <hr>
+                <h3>Additional Labor </h3>
+                <br>
+                <form onsubmit="populateAndDownloadPDF(event)">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">PSE EXT CUSTOM LABOR</label>
+                        <input type="text" class="form-control" id="1" placeholder="Enter Amount Needed">
+                    </div>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">PSE EXT ACCESS FEE</label>
+                        <input type="text" class="form-control" id="2" placeholder="Enter Amount Needed">
+                    </div>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">PSE EXT DOOR PATIO SLD GLASS DOOR</label>
+                        <input type="text" class="form-control" id="3" placeholder="Enter Amount Needed">
+                    </div>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">PSE EXT DOOR HINGED PATIO DOOR </label>
+                        <input type="text" class="form-control" id="4" placeholder="Enter Amount Needed">
+                    </div>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">PSE EXT DOOR HIGH FLOOR CHARGE</label>
+                        <input type="text" class="form-control" id="5" placeholder="Enter Amount Needed">
+                    </div>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">IHC SGL PREHUNG DOOR</label>
+                        <input type="text" class="form-control" id="6" placeholder="Enter Amount Needed">
+                    </div>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">IHC SINGLE SLAB DOOR</label>
+                        <input type="text" class="form-control" id="7" placeholder="Enter Amount Needed">
+                    </div>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">IHC DOUBLE PREHUNG DOOR</label>
+                        <input type="text" class="form-control" id="8" placeholder="Enter Amount Needed">
+                    </div>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">IHC DOUBLE SLAB DOOR</label>
+                        <input type="text" class="form-control" id="9" placeholder="Enter Amount Needed">
+                    </div>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">IHC HARDWOOD DOOR</label>
+                        <input type="text" class="form-control" id="10" placeholder="Enter Amount Needed">
+                    </div>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">IHC SIDELITE / TRANSOM</label>
+                        <input type="text" class="form-control" id="11" placeholder="Enter Amount Needed">
+                    </div>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">IHC BORE HOLES - EXT/PATIO</label>
+                        <input type="text" class="form-control" id="12" placeholder="Enter Amount Needed">
+                    </div>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">HC EXT DR MORTISE</label>
+                        <input type="text" class="form-control" id="13" placeholder="Enter Amount Needed">
+                    </div>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">IHC SINGLE STORM DOOR</label>
+                        <input type="text" class="form-control" id="14" placeholder="Enter Amount Needed">
+                    </div>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">IHC SINGLE SECURITY DOOR</label>
+                        <input type="text" class="form-control" id="15" placeholder="Enter Amount Needed">
+                    </div>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">IHC SINGLE RETRACTABLE SCREEN</label>
+                        <input type="text" class="form-control" id="16" placeholder="Enter Amount Needed">
+                    </div>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">IHC DOUBLE SECURITY DOOR</label>
+                        <input type="text" class="form-control" id="17" placeholder="Enter Amount Needed">
+                    </div>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">IHC DOUBLE STORM DOOR</label>
+                        <input type="text" class="form-control" id="18" placeholder="Enter Amount Needed">
+                    </div>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">IHC SINGLE SCREEN DOOR</label>
+                        <input type="text" class="form-control" id="19" placeholder="Enter Amount Needed">
+                    </div>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">IHC DOUBLE SCREEN DOOR</label>
+                        <input type="text" class="form-control" id="20" placeholder="Enter Amount Needed">
+                    </div>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">IHC DUMP FEE - EXT DOORS</label>
+                        <input type="text" class="form-control" id="21" placeholder="Enter Amount Needed">
+                    </div>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Custom Ornate or Multi -Stack Band / Pop Out</label>
+                        <input type="text" class="form-control" id="22" placeholder="Enter Amount Needed (Charged Per Liner FT)">
+                    </div>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">IHC EXT DR Stucco Band (1-3 Units(</label>
+                        <input type="text" class="form-control" id="23" placeholder="Enter Amount Needed (Charged Per Liner FT)">
+                    </div>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">IHC EXT DR Stucco Band (4-8 Units </label>
+                        <input type="text" class="form-control" id="24" placeholder="Enter Amount Needed (Charged Per Liner FT)">
+                    </div>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">IHC EXT DR Stucco Band (9+ units)</label>
+                        <input type="text" class="form-control" id="25" placeholder="Enter Amount Needed (Charged Per Liner FT)">
+                    </div>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">PSE EXT DOOR MEASUREMENT</label>
+                        <input type="text" class="form-control" id="26" placeholder="Enter Amount Needed">
+                    </div>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">PSE EXT DOOR PERMIT FEE</label>
+                        <input type="text" class="form-control" id="27" placeholder="Enter Amount Needed">
+                    </div>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">PSE EXT DOOR ADDL MILEAGE </label>
+                        <input type="text" class="form-control" id="28" placeholder="Enter Amount Needed">
+                    </div>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">PSE EXT DOOR LEAD ASSESSMENT</label>
+                        <input type="text" class="form-control" id="29" placeholder="Enter Amount Needed">
+                    </div>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">LEAD SAFE PRCT - PSE EXT DOORS/DR</label>
+                        <input type="text" class="form-control" id="30" placeholder="Enter Amount Needed">
+                    </div>
+                </form> 
+
+
+                <!-- Other Labor Items / Misc. -------------------------------------------------------- -->
+                <!-- ----------------------------------------------------------------------- -->
+
+                <hr>
+                <h3>Other Labor Items / Misc.</h3>
+                <br>
+                <form onsubmit="populateAndDownloadPDF(event)">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">MA Stores Permit</label>
+                        <input type="text" class="form-control" id="31" placeholder="Enter If Needed">
+                    </div>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">PSE EXT DOOR PERMIT LOWES MA</label>
+                        <input type="text" class="form-control" id="32" placeholder="Enter If Needed">
+                    </div>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">PSE EXT DOOR SYS PERMIT FEE</label>
+                        <input type="text" class="form-control" id="33" placeholder="Enter If Needed">
+                    </div>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">LPR USE ONLY - PSE DOOR TRACKING </label>
+                        <input type="text" class="form-control" id="34" placeholder="Enter If Needed">
+                    </div>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Lowe's Delivery</label>
+                        <input type="text" class="form-control" id="35" placeholder="Enter If Needed">
+                    </div>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">LABOR DOOR LEAD SAFE PRCT </label>
+                        <input type="text" class="form-control" id="36" placeholder="Enter If Needed">
+                    </div>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">PROJECT FEE - DOORS </label>
+                        <input type="text" class="form-control" id="37" placeholder="Enter If Needed">
+                    </div>
+
+                    <br>    
+                    <button type="submit" class="btn btn-primary" style="width: 100%; height: 100px; font-weight: bold;" id="submitBtn">Download PDF ~ 📝</button> 
+                    <br><hr><br><br><br>
+                    <div class="spinner" id="spinner">
+                        <div class="spinner-border" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                    </div>
+                </form> 
+                <br><br><br><br>                <br><br><br><br>
+
+                <footer class="footer text-center" style="margin-top: 10px;">
+
+                    <p>&copy; 2023 JW / Incredible   ~    Only for Internal use. All rights reserved</p>
+                    <a href="all.html"><strong>Back to all Measures</strong></a>
+                   <BR><BR><BR>
+                  </footer><br><hr>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- pdf-lib JS -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/pdf-lib@3.5.0/dist/pdf-lib.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js" integrity="sha512-z8IYLHO8bTgFqj+yrPyIJnzBDf7DDhWwiEsk4sY+Oe6J2M+WQequeGS7qioI5vT6rXgVRb4K1UVQC5ER7MKzKQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        async function populateAndDownloadPDF(event) {
+            event.preventDefault();
+
+            const submitBtn = document.getElementById('submitBtn');
+            const spinner = document.getElementById('spinner');
+
+            submitBtn.disabled = true; // Disable the submit button
+            spinner.style.display = 'block'; // Show the spinner
+
+ // ==============================================================================================================
+           
+
+            // Job And Customer Infcormation - Section 1
+            const name = document.getElementById('name').value;
+            const jobnumber = document.getElementById('jobnumber').value;
+            const email = document.getElementById('Location').value;
+            const notes = document.getElementById('notes').value;
+
+
+            // Job Materials Needed Information - Section 2
+            const M1 = document.getElementById("M1").value;
+            const M2 = document.getElementById("M2").value;
+            const M3 = document.getElementById("M3").value;
+            const M4 = document.getElementById("M4").value;
+            const M5 = document.getElementById("M5").value;
+            const M6 = document.getElementById("M6").value;
+            const M7 = document.getElementById("M7").value;
+            const M8 = document.getElementById("M8").value;
+            const M9 = document.getElementById("M9").value;
+            const M10 = document.getElementById("M10").value;
+            const M11 = document.getElementById("M11").value;
+            const M12 = document.getElementById("M12").value;
+            const M13 = document.getElementById("M13").value;
+            const M14 = document.getElementById("M14").value;
+            const M15 = document.getElementById("M15").value;
+            const M16 = document.getElementById("M16").value;
+            const M17 = document.getElementById("M17").value;
+            const M18 = document.getElementById("M18").value;
+
+
+            // Additional Labor Information - Section 3
+
+
+            // Other Items / Permits Information - Section 4
+
+            
+// ==============================================================================================================
+
+            // Fetch the PDF template
+            const response = await fetch('pdf/InlandDoorPricingSheet.pdf');
+            const pdfData = await response.arrayBuffer();
+
+            // Create a new PDFDocument
+            const pdfDoc = await PDFLib.PDFDocument.load(pdfData);
+
+            // Get the form fields in the PDF
+            const form = pdfDoc.getForm();
+
+            // Section 1 Get FIELDS
+            const nameField = form.getTextField('Store');
+            // const jobnumberField = form.getTextField('jobnumber');
+            // const emailField = form.getTextField('location');
+            // const phoneField = form.getTextField('width');
+            // const messageField = form.getTextField('height');
+            // const dateField = form.getTextField('dateField');
+            // const notesField = form.getTextField('notes');
+            
+            // Section 2 Get FIELDS
+            const feM1 = form.getTextField('M1');
+            const feM2 = form.getTextField('M2');
+            const feM3 = form.getTextField('M3');
+            const feM4 = form.getTextField('M4');
+            const feM5 = form.getTextField('M5');
+            const feM6 = form.getTextField('M6');
+            const feM7 = form.getTextField('M7');
+            const feM8 = form.getTextField('M8');
+            const feM9 = form.getTextField('M9');
+            const feM10 = form.getTextField('M10');
+            const feM11 = form.getTextField('M11');
+            const feM12 = form.getTextField('M12');
+            const feM13 = form.getTextField('M13');
+            const feM14 = form.getTextField('M14');
+            const feM15 = form.getTextField('M15');
+            const feM16 = form.getTextField('M16');
+            const feM17 = form.getTextField('M17');
+            const feM18 = form.getTextField('M18');
+            
+
+            // Section 3 Get FIELDS
+
+
+            // Section 4 Get FIELDS
+
+// ==============================================================================================================
+
+
+            // Section 1 SET*** FIELDS
+
+            // Set the values of the form fields
+            nameField.setText(name);
+            // jobnumberField.setText(jobnumber);
+            // emailField.setText(email);
+            // phoneField.setText(phone);
+            // messageField.setText(message);
+            // notesField.setText(notes);
+
+             // Populate the date field with the current date
+            //  const currentDate = new Date();
+            // const formattedDate = currentDate.toISOString().split('T')[0]; // Format: YYYY-MM-DD
+            // dateField.setText(formattedDate);
+
+
+            // Section 2 SET*** FIELDS
+            feM1.setText(M1);
+            
+
+            // Section 3 SET*** FIELDS
+
+
+            // Section 4 SET*** FIELDS
+
+            form.flatten();
+
+            // Save the modified PDF
+            const modifiedPdfBytes = await pdfDoc.save();
+
+            // Create a download link
+            const blob = new Blob([modifiedPdfBytes], { type: 'application/pdf' });
+            const url = URL.createObjectURL(blob);
+
+            var filename = name + ".pdf"
+
+            const downloadLink = document.createElement('a');
+            downloadLink.href = url;
+            downloadLink.download = filename;
+            downloadLink.click();
+
+            // Clean up the URL object
+            URL.revokeObjectURL(url);
+
+
+                        // Hide the spinner and enable the submit button
+                        spinner.style.display = 'none';
+            submitBtn.disabled = false;
+        }
+    </script>
+
+    
+</body>
+</html>

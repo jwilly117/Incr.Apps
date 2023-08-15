@@ -50,6 +50,11 @@
         border-radius: 5px;
 
     }
+    table{
+      box-shadow: 4px 4px 5px 5px rgba(0, 0, 0, 0.3);
+
+    }
+
        /* CSS for setting the height of table cells */
        table.table-fixed-height td,
     table.table-fixed-height {
@@ -114,7 +119,7 @@
 
     .flatpickr-input, .flatpickr-calendar.open {
       border-color: #333;
-      /* margin-left: 10px; Adjust this value to move the date picker to the right */
+      margin-left: 90px; /* Adjust this value to move the date picker to the right */
 
     }
     .highlight-monday .flatpickr-day:not(.flatpickr-disabled).flatpickr-day--monday {
@@ -141,6 +146,7 @@
 .navbar {
       background: linear-gradient(to right, #aaa9a7, #18262a); /* Gradient background */
       border-bottom: 3px solid #3d3d3d; /* Bottom border */
+      box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.3);
 
     }
     .loading-spinner {
@@ -161,7 +167,7 @@
     }
 
     .custom-spinner .spinner-border {
-      color: #e43c1e;
+      color: #7a0303;
       border-style: dashed; /* Use 'double' for a different spinner style */
       border-width: 0.3em; /* Adjust border width */
 
@@ -184,7 +190,12 @@
       color: rgb(30, 30, 30);
       cursor: grab; /* Set cursor to indicate draggable */
       /* font-size: 230px; */
+      transition: background-color 0.8s ease; /* Add the transition property */
 
+
+    }
+    .card:hover{
+      background-color: #b76733;
     }
     .card-text{
       font-size: small;
@@ -258,8 +269,17 @@
       margin: 15px;
       width: 20%;
     }
+    .box-Shadow {
+      box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.3);
+    }
+    .card{
+      box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.3);
 
+    }
+    .modal-content{
+      box-shadow: 0px 0px 20px 20px rgba(215, 95, 10, 0.674);
 
+    }
     
   </style>
 </head>
@@ -300,11 +320,11 @@
 
 
   <div class="row">
-    <div class="col-lg-3">
+    <div class="col-lg-4">
         <!-- This will be the information on the left -->
 
         <img src="../images/Logistix_Logo (1).png"  style="margin-left: 170px; width:30%; justify-content: center; align-items: center; display: flex;" alt="" class="fade-in-image">
-        <h3> <i class="fa-solid fa-calendar-days"></i> ~  Weekly Calendar Scheduler View - Prototype 1</h3>
+        <h3> <i class="fa-solid fa-calendar-days"></i> ~  Weekly Calendar Scheduler View - Prototype 2.1</h3>
         <p>Populated using routing board api, arguments are passed in on a per login basis taken from session storage</p>
         <hr>
       
@@ -332,8 +352,8 @@
             <div class="container">
 
               <div class="row">
-                <div class="col-md-7">
-                  <input type="text" style="margin-left:80px; width: 470px; height: 50px;" class="form-control flatpickr-input" id="datepicker" placeholder="                        Please select a Monday to Start" readonly="readonly">
+                <div class="col-md-7 ">
+                  <input type="text" style="margin-left:80px; width: 90%; height: 50px;" class="form-control flatpickr-input" id="datepicker" placeholder="                        Please select a Monday to Start" readonly="readonly">
                 </div>
                 <div class="col-md-3">
                   <div class="loading-spinner custom-spinner">
@@ -357,7 +377,7 @@
       
 
     </div>
-    <div class="col-lg-6 second" >
+    <div class="col-lg-5 second" >
       <!-- <h1>This is a test of the schedulers</h1> -->
       <div class="row" style="display: flex; justify-content: center;">
         <h4>Drag and Drop Scheduling **Work In Progress**</h4>
@@ -369,16 +389,16 @@
       </div>
       <div class="row">
         <div class="container" id="cardContainer">
-          <!-- Cards will be dynamically added here -->
+          <!-- Cards will be dynamically added here --> 
         </div>
       </div>
 
       
     </div>
-    <div class = "col-lg-2" style="padding: 20px;">
+    <div class = "col-lg-2 box-Shadow" style="padding: 20px;">
 
       <h4>Tool #3 - To be determined based on feedback</h4>
-      <br><hr>
+      <hr>
       <p>
         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nobis quis at doloribus beatae possimus saepe inventore nam voluptatum provident recusandae temporibus sed, asperiores reiciendis delectus aperiam optio sunt eum ullam.
   
@@ -1380,7 +1400,7 @@ var realTime;
   <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
     <div class="modal-content" style="background-color: #baaeae;">
       <div class="modal-header">
-        <h5 class="modal-title"  id="infoModalLabel">Additional Information</h5>
+        <h5 class="modal-title"  id="infoModalLabel">Order Details</h5>
         
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
