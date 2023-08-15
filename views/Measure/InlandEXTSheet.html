@@ -412,15 +412,44 @@ label{
             submitBtn.disabled = true; // Disable the submit button
             spinner.style.display = 'block'; // Show the spinner
 
-            
+ // ==============================================================================================================
+           
 
-
+            // Job And Customer Infcormation - Section 1
             const name = document.getElementById('name').value;
             const jobnumber = document.getElementById('jobnumber').value;
             const email = document.getElementById('Location').value;
             const notes = document.getElementById('notes').value;
 
+
+            // Job Materials Needed Information - Section 2
+            const M1 = document.getElementById("M1").value;
+            const M2 = document.getElementById("M2").value;
+            const M3 = document.getElementById("M3").value;
+            const M4 = document.getElementById("M4").value;
+            const M5 = document.getElementById("M5").value;
+            const M6 = document.getElementById("M6").value;
+            const M7 = document.getElementById("M7").value;
+            const M8 = document.getElementById("M8").value;
+            const M9 = document.getElementById("M9").value;
+            const M10 = document.getElementById("M10").value;
+            const M11 = document.getElementById("M11").value;
+            const M12 = document.getElementById("M12").value;
+            const M13 = document.getElementById("M13").value;
+            const M14 = document.getElementById("M14").value;
+            const M15 = document.getElementById("M15").value;
+            const M16 = document.getElementById("M16").value;
+            const M17 = document.getElementById("M17").value;
+            const M18 = document.getElementById("M18").value;
+
+
+            // Additional Labor Information - Section 3
+
+
+            // Other Items / Permits Information - Section 4
+
             
+// ==============================================================================================================
 
             // Fetch the PDF template
             const response = await fetch('pdf/InlandDoorPricingSheet.pdf');
@@ -431,6 +460,8 @@ label{
 
             // Get the form fields in the PDF
             const form = pdfDoc.getForm();
+
+            // Section 1 Get FIELDS
             const nameField = form.getTextField('Store');
             // const jobnumberField = form.getTextField('jobnumber');
             // const emailField = form.getTextField('location');
@@ -438,7 +469,37 @@ label{
             // const messageField = form.getTextField('height');
             // const dateField = form.getTextField('dateField');
             // const notesField = form.getTextField('notes');
+            
+            // Section 2 Get FIELDS
+            const feM1 = form.getTextField('M1');
+            const feM2 = form.getTextField('M2');
+            const feM3 = form.getTextField('M3');
+            const feM4 = form.getTextField('M4');
+            const feM5 = form.getTextField('M5');
+            const feM6 = form.getTextField('M6');
+            const feM7 = form.getTextField('M7');
+            const feM8 = form.getTextField('M8');
+            const feM9 = form.getTextField('M9');
+            const feM10 = form.getTextField('M10');
+            const feM11 = form.getTextField('M11');
+            const feM12 = form.getTextField('M12');
+            const feM13 = form.getTextField('M13');
+            const feM14 = form.getTextField('M14');
+            const feM15 = form.getTextField('M15');
+            const feM16 = form.getTextField('M16');
+            const feM17 = form.getTextField('M17');
+            const feM18 = form.getTextField('M18');
+            
 
+            // Section 3 Get FIELDS
+
+
+            // Section 4 Get FIELDS
+
+// ==============================================================================================================
+
+
+            // Section 1 SET*** FIELDS
 
             // Set the values of the form fields
             nameField.setText(name);
@@ -452,6 +513,16 @@ label{
             //  const currentDate = new Date();
             // const formattedDate = currentDate.toISOString().split('T')[0]; // Format: YYYY-MM-DD
             // dateField.setText(formattedDate);
+
+
+            // Section 2 SET*** FIELDS
+            feM1.setText(M1);
+            
+
+            // Section 3 SET*** FIELDS
+
+
+            // Section 4 SET*** FIELDS
 
             form.flatten();
 
