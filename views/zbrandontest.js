@@ -1200,6 +1200,7 @@ function getRTS(){
       }
 
   }
+
   const token = bearerToken;
 
     const headers = {
@@ -1211,16 +1212,18 @@ function getRTS(){
     .then((response) => {
       
       // now lets just console log the response
-      console.log(response);
+      console.log(response.data);
 
 
       });
 
     }
 
-    getRTS();
+
 
   getBearer();
+
+  setTimeout(getRTS, 3000);
   // setTimeout(submitData, 2000);
 
   // [3].jobs[0].customer.contactFirstName
