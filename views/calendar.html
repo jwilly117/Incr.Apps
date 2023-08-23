@@ -316,11 +316,11 @@
 </header>
 
 
-<div class="container-fluid" style="padding-left: 500px; padding-right: 500px;">
+<div class="container-fluid" style="padding-left: 200px; padding-right: 100px;">
 
 
   <div class="row">
-    <div class="col-lg-4">
+    <div class="col-lg-3">
         <!-- This will be the information on the left -->
 
         <img src="../images/Logistix_Logo (1).png"  style="margin-left: 170px; width:30%; justify-content: center; align-items: center; display: flex;" alt="" class="fade-in-image">
@@ -377,7 +377,7 @@
       
 
     </div>
-    <div class="col-lg-5 second" >
+    <div class="col-lg-6 second" >
       <!-- <h1>This is a test of the schedulers</h1> -->
       <div class="row" style="display: flex; justify-content: center;">
         <h4>Drag and Drop Scheduling **Work In Progress**</h4>
@@ -1458,7 +1458,7 @@ var realTime;
           <div class="row">
             <div class="col-md-2">
                <p>Last Note:</p>
-            </div>
+            </div> 
             <div class="col-md-10">
               <p id="LastNote">
 
@@ -1551,9 +1551,49 @@ var realTime;
     }
   }
 
-  // Add the drag over and drop event listeners to the card container
-  document.getElementById("cardContainer").addEventListener("dragover", dragOver);
-  document.getElementById("cardContainer").addEventListener("drop", drop);
+  // // Add the drag over and drop event listeners to the card container
+  // document.getElementById("cardContainer").addEventListener("dragover", dragOver);
+  // document.getElementById("cardContainer").addEventListener("drop", drop);
+
+
+
+
+
+</script>
+
+    
+<script>
+
+  // Here will be the actual working Drag and drop functionality using the javascript api
+    // Please move this out of this file at end
+
+        // Handle the start of the dragging
+      document.querySelectorAll('.card').forEach(card => {
+      card.addEventListener('dragstart', function(e) {
+        e.dataTransfer.setData('text', e.target.id);
+      });
+      });
+
+      // Handle the drag over to allow the drop
+      document.querySelectorAll('td').forEach(cell => {
+      cell.addEventListener('dragover', function(e) {
+        e.preventDefault();
+      });
+
+      cell.addEventListener('drop', function(e) {
+        e.preventDefault();
+        const cardId = e.dataTransfer.getData('text');
+        const card = document.getElementById(cardId);
+
+        // If the cell already contains a card, don't drop a new one
+        if (!e.currentTarget.hasChildNodes()) {
+            e.currentTarget.appendChild(card);
+        }
+
+        e.currentTarget.appendChild(card);
+      });
+      });
+
 </script>
 
 </body>
