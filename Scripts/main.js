@@ -190,6 +190,43 @@ function createLead(customerid,addressid,phonenumberid,emailid){
     var jobnotes = document.getElementById("jobnotes").value;
     LeadNumber = document.getElementById("LeadNumber").value;
 
+    const choices = document.getElementsByName("role");
+    let selectedValue;
+    var guid;
+
+    for (let role of choices) {
+        if (role.checked) {
+            selectedValue = role.value;
+            break;
+        }
+    }
+
+    switch (selectedValue) {
+      case "Home Depot":
+          guid = "cbfaf0e0-93bc-48d0-876a-20cc37476cc0"
+          console.log(guid);
+          break;
+      case "Remarkable":
+          guid = "5dcc67cc-3f6e-4d4f-91a1-858bc755f105"
+          console.log(guid);
+          break;
+      case "Vantage":
+          guid = "b72700b3-4c35-4da5-87a7-f6f76da06e32"
+          console.log(guid);
+          break;
+      case "Private / Other":
+           guid = "103482d5-cb1f-4ba0-8b31-635b7a102640"
+          console.log(guid);
+          break;
+      default:
+          console.error("No valid option selected!");
+          break;
+          
+  }
+
+
+
+
     const token = bearerToken;
 
     const headers = {
@@ -216,12 +253,12 @@ function createLead(customerid,addressid,phonenumberid,emailid){
            "name":"HD SF&I"
          }
      ],
-     "orderSourceId":"cbfaf0e0-93bc-48d0-876a-20cc37476cc0",
+     "orderSourceId":guid,
      "hasExternalSourceId":true,
      "externalSourceId": LeadNumber,
      "services":[
          {
-           "lineOfBusinessId":"fb71e705-be7e-453f-b30d-1ea0cf2021d0",
+           "lineOfBusinessId": "fb71e705-be7e-453f-b30d-1ea0cf2021d0",
            "serviceMasterId":"4e7a1137-86c4-428b-9941-47a1550b1c27",
            "lineItems":[
                {
