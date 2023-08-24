@@ -317,8 +317,10 @@ function createLead(customerid,addressid,phonenumberid,emailid){
                    document.getElementById('textfield5').value = response.data.result.etteoOrderId;
                    console.log(response.data.result.orderId);
                    var tempforflag = response.data.result.orderId;
-                   addFlag(tempforflag);
-
+                   if(guid == "cbfaf0e0-93bc-48d0-876a-20cc37476cc0"){
+                    addFlag(tempforflag);
+                   }
+                   
 
                })
                .catch(error => {
