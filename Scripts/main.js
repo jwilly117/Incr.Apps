@@ -427,6 +427,38 @@ function createLead(customerid,addressid,phonenumberid,emailid){
 
  function addFlag(orderyup){
 
+  // const flagdata
+
+  //     for (let role of choices) {
+  //       if (role.checked) {
+  //           selectedValue = role.value;
+  //           break;
+  //       }
+  //   }
+
+  //       switch (selectedValue) {
+  //         case "Home Depot":
+  //             guid = "cbfaf0e0-93bc-48d0-876a-20cc37476cc0"
+  //             console.log(guid);
+  //             break;
+  //         case "Remarkable":
+  //             guid = "5dcc67cc-3f6e-4d4f-91a1-858bc755f105"
+  //             console.log(guid);
+  //             break;
+  //         case "Vantage":
+  //             guid = "b72700b3-4c35-4da5-87a7-f6f76da06e32"
+  //             console.log(guid);
+  //             break;
+  //         case "Private / Other":
+  //             guid = "103482d5-cb1f-4ba0-8b31-635b7a102640"
+  //             console.log(guid);
+  //             break;
+  //         default:
+  //             console.error("No valid option selected!");
+  //             break;
+              
+  //       }
+
    var flagurl = "https://api.logistixai.com/api/orders/v1/" + orderyup +  "/flags";
 
    const flagdata = 
