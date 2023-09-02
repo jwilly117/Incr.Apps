@@ -414,3 +414,6 @@ function createLead(customerid,addressid,phonenumberid,emailid){
 }
 
 getBearer();
+
+
+function createMeasure()

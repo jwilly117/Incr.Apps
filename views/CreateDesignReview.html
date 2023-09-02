@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Text Fields Example</title>
+  <!-- Include Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+
+    <style>
+        body{
+            background-color: rgb(166, 206, 241);
+        }
+
+    </style>
+
+
+
+</head>
+<body>
+  <div class="container">
+    <br><br><br>
+    <h1>Create Kitchen Design Review - LogistixAI</h1>
+    <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, itaque? Eum, temporibus optio sit, et omnis, odit quod esse deserunt atque veniam hic sunt! Alias tenetur cumque minima sint aliquam?
+
+    </p>
+    <form>
+      <div class="form-group">
+        <label for="field1">Job Number</label>
+        <input type="text" class="form-control" id="field1" name="field1">
+      </div>
+
+      <div class="form-group">
+        <label for="field2">URL</label>
+        <input type="text" class="form-control" id="field2" name="field2">
+      </div>
+
+      <button type="button" class="btn btn-primary" onclick="handleSubmit()">Submit</button>
+    </form>
+  </div>
+
+
+  <!-- Include Bootstrap JS -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+
+  <!-- Include Bootstrap JS -->
+  <script src="../Scripts/main.js"></script>
+  
+  <script>
+    var bearerToken;
+
+    
+
+    function handleSubmit() {
+      // Retrieve the values from the text fields
+      var field1Value = document.getElementById('field1').value;
+      var field2Value = document.getElementById('field2').value;
+      
+      // Perform any desired actions with the values
+      console.log('Field 1 value:', field1Value);
+      console.log('Field 2 value:', field2Value);
+      
+      // Add your custom logic here
+      const token = bearerToken;
+
+        const headers = {
+            'Authorization': `Bearer ${token}`
+        };
+
+
+        // Here is where I will make the Axios POST
+        const data3 = 
+            {
+            "notes":[
+                {
+                    "note":""
+                },
+                {
+                    "note":""
+                }
+            ],
+            "imsUrl":field2Value,
+                "workOrderCost":[
+                {
+                    "itemNumber":"",
+                    "unitCost":""
+                }
+            ],
+            "activities":[
+                {
+                    "subject":"",
+                    "status":"",
+                    "type":" ",
+                    "dueDate":"",
+                    "crewLeading":""
+                }
+            ],
+            "jobPayments":[
+                {
+                    "paymentNumber":"",
+                    "requestedAmount":"",
+                    "paymentDescription":"",
+                    "type":"",
+                    "status":""
+                }
+            ]
+
+        }
+                
+
+        //The function to create should be here*****************
+
+      
+      // Example: Display an alert with the values
+      // alert('Field 1 value: ' + field1Value + '\nField 2 value: ' + field2Value);
+
+
+
+      // Clear the text fields
+      document.getElementById('field1').value = '';
+      document.getElementById('field2').value = '';
+    }
+  </script>
+
