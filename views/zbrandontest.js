@@ -2,6 +2,7 @@
   var counter = 0;
 
   var bearerToken;
+  var INTbearerToken;
 
   var brandon ="ade739e2-b4a6-4103-ad3e-2a6f2a626561";
   var reed = "e77ac0e1-190e-464f-8827-de037afbcb14";
@@ -16,12 +17,29 @@
 }
 
 
+function getINTBearer() {
+  axios
+    .post("https://int-api.logistixai.com/api/users/v1/login", data)
+    .then((response) => {
+      console.log("The Bearer token is ");
+      console.log("=================================");
+      console.log(response.data.access_token);
+      //   alert(response.data.access_token);
+
+      INTbearerToken = response.data.access_token;
+      // document.getElementById("bearerConfirm").value = bearerToken;
+      // countdownTimer(3599);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+}
 
 function getBearer() {
     axios
       .post("https://api.logistixai.com/api/users/v1/login", data)
       .then((response) => {
-        console.log("The Bearer token is ");
+        console.log("The INT Bearer token is ");
         console.log("=================================");
         console.log(response.data.access_token);
         //   alert(response.data.access_token);
@@ -1204,7 +1222,8 @@ function getRTS(){
   const token = bearerToken;
 
     const headers = {
-              'Authorization': `Bearer ${token}`
+              'Authorization': `Bearer ${token}`,
+              // 'Access-Control-Allow-Origin': 'http://127.0.0.1:5500'
           };
 
     axios
@@ -1220,10 +1239,52 @@ function getRTS(){
     }
 
 
+    function getINTRTS(){
+
+      console.log("The GET RTS function is starting")
+    
+      const RTSdata = {
+        "namedQuery": "report_query_payrollextract_b0e1556ea666496ba627a81cf58a623d",
+        "query": "query DynamicReportQuery($page: Int, $size: Int, $orderByColumn: String, $orderByDirection: String, $isExport: Boolean, $exportFormat: String, $isCountQuery: Boolean, $filters: String!) {\n        report_query_payrollextract_b0e1556ea666496ba627a81cf58a623d(page: $page, size: $size, orderByColumn: $orderByColumn, orderByDirection: $orderByDirection,isExport:$isExport,exportFormat:$exportFormat, isCountQuery:$isCountQuery, filters: $filters) {\n          pageSize,total,totalPage,isExport,exportFormat,items {service_service_provider,service_resource_name,store_number,service_master_name,external_order_id,order_status,contact_name,service_date,gross_total,percentage_rate,accessorial_charge,total,net_profit}\n        }\n      }",
+        "variables": {
+            "page": 1,
+            "size": 10,
+            "orderByColumn": "order_created_date",
+            "orderByDirection": "asc",
+            "isExport": false,
+            "exportFormat": "csv",
+            "isCountQuery": false,
+            "filters": "[{\"fieldType\":\"ServiceGraphType\",\"reportFilterType\":4,\"filterType\":4,\"name\":\"SERVICE_SERVICE_PROVIDER_GUID\",\"isGroupByFilterNull\":false},{\"fieldType\":\"ServiceGraphType\",\"reportFilterType\":5,\"filterType\":4,\"name\":\"SERVICE_RESOURCE_GUID\",\"isGroupByFilterNull\":false},{\"fieldType\":\"OrderGraphType\",\"reportFilterType\":12,\"filterType\":1,\"name\":\"STORE_NUMBER\",\"isGroupByFilterNull\":false},{\"fieldType\":\"ServiceGraphType\",\"reportFilterType\":10,\"filterType\":4,\"name\":\"SERVICE_MASTER_ID\",\"isGroupByFilterNull\":false},{\"fieldType\":\"OrderGraphType\",\"reportFilterType\":12,\"filterType\":1,\"name\":\"EXTERNAL_ORDER_ID\",\"isGroupByFilterNull\":false},{\"fieldType\":\"OrderGraphType\",\"reportFilterType\":6,\"filterType\":4,\"name\":\"ORDER_STATUS_ID\",\"isGroupByFilterNull\":false},{\"fieldType\":\"OrderGraphType\",\"reportFilterType\":12,\"filterType\":1,\"name\":\"CONTACT_NAME\",\"isGroupByFilterNull\":false},{\"fieldType\":\"ServiceGraphType\",\"reportFilterType\":14,\"filterType\":3,\"name\":\"SERVICE_DATE\",\"isGroupByFilterNull\":false},{\"fieldType\":\"ServiceFinancialGraphType\",\"reportFilterType\":12,\"filterType\":1,\"name\":\"GROSS_TOTAL\",\"isGroupByFilterNull\":false},{\"fieldType\":\"ServiceFinancialGraphType\",\"reportFilterType\":12,\"filterType\":1,\"name\":\"PERCENTAGE_RATE\",\"isGroupByFilterNull\":false},{\"fieldType\":\"ServiceFinancialGraphType\",\"reportFilterType\":12,\"filterType\":1,\"name\":\"ACCESSORIAL_CHARGE\",\"isGroupByFilterNull\":false},{\"fieldType\":\"ServiceFinancialGraphType\",\"reportFilterType\":12,\"filterType\":1,\"name\":\"TOTAL\",\"isGroupByFilterNull\":false},{\"fieldType\":\"ServiceFinancialGraphType\",\"reportFilterType\":12,\"filterType\":1,\"name\":\"NET_PROFIT\",\"isGroupByFilterNull\":false}]"
+        }
+    
+      }
+    
+      const token = INTbearerToken;
+    
+        const headers = {
+                  'Authorization': `Bearer ${token}`,
+                  // 'Access-Control-Allow-Origin': 'http://127.0.0.1:5500'
+              };
+    
+        axios
+        .post("https://int-graphql.logistixai.com/graphql", RTSdata, {headers})
+        .then((response) => {
+          
+          // now lets just console log the response
+          console.log(response.data);
+    
+    
+          });
+    
+        }
+    
+
+
 
   getBearer();
+  getINTBearer();
 
-  setTimeout(getRTS, 3000);
+  setTimeout(getINTRTS, 3000);
   // setTimeout(submitData, 2000);
 
   // [3].jobs[0].customer.contactFirstName
