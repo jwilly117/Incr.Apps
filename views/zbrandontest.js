@@ -1239,7 +1239,7 @@ function getRTS(){
     }
 
 
-    function getINTRTS(){
+function getINTRTS(){
 
       console.log("The GET RTS function is starting")
     
@@ -1271,7 +1271,7 @@ function getRTS(){
         .then((response) => {
           
           // now lets just console log the response
-          console.log(response.data);
+          console.log(response.data.items[1]);
     
     
           });
