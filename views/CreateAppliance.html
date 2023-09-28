@@ -13,7 +13,7 @@
 
   <link rel="stylesheet" href="style.css">
 
-  <script src="../Scripts/main.js"></script>
+  <script src="../Scripts/ApplianceMain.js"></script>
 
   <!-- <script src="login.js"></script> -->
 
@@ -32,7 +32,7 @@
       top: 0;
       left: -250px;
       height: 100vh;
-      background-color: #2c2d2f;
+      background-color: #7d8cab;
       transition: left 0.3s ease-in-out;
       color: white;
       padding-left: 15px;
@@ -189,10 +189,9 @@ together. -->
       <div class="col-md-8 mt-5">
         <img src="../images/incredible Logo.png" class="slide-in" alt="">
 
-        <button type="button" id="sideButton" class="btn btn-warning slide-in2" onclick="toggleSidebar()">👓</button>
-
+        <button type="button" id="sideButton" class="btn btn-warning slide-in2" onclick="toggleSidebar()">👓</button> 
         <hr><br>
-        <h3 class="text-center slide-in"><strong>New Sales Lead</strong></h3>
+        <h3 class="text-center slide-in"><strong>New Appliance Measure - HD</strong></h3>
 
         <form>
           <div class="mb-3">
@@ -216,7 +215,7 @@ together. -->
 
             <hr>
 
-          <div class="mb-3 text-center group slide-in2">
+          <!-- <div class="mb-3 text-center group slide-in2">
             <label class="form-label source">Source : <div>   </div></label>
             <div class="form-check form-check-inline">
               <input class="form-check-input" type="radio" name="role" id="role1" value="Home Depot" checked>
@@ -242,15 +241,18 @@ together. -->
                 Private / Other
               </label>
             </div>
-          </div>
+          </div> -->
+            <h3>The Order Source is set at a constant: HD Appliances</h3>
           <hr>
           <div class="mb-3 slide-in2">
 
             <p>Please input any optional notes below, including special customer requests, or anything the scheduler might need to know. If you are importing a job from HD SS, please include those notes here</p>
             
             <div class="row justify-content-center mt-5">
-              <label for="LeadNumber" class="form-label">Lead Number (Required for HD)</label>
-              <input type="text" style="width: 90%;" class="form-control" id="LeadNumber"  placeholder="This Number Will begin with an F">
+              <label for="LeadNumber" class="form-label">PO Number (Required for HD)</label>
+              <input type="text" style="width: 90%;" class="form-control" id="LeadNumber"  placeholder="This will begin with a PO-">
+              <label for="StoreNumber" class="form-label">Store Number (Required) </label>
+              <input type="text" style="width: 90%;" class="form-control" id="StoreNumber"  placeholder="This will begin with a PO-">
               <br>
 
               <label class="form-label">Optional Notes : </label>
@@ -294,7 +296,7 @@ together. -->
     }
     LeadNumber = document.getElementById("LeadNumber").value;
     if(LeadNumber == ""){
-      alert("You must enter a Lead number to continue 🍔")
+      alert("You must enter a PO number to continue 🍔")
     return;  
   }
   console.log('Button 2 clicked');
@@ -324,4 +326,6 @@ together. -->
 </footer>
 </html>
 
+
+<!-- Guid for HD Appliance Flag:     1af3e3e4-2d45-4962-8836-97829f2727d2    -->
 
