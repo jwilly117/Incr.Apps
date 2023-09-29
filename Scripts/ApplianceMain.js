@@ -189,6 +189,7 @@ function createLead(customerid,addressid,phonenumberid,emailid){
 
     var jobnotes = document.getElementById("jobnotes").value;
     LeadNumber = document.getElementById("LeadNumber").value;
+    var StoreNumber = document.getElementById("StoreNumber").value;
 
     const choices = document.getElementsByName("role");
     let selectedValue;
@@ -249,7 +250,7 @@ function createLead(customerid,addressid,phonenumberid,emailid){
      "PickUpLocation":{
          "contactTypeId":1,
          "contactFirstName":"Home Depot Leads",
-         "originFacilityAliasID":"0001",
+         "originFacilityAliasID": 8412,
          "contactEntityTypeId":1,
          "addresses":[
            {
@@ -276,7 +277,7 @@ function createLead(customerid,addressid,phonenumberid,emailid){
                "smsFl":true
            }
          ],
-         "storeNumber":"0001"
+         "storeNumber":StoreNumber,
      },
      "emailIds":[
          71467
