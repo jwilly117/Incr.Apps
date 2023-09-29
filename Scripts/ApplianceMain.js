@@ -323,7 +323,7 @@ function createLead(customerid,addressid,phonenumberid,emailid){
 
      console.log("Lead Number" + LeadNumber);
 
-     var externalLink = "https://homeservices.my.site.com/sp/s/global-search/" + lead;
+     var externalLink = "https://homeservices.my.site.com/sp/s/global-search/PO-" + lead;
 
      const token = bearerToken;
 
