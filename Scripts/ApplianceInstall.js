@@ -222,9 +222,9 @@ function createLead(customerid,addressid,phonenumberid,emailid){
      "marketId":928,
      "lineOfBusinessId":[
          {
-            //Change this to Job
-           "id":"b80a4d67-07fd-45dc-b131-7d3e6bb01d0c",
-           "name":"Detail"
+            //Change this to Job 
+           "id":"55ddfa7e-7ecd-4a4b-bb6e-16dbbc73d69b",
+           "name":"Job"
          }
      ],
      "orderSourceId":"d9b0c33d-1215-4e68-9a68-201ddd2010d3",
@@ -233,13 +233,13 @@ function createLead(customerid,addressid,phonenumberid,emailid){
      "services":[
          {
              //Change this to Job
-           "lineOfBusinessId": "b80a4d67-07fd-45dc-b131-7d3e6bb01d0c",
-           "serviceMasterId":"8e499005-b5bd-43da-92c8-301339ba8d4c",
+           "lineOfBusinessId": "55ddfa7e-7ecd-4a4b-bb6e-16dbbc73d69b",
+           "serviceMasterId":"569e44d2-dfe9-41be-b48c-087a551183f9",
            "lineItems":[
                {
                  "description":jobnotes,
-                 "lineItemId":"26a8f0a8-827b-472e-a88c-3e4c2eafcd0b",
-                 "locationId":"4925c7ed-9423-4db3-a6ee-d3fee9cb5cd6",
+                 "lineItemId":"5899bccf-6623-414f-a6bd-e93657117c43",
+                 "locationId":"161b9ed4-5fab-4217-95e1-0bc66c3f377f",
                   //Change this to install
                  "lineItemName":"Appliance Measure",
                  "lineItemTime":2
@@ -249,7 +249,7 @@ function createLead(customerid,addressid,phonenumberid,emailid){
      ],
      "lineOfBusinessList":[
          //Change this to Job
-         "b80a4d67-07fd-45dc-b131-7d3e6bb01d0c"
+         "b55ddfa7e-7ecd-4a4b-bb6e-16dbbc73d69b"
      ],
      "PickUpLocation":{
          "contactTypeId":1,
