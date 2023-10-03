@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Text Fields Example</title>
+  <title>External Link Update</title>
   <link rel="icon" type="image/x-icon" href="../images/coding.png">;
   <!-- Include Bootstrap CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
@@ -11,7 +11,8 @@
 
     <style>
         body{
-            background-color: rgb(166, 206, 241);
+          background: linear-gradient(to right, rgb(60, 128, 122), rgb(30, 22, 77));
+            color: white;
         }
 
     </style>
@@ -22,11 +23,15 @@
 <body>
   <div class="container">
     <br><br><br>
-    <h1>Update IMS Url</h1>
+    <h1>Update External Url</h1>
 
     <form>
+      <hr>  
+      <p>
+        Use this form to populate the external link for any job inside of logistix AI portal. 
+      </p>
       <div class="form-group">
-        <label for="field1">Job Number</label>
+        <label for="field1">Job Number / PO Number</label>
         <input type="text" class="form-control" id="field1" name="field1">
       </div>
 
@@ -34,6 +39,7 @@
         <label for="field2">URL</label>
         <input type="text" class="form-control" id="field2" name="field2">
       </div>
+      <br><hr>
 
       <button type="button" class="btn btn-primary" onclick="handleSubmit()">Submit</button>
     </form>
