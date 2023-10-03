@@ -1284,7 +1284,7 @@ function getINTRTS(){
   getBearer();
   getINTBearer();
 
-  setTimeout(getINTRTS, 3000);
+  setTimeout(getRTS, 3000);
   // setTimeout(submitData, 2000);
 
   // [3].jobs[0].customer.contactFirstName
