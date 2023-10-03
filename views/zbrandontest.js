@@ -19,7 +19,7 @@
 
 function getINTBearer() {
   axios
-    .post("https://int-api.logistixai.com/api/users/v1/login", data)
+    .post("https://api.logistixai.com/api/users/v1/login", data)
     .then((response) => {
       console.log("The Bearer token is ");
       console.log("=================================");
@@ -1267,7 +1267,7 @@ function getINTRTS(){
               };
     
         axios
-        .post("https://int-graphql.logistixai.com/graphql", RTSdata, {headers})
+        .post("https://graphql.logistixai.com/graphql", RTSdata, {headers})
         .then((response) => {
           
           // now lets just console log the response
