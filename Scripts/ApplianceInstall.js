@@ -241,7 +241,7 @@ function createLead(customerid,addressid,phonenumberid,emailid){
                  "lineItemId":"5899bccf-6623-414f-a6bd-e93657117c43",
                  "locationId":"161b9ed4-5fab-4217-95e1-0bc66c3f377f",
                   //Change this to install
-                 "lineItemName":"Appliance Measure",
+                 "lineItemName":"Appliance Installation",
                  "lineItemTime":2
                }
            ]
@@ -249,7 +249,7 @@ function createLead(customerid,addressid,phonenumberid,emailid){
      ],
      "lineOfBusinessList":[
          //Change this to Job
-         "b55ddfa7e-7ecd-4a4b-bb6e-16dbbc73d69b"
+         "55ddfa7e-7ecd-4a4b-bb6e-16dbbc73d69b"
      ],
      "PickUpLocation":{
          "contactTypeId":1,
