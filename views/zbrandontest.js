@@ -1204,8 +1204,8 @@ function getRTS(){
   console.log("The GET RTS function is starting")
 
   const RTSdata = {
-      "namedQuery": "report_query_hdappliancesactive_b0e1556ea666496ba627a81cf58a623d",
-      "query": "query DynamicReportQuery($page: Int, $size: Int, $orderByColumn: String, $orderByDirection: String, $isExport: Boolean, $exportFormat: String, $isCountQuery: Boolean, $filters: String!) {\n        report_query_hdappliancesactive_b0e1556ea666496ba627a81cf58a623d(page: $page, size: $size, orderByColumn: $orderByColumn, orderByDirection: $orderByDirection,isExport:$isExport,exportFormat:$exportFormat, isCountQuery:$isCountQuery, filters: $filters) {\n          pageSize,total,totalPage,isExport,exportFormat,items {etteo_order_id,contact_name,order_source_name,line_of_business_description,order_status,service_service_provider,store_number,description,service_master_name}\n        }\n      }",
+      "namedQuery": "report_query_hdappliancekeyreq_b0e1556ea666496ba627a81cf58a623d",
+      "query": "query DynamicReportQuery($page: Int, $size: Int, $orderByColumn: String, $orderByDirection: String, $isExport: Boolean, $exportFormat: String, $isCountQuery: Boolean, $filters: String!) {\n        report_query_iirts_b0e1556ea666496ba627a81cf58a623d(page: $page, size: $size, orderByColumn: $orderByColumn, orderByDirection: $orderByDirection,isExport:$isExport,exportFormat:$exportFormat, isCountQuery:$isCountQuery, filters: $filters) {\n          pageSize,total,totalPage,isExport,exportFormat,items {etteo_order_id,order_status,market_description,external_order_id,service_master_name,order_source_name,contact_name,service_service_provider,service_resource_name,line_of_business_description}\n        }\n      }",
       "variables": {
           "page": 1,
           "size": 10,
@@ -1232,12 +1232,11 @@ function getRTS(){
       
       // now lets just console log the response
       console.log(response.data);
-      console.log(response.data.items[1]);
-      })
 
-      };
 
-    
+      });
+
+    }
 
 
 function getINTRTS(){
