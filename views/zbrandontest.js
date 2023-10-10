@@ -1205,7 +1205,7 @@ function getRTS(){
 
   const RTSdata = {
       "namedQuery": "report_query_hdappliancesactive_b0e1556ea666496ba627a81cf58a623d",
-      "query": "DynamicReportQuery($page: Int, $size: Int, $orderByColumn: String, $orderByDirection: String, $isExport: Boolean, $exportFormat: String, $isCountQuery: Boolean, $filters: String!) {\n        report_query_hdappliancesactive_b0e1556ea666496ba627a81cf58a623d(page: $page, size: $size, orderByColumn: $orderByColumn, orderByDirection: $orderByDirection,isExport:$isExport,exportFormat:$exportFormat, isCountQuery:$isCountQuery, filters: $filters) {\n          pageSize,total,totalPage,isExport,exportFormat,items {etteo_order_id,contact_name,order_source_name,line_of_business_description,order_status,service_service_provider,store_number,description,service_master_name}\n        }\n      }",
+      "query": "query DynamicReportQuery($page: Int, $size: Int, $orderByColumn: String, $orderByDirection: String, $isExport: Boolean, $exportFormat: String, $isCountQuery: Boolean, $filters: String!) {\n        report_query_hdappliancesactive_b0e1556ea666496ba627a81cf58a623d(page: $page, size: $size, orderByColumn: $orderByColumn, orderByDirection: $orderByDirection,isExport:$isExport,exportFormat:$exportFormat, isCountQuery:$isCountQuery, filters: $filters) {\n          pageSize,total,totalPage,isExport,exportFormat,items {etteo_order_id,contact_name,order_source_name,line_of_business_description,order_status,service_service_provider,store_number,description,service_master_name}\n        }\n      }",
       "variables": {
           "page": 1,
           "size": 10,
