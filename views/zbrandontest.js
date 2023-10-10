@@ -1232,13 +1232,12 @@ function getRTS(){
       
       // now lets just console log the response
       console.log(response.data);
-      response.data.forEach(item => {
-        console.log(item);
+      console.log(response.data.items[1]);
       })
 
-      });
+      };
 
-    }
+    
 
 
 function getINTRTS(){
