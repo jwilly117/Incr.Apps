@@ -37,7 +37,7 @@
     }
     body{
       margin-top: 90px;
-        background-color: rgb(81, 158, 222);
+        background-color: rgb(118, 188, 245);
         transition: background-color 0.5s ease; /* Add the transition property */
 
     }
@@ -186,7 +186,7 @@
       width: 100px;
       height: 150px;
       margin: 10px;
-      background-color: #ffbc90;
+      background: linear-gradient(to right, #ffbc90, rgb(245, 152, 105));
       color: rgb(30, 30, 30);
       cursor: grab; /* Set cursor to indicate draggable */
       /* font-size: 230px; */
@@ -238,7 +238,7 @@
       border: #18262a;
       border-width: 2px;
       border-color: #18262a;
-      background-color: #9eb8f4;
+
       border-radius: 20px;
       margin: 15px;
       width: 20%;
@@ -251,7 +251,7 @@
       border: #18262a;
       border-width: 2px;
       border-color: #18262a;
-      background-color: #9eb8f4;
+
       border-radius: 20px;
       margin: 15px;
       width: 20%;
@@ -264,7 +264,7 @@
       border: #18262a;
       border-width: 2px;
       border-color: #18262a;
-      background-color: #9eb8f4;
+
       border-radius: 20px;
       margin: 15px;
       width: 20%;
@@ -274,11 +274,17 @@
     }
     .card{
       box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.3);
+      border: 1px solid #696f70;
 
     }
     .modal-content{
       box-shadow: 0px 0px 20px 20px rgba(215, 95, 10, 0.674);
 
+    }
+    .module{
+      box-shadow: 10px 5px 10px rgb(78, 78, 78);
+      border: 1px solid #696f70;
+      background-color: hsl(229, 44%, 81%);
     }
     
   </style>
@@ -320,7 +326,7 @@
 
 
   <div class="row">
-    <div class="col-lg-3">
+    <div class="module col-lg-3">
         <!-- This will be the information on the left -->
 
         <img src="../images/Logistix_Logo (1).png"  style="margin-left: 170px; width:30%; justify-content: center; align-items: center; display: flex;" alt="" class="fade-in-image">
@@ -377,7 +383,7 @@
       
 
     </div>
-    <div class="col-lg-6 second" >
+    <div class="module col-lg-6 second" >
       <!-- <h1>This is a test of the schedulers</h1> -->
       <div class="row" style="display: flex; justify-content: center;">
         <h4>Drag and Drop Scheduling **Work In Progress**</h4>
@@ -395,7 +401,7 @@
 
       
     </div>
-    <div class = "col-lg-2 box-Shadow" style="padding: 20px;">
+    <div class = "module col-lg-2 box-Shadow" style="padding: 20px;">
 
       <h4>Tool #3 - To be determined based on feedback</h4>
       <hr>
