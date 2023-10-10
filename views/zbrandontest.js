@@ -1201,7 +1201,7 @@ function getBearer() {
   
 function getRTS(){
 
-  console.log("The GET RTS function is starting")
+  console.log("The Production GET RTS function is starting")
 
   const RTSdata = {
       "namedQuery": "report_query_hdappliancekeyreq_b0e1556ea666496ba627a81cf58a623d",
