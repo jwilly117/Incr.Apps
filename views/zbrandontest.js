@@ -1235,8 +1235,10 @@ function getRTS(){
 
       console.log(response.data);
       console.log(response.data.report_query_iirts_b0e1556ea666496ba627a81cf58a623d);
-      console.log(response.data.report_query_iirts_b0e1556ea666496ba627a81cf58a623d.items[0].order_status)
+      // console.log(response.data.report_query_iirts_b0e1556ea666496ba627a81cf58a623d.items[0].order_status)
       // data.report_query_iirts_b0e1556ea666496ba627a81cf58a623d.items[3].line_of_business_description
+      var testing = response.data.report_query_iirts_b0e1556ea666496ba627a81cf58a623d.items[0].line_of_business_description;
+      console.log(testing);
       });
 
     }
