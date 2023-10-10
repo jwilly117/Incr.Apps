@@ -1232,7 +1232,7 @@ function getRTS(){
       
       // now lets just console log the response
       console.log(response.data);
-
+      console.log(response.data);
 
       });
 
