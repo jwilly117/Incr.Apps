@@ -1234,8 +1234,9 @@ function getRTS(){
       console.log("Here is the real test of diving down into the object");
 
       console.log(response.data);
-      console.log(response.data.report_query_iirts_b0e1556ea666496ba627a81cf58a623d[2]);
-      // console.log(response.data.report_query_iirts_b0e1556ea666496ba627a81cf58a623d.items[2])
+      console.log(response.data.report_query_iirts_b0e1556ea666496ba627a81cf58a623d);
+      console.log(response.data.report_query_iirts_b0e1556ea666496ba627a81cf58a623d.items[3].line_of_business_description)
+      // data.report_query_iirts_b0e1556ea666496ba627a81cf58a623d.items[3].line_of_business_description
       });
 
     }
