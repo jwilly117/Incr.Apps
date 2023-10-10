@@ -1232,7 +1232,7 @@ function getRTS(){
       
       // now lets just console log the response
       console.log(response.data);
-      console.log(response.data);
+      console.log(response.data.report_query_iirts_b0e1556ea666496ba627a81cf58a623d.items[1]);
 
       });
 
