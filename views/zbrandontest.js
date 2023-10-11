@@ -1229,12 +1229,12 @@ function getRTS(){
     axios
     .post("https://prod-eto-graphql.azurewebsites.net/graphql", RTSdata, {headers})
     .then((response) => {
-      const mydata = response.data.data.report_query_iirts_b0e1556ea666496ba627a81cf58a623d.items;
+      const mydata = response.data.data.report_query_iirts_b0e1556ea666496ba627a81cf58a623d;
       // now lets just console log the response
       console.log("Here is the real test of diving down into the object");
       // This whole fucking time, it had two data keys.... data.data  what the fuck
       for(let temp in mydata){
-        console.log(temp.contact_name);
+        console.log(temp);
       }
       console.log(response.data.data.report_query_iirts_b0e1556ea666496ba627a81cf58a623d.items[0]);
       // console.log("Here is the data " + mydata);
