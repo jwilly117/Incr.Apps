@@ -1245,7 +1245,7 @@ function getRTS(){
       
       let count = 0;
       const cardContainer = document.getElementById("cardContainer");
-
+      console.log(response.data.data.report_query_iirts_b0e1556ea666496ba627a81cf58a623d.items[2]);
       mydata.forEach(temp => {
         console.log(temp.contact_name);
         // lOOP THROUGH AND ADD THE CARDS :)
