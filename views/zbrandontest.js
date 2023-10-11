@@ -1255,7 +1255,7 @@ function getRTS(){
                 <h5 class="card-title">${temp.external_order_id}</h5>
                 <p class="card-text">${temp.line_of_business_description}</p>
                 <p class="card-text">${temp.contact_name}</p>
-                ${temp.etteo_order_id}
+                <strong>${temp.etteo_order_id}</strong>
                 
               </div>
             </div>
