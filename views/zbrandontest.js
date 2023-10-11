@@ -1228,7 +1228,6 @@ function getRTS(){
 
     axios
     .post("https://prod-eto-graphql.azurewebsites.net/graphql", RTSdata, {headers})
-    .then(response => response.json())
     .then((response) => {
       const mydata = response.data.data.report_query_iirts_b0e1556ea666496ba627a81cf58a623d.items;
       // now lets just console log the response
