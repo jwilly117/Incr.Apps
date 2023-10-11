@@ -1236,7 +1236,7 @@ function getRTS(){
       for(let temp in mydata){
         console.log(temp);
       }
-      console.log(response.data.data.report_query_iirts_b0e1556ea666496ba627a81cf58a623d.items[0]);
+      console.log(response.data.data.report_query_iirts_b0e1556ea666496ba627a81cf58a623d.items[0].contact_name);
       // console.log("Here is the data " + mydata);
       // console.log(response.data.report_query_iirts_b0e1556ea666496ba627a81cf58a623d.items[0].order_status)
       // data.report_query_iirts_b0e1556ea666496ba627a81cf58a623d.items[3].line_of_business_description
