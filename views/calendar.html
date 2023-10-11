@@ -1507,37 +1507,48 @@ var realTime;
   // .... that awas returned from the graphql api response
 
 
-  function loadCards() {
-    const cardData = [
-      { title: "Card 1", content: "Place holder Lead 1." },
-      { title: "Card 2", content: "Place holder Lead 2." },
-      { title: "Card 3", content: "Place holder Lead 3." },
-      { title: "Card 4", content: "Place holder Lead 4." },
-      { title: "Card 5", content: "Place holder Lead 5." },
-      { title: "Card 6", content: "Place holder Lead 6." },
-      { title: "Card 7", content: "Place holder Lead 6." },
-      { title: "Card 8", content: "Place holder Lead 6." },
-      // Add more card data as needed
-    ];
+  // =========================================================================================================================
+// =========================================================================================================================
+// =========================================================================================================================
+// =========================================================================================================================
 
-    const cardContainer = document.getElementById("cardContainer");
+  // function loadCards() {
+  //   const cardData = [
+  //     { title: "Card 1", content: "Place holder Lead 1." },
+  //     { title: "Card 2", content: "Place holder Lead 2." },
+  //     { title: "Card 3", content: "Place holder Lead 3." },
+  //     { title: "Card 4", content: "Place holder Lead 4." },
+  //     { title: "Card 5", content: "Place holder Lead 5." },
+  //     { title: "Card 6", content: "Place holder Lead 6." },
+  //     { title: "Card 7", content: "Place holder Lead 6." },
+  //     { title: "Card 8", content: "Place holder Lead 6." },
+  //     // Add more card data as needed
+  //   ];
 
-    cardData.forEach((card, index) => {
-      const cardHTML = `
-        <div class="card" draggable="true" ondragstart="dragStart(event)" id="card${index}">
-          <div class="card-body">
-            <h5 class="card-title">${card.title}</h5>
-            <p class="card-text">${card.content}</p>
-          </div>
-        </div>
-      `;
+  //   const cardContainer = document.getElementById("cardContainer");
 
-      cardContainer.innerHTML += cardHTML;
-    });
-  }
+  //   cardData.forEach((card, index) => {
+  //     const cardHTML = `
+  //       <div class="card" draggable="true" ondragstart="dragStart(event)" id="card${index}">
+  //         <div class="card-body">
+  //           <h5 class="card-title">${card.title}</h5>
+  //           <p class="card-text">${card.content}</p>
+  //         </div>
+  //       </div>
+  //     `;
 
-  // Load the cards once the page is fully loaded
-  window.addEventListener("load", loadCards);
+  //     cardContainer.innerHTML += cardHTML;
+  //   });
+  // }
+
+  // // Load the cards once the page is fully loaded
+  // window.addEventListener("load", loadCards);
+
+
+  // =========================================================================================================================
+// =========================================================================================================================
+// =========================================================================================================================
+// =========================================================================================================================
 
   // Drag start event handler
   function dragStart(event) {

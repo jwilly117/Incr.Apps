@@ -1198,6 +1198,15 @@ function getBearer() {
 
   }
 
+
+
+  
+// =========================================================================================================================
+// =========================================================================================================================
+// =========================================================================================================================
+// =========================================================================================================================
+
+
   
 function getRTS(){
 
@@ -1235,11 +1244,26 @@ function getRTS(){
       // This whole fucking time, it had two data keys.... data.data  what the fuck
       
       let count = 0;
+      const cardContainer = document.getElementById("cardContainer");
 
       mydata.forEach(temp => {
         console.log(temp.contact_name);
+        // lOOP THROUGH AND ADD THE CARDS :)
+        const cardHTML = `
+            <div class="card" draggable="true" ondragstart="dragStart(event)" id="card${temp}">
+              <div class="card-body">
+                <h5 class="card-title">${temp.external_order_id}</h5>
+                <p class="card-text">${temp.line_of_business_description}\n${temp.contact_name}</p>
+              </div>
+            </div>
+          `;
+    
+          cardContainer.innerHTML += cardHTML;
+
+
+     
       })
-      console.log(response.data.data.report_query_iirts_b0e1556ea666496ba627a81cf58a623d.items[0].contact_name);
+
       // console.log("Here is the data " + mydata);
       // console.log(response.data.report_query_iirts_b0e1556ea666496ba627a81cf58a623d.items[0].order_status)
       // data.report_query_iirts_b0e1556ea666496ba627a81cf58a623d.items[3].line_of_business_description
@@ -1247,7 +1271,18 @@ function getRTS(){
       // console.log(testing);
       });
   // 
+  // window.addEventListener("load", loadCards);
     }
+
+
+
+
+
+// =========================================================================================================================
+// =========================================================================================================================
+// =========================================================================================================================
+// =========================================================================================================================
+
 
 
 function getINTRTS(){
