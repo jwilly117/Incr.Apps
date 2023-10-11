@@ -1234,7 +1234,7 @@ function getRTS(){
       console.log("Here is the real test of diving down into the object");
       // This whole fucking time, it had two data keys.... data.data  what the fuck
       for(let temp in mydata){
-        console.log(temp);
+        console.log(temp.contact_name);
       }
       console.log(response.data.data.report_query_iirts_b0e1556ea666496ba627a81cf58a623d.items[0]);
       // console.log("Here is the data " + mydata);
