@@ -1253,7 +1253,10 @@ function getRTS(){
             <div class="card" draggable="true" ondragstart="dragStart(event)" id="card${temp}">
               <div class="card-body">
                 <h5 class="card-title">${temp.external_order_id}</h5>
-                <p class="card-text">${temp.line_of_business_description}\n${temp.contact_name}</p>
+                <p class="card-text">${temp.line_of_business_description}</p>
+                <p class="card-text">${temp.contact_name}</p>
+                ${temp.etteo_order_id}
+                
               </div>
             </div>
           `;
