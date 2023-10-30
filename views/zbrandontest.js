@@ -1239,8 +1239,7 @@ function getRTS(){
     .post("https://prod-eto-graphql.azurewebsites.net/graphql", RTSdata, {headers})
     .then((response) => {
       const mydata = response.data.data.report_query_iirts_b0e1556ea666496ba627a81cf58a623d.items;
-      // now lets just console log the response
-      console.log("Here is the real test of diving down into the object");
+
       // This whole fucking time, it had two data keys.... data.data  what the fuck
       
       let count = 0;
