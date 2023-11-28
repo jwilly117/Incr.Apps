@@ -37,12 +37,12 @@
     }
     body{
       margin-top: 90px;
-        background-color: rgb(81, 158, 222);
+        background-color: rgb(183, 109, 102);
         transition: background-color 0.5s ease; /* Add the transition property */
 
     }
     th{
-      background-color: #9eb8f4;
+      background-color: #7e8db1;
       border-radius: 5px;
     }
     .weeklyTable{
@@ -183,16 +183,22 @@
     }
 
     .card {
-      width: 100px;
-      height: 150px;
-      margin: 10px;
-      background-color: #ffbc90;
+      width: 110px;
+      height: 170px;
+      margin: 8px;
+      background: linear-gradient(to right, #6dc8e9, rgb(101, 120, 211));
       color: rgb(30, 30, 30);
       cursor: grab; /* Set cursor to indicate draggable */
       /* font-size: 230px; */
       transition: background-color 0.8s ease; /* Add the transition property */
 
 
+    }
+    .card-body{
+      padding: 10px;
+    }
+    .card-text{
+      font-size: smaller;
     }
     .card:hover{
       background-color: #b76733;
@@ -238,7 +244,7 @@
       border: #18262a;
       border-width: 2px;
       border-color: #18262a;
-      background-color: #9eb8f4;
+
       border-radius: 20px;
       margin: 15px;
       width: 20%;
@@ -251,7 +257,7 @@
       border: #18262a;
       border-width: 2px;
       border-color: #18262a;
-      background-color: #9eb8f4;
+
       border-radius: 20px;
       margin: 15px;
       width: 20%;
@@ -264,7 +270,7 @@
       border: #18262a;
       border-width: 2px;
       border-color: #18262a;
-      background-color: #9eb8f4;
+
       border-radius: 20px;
       margin: 15px;
       width: 20%;
@@ -274,11 +280,17 @@
     }
     .card{
       box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.3);
+      border: 1px solid #696f70;
 
     }
     .modal-content{
       box-shadow: 0px 0px 20px 20px rgba(215, 95, 10, 0.674);
 
+    }
+    .module{
+      box-shadow: 10px 5px 10px rgb(78, 78, 78);
+      border: 1px solid #696f70;
+      background-color: hsl(229, 44%, 81%);
     }
     
   </style>
@@ -320,11 +332,11 @@
 
 
   <div class="row">
-    <div class="col-lg-3">
+    <div class="module col-lg-3">
         <!-- This will be the information on the left -->
 
         <img src="../images/Logistix_Logo (1).png"  style="margin-left: 170px; width:30%; justify-content: center; align-items: center; display: flex;" alt="" class="fade-in-image">
-        <h3> <i class="fa-solid fa-calendar-days"></i> ~  Weekly Calendar Scheduler View - Prototype 3.1</h3>
+        <h3> <i class="fa-solid fa-calendar-days"></i> ~  Weekly Calendar Scheduler View - Dev Version 4</h3>
         <p>Populated using routing board api, arguments are passed in on a per login basis taken from session storage</p>
         <hr>
       
@@ -377,25 +389,25 @@
       
 
     </div>
-    <div class="col-lg-6 second" >
+    <div class="module col-lg-6 second" >
       <!-- <h1>This is a test of the schedulers</h1> -->
       <div class="row" style="display: flex; justify-content: center;">
-        <h4>Drag and Drop Scheduling **Work In Progress**</h4>
+        <h4>Ready To Schedule PO's **WIP**</h4>
       </div>
       <div class="row" style="display: flex; justify-content: center;">
         <hr>
-        <p>Lorem ipsum dolor sit  consectetur adipisicing elit. Veritatis nam voluptas cum dolores illum nemo dolorum consectetur non, aliquam quae! Sequi aliquid harum voluptas cupiditate voluptatem. Ducimus deleniti voluptate ipsum. </p>
+        <p>The cards below will represent jobs from a prespecified list, generally ready to schedule. By keeping all of this information and the installers schedule on one screen, we can aim to streamline and speed up the parts of the scheduling process which will still be manual. </p>
         <hr>
       </div>
-      <div class="row">
-        <div class="container" id="cardContainer">
+      <div class="row" style="display: flex; justify-content: center;">
+        <div class="container=fluid" id="cardContainer">
           <!-- Cards will be dynamically added here --> 
         </div>
       </div>
 
       
     </div>
-    <div class = "col-lg-2 box-Shadow" style="padding: 20px;">
+    <div class = "module col-lg-2 box-Shadow" style="padding: 20px;">
 
       <h4>Tool #3 - To be determined based on feedback</h4>
       <hr>
@@ -1495,37 +1507,54 @@ var realTime;
 
 <script>
   // Function to create and load Bootstrap cards
-  function loadCards() {
-    const cardData = [
-      { title: "Card 1", content: "Place holder Lead 1." },
-      { title: "Card 2", content: "Place holder Lead 2." },
-      { title: "Card 3", content: "Place holder Lead 3." },
-      { title: "Card 4", content: "Place holder Lead 4." },
-      { title: "Card 5", content: "Place holder Lead 5." },
-      { title: "Card 6", content: "Place holder Lead 6." },
-      { title: "Card 7", content: "Place holder Lead 6." },
-      { title: "Card 8", content: "Place holder Lead 6." },
-      // Add more card data as needed
-    ];
 
-    const cardContainer = document.getElementById("cardContainer");
 
-    cardData.forEach((card, index) => {
-      const cardHTML = `
-        <div class="card" draggable="true" ondragstart="dragStart(event)" id="card${index}">
-          <div class="card-body">
-            <h5 class="card-title">${card.title}</h5>
-            <p class="card-text">${card.content}</p>
-          </div>
-        </div>
-      `;
+  // Now we need to move the below function over to the javascript file and populate the cards with the appropriate data
+  // .... that awas returned from the graphql api response
 
-      cardContainer.innerHTML += cardHTML;
-    });
-  }
 
-  // Load the cards once the page is fully loaded
-  window.addEventListener("load", loadCards);
+  // =========================================================================================================================
+// =========================================================================================================================
+// =========================================================================================================================
+// =========================================================================================================================
+
+  // function loadCards() {
+  //   const cardData = [
+  //     { title: "Card 1", content: "Place holder Lead 1." },
+  //     { title: "Card 2", content: "Place holder Lead 2." },
+  //     { title: "Card 3", content: "Place holder Lead 3." },
+  //     { title: "Card 4", content: "Place holder Lead 4." },
+  //     { title: "Card 5", content: "Place holder Lead 5." },
+  //     { title: "Card 6", content: "Place holder Lead 6." },
+  //     { title: "Card 7", content: "Place holder Lead 6." },
+  //     { title: "Card 8", content: "Place holder Lead 6." },
+  //     // Add more card data as needed
+  //   ];
+
+  //   const cardContainer = document.getElementById("cardContainer");
+
+  //   cardData.forEach((card, index) => {
+  //     const cardHTML = `
+  //       <div class="card" draggable="true" ondragstart="dragStart(event)" id="card${index}">
+  //         <div class="card-body">
+  //           <h5 class="card-title">${card.title}</h5>
+  //           <p class="card-text">${card.content}</p>
+  //         </div>
+  //       </div>
+  //     `;
+
+  //     cardContainer.innerHTML += cardHTML;
+  //   });
+  // }
+
+  // // Load the cards once the page is fully loaded
+  // window.addEventListener("load", loadCards);
+
+
+  // =========================================================================================================================
+// =========================================================================================================================
+// =========================================================================================================================
+// =========================================================================================================================
 
   // Drag start event handler
   function dragStart(event) {

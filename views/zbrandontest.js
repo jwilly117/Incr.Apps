@@ -19,7 +19,7 @@
 
 function getINTBearer() {
   axios
-    .post("https://int-api.logistixai.com/api/users/v1/login", data)
+    .post("https://api.logistixai.com/api/users/v1/login", data)
     .then((response) => {
       console.log("The Bearer token is ");
       console.log("=================================");
@@ -227,7 +227,7 @@ function getBearer() {
           // " " +
           // response.data.result.markets[0].serviceProviders[0].resources[1].slots[3].jobs[0].customer.contactLastName 
           document.getElementById(currentID).textContent = element.jobs[0].customer.contactFirstName + " " + element.jobs[0].customer.contactLastName;
-          document.getElementById(currentID).style.backgroundColor = "#ffbc90";
+          document.getElementById(currentID).style.background = "linear-gradient(to right, #ffbc90, rgb(245, 152, 105))";
           // element.style.backgroundColor = "lightblue";
           document.getElementById("moreInfo").textContent = element.jobs[0].customer.addresses[0].addressLine1;
           document.getElementById("phone").textContent = element.jobs[0].customer.phoneNos[0].phoneNumber;
@@ -442,7 +442,7 @@ function getBearer() {
           // " " +
           // response.data.result.markets[0].serviceProviders[0].resources[1].slots[3].jobs[0].customer.contactLastName 
           document.getElementById(currentID).textContent = element.jobs[0].customer.contactFirstName + " " + element.jobs[0].customer.contactLastName;
-          document.getElementById(currentID).style.backgroundColor = "#ffbc90";
+          document.getElementById(currentID).style.background = "linear-gradient(to right, #ffbc90, rgb(245, 152, 105))";
           // element.style.backgroundColor = "lightblue";
           document.getElementById("moreInfo").textContent = element.jobs[0].customer.addresses[0].addressLine1;
           document.getElementById("phone").textContent = element.jobs[0].customer.phoneNos[0].phoneNumber;
@@ -657,7 +657,7 @@ function getBearer() {
           // " " +
           // response.data.result.markets[0].serviceProviders[0].resources[1].slots[3].jobs[0].customer.contactLastName 
           document.getElementById(currentID).textContent = element.jobs[0].customer.contactFirstName + " " + element.jobs[0].customer.contactLastName;
-          document.getElementById(currentID).style.backgroundColor = "#ffbc90";
+          document.getElementById(currentID).style.background = "linear-gradient(to right, #ffbc90, rgb(245, 152, 105))";
           // element.style.backgroundColor = "lightblue";
           document.getElementById("moreInfo").textContent = element.jobs[0].customer.addresses[0].addressLine1;
           document.getElementById("phone").textContent = element.jobs[0].customer.phoneNos[0].phoneNumber;
@@ -871,7 +871,7 @@ function getBearer() {
           // " " +
           // response.data.result.markets[0].serviceProviders[0].resources[1].slots[3].jobs[0].customer.contactLastName 
           document.getElementById(currentID).textContent = element.jobs[0].customer.contactFirstName + " " + element.jobs[0].customer.contactLastName;
-          document.getElementById(currentID).style.backgroundColor = "#ffbc90";
+          document.getElementById(currentID).style.background = "linear-gradient(to right, #ffbc90, rgb(245, 152, 105))";
           // element.style.backgroundColor = "lightblue";
           document.getElementById("moreInfo").textContent = element.jobs[0].customer.addresses[0].addressLine1;
           document.getElementById("phone").textContent = element.jobs[0].customer.phoneNos[0].phoneNumber;
@@ -1085,7 +1085,7 @@ function getBearer() {
           // " " +
           // response.data.result.markets[0].serviceProviders[0].resources[1].slots[3].jobs[0].customer.contactLastName 
           document.getElementById(currentID).textContent = element.jobs[0].customer.contactFirstName + " " + element.jobs[0].customer.contactLastName;
-          document.getElementById(currentID).style.backgroundColor = "#ffbc90";
+          document.getElementById(currentID).style.background = "linear-gradient(to right, #ffbc90, rgb(245, 152, 105))";
           // element.style.backgroundColor = "lightblue";
           document.getElementById("moreInfo").textContent = element.jobs[0].customer.addresses[0].addressLine1;
           document.getElementById("phone").textContent = element.jobs[0].customer.phoneNos[0].phoneNumber;
@@ -1198,13 +1198,22 @@ function getBearer() {
 
   }
 
+
+
+  
+// =========================================================================================================================
+// =========================================================================================================================
+// =========================================================================================================================
+// =========================================================================================================================
+
+
   
 function getRTS(){
 
-  console.log("The GET RTS function is starting")
+  console.log("The Production GET RTS function is starting")
 
   const RTSdata = {
-      "namedQuery": "report_query_iirts_b0e1556ea666496ba627a81cf58a623d",
+      "namedQuery": "report_query_hdappliancekeyreq_b0e1556ea666496ba627a81cf58a623d",
       "query": "query DynamicReportQuery($page: Int, $size: Int, $orderByColumn: String, $orderByDirection: String, $isExport: Boolean, $exportFormat: String, $isCountQuery: Boolean, $filters: String!) {\n        report_query_iirts_b0e1556ea666496ba627a81cf58a623d(page: $page, size: $size, orderByColumn: $orderByColumn, orderByDirection: $orderByDirection,isExport:$isExport,exportFormat:$exportFormat, isCountQuery:$isCountQuery, filters: $filters) {\n          pageSize,total,totalPage,isExport,exportFormat,items {etteo_order_id,order_status,market_description,external_order_id,service_master_name,order_source_name,contact_name,service_service_provider,service_resource_name,line_of_business_description}\n        }\n      }",
       "variables": {
           "page": 1,
@@ -1229,19 +1238,58 @@ function getRTS(){
     axios
     .post("https://prod-eto-graphql.azurewebsites.net/graphql", RTSdata, {headers})
     .then((response) => {
+      const mydata = response.data.data.report_query_iirts_b0e1556ea666496ba627a81cf58a623d.items;
+
+      // This whole fucking time, it had two data keys.... data.data  what the fuck
       
-      // now lets just console log the response
-      console.log(response.data);
+      let count = 0;
+      const cardContainer = document.getElementById("cardContainer");
+      console.log(response.data.data.report_query_iirts_b0e1556ea666496ba627a81cf58a623d.items[2]);
+      mydata.forEach(temp => {
+        console.log(temp.contact_name);
+        // lOOP THROUGH AND ADD THE CARDS :)
+        const cardHTML = `
+            <div class="card" draggable="true" ondragstart="dragStart(event)" id="card${temp}">
+              <div class="card-body">
+                <h5 class="card-title">${temp.external_order_id}</h5>
+                <p class="card-text">${temp.line_of_business_description}</p>
+                <p class="card-text">${temp.contact_name}</p>
+                <strong>${temp.etteo_order_id}</strong>
+                
+              </div>
+            </div>
+          `;
+    
+          cardContainer.innerHTML += cardHTML;
 
 
+     
+      })
+
+      // console.log("Here is the data " + mydata);
+      // console.log(response.data.report_query_iirts_b0e1556ea666496ba627a81cf58a623d.items[0].order_status)
+      // data.report_query_iirts_b0e1556ea666496ba627a81cf58a623d.items[3].line_of_business_description
+      // var testing = response.data.report_query_iirts_b0e1556ea666496ba627a81cf58a623d.items[0].line_of_business_description;
+      // console.log(testing);
       });
-
+  // 
+  // window.addEventListener("load", loadCards);
     }
+
+
+
+
+
+// =========================================================================================================================
+// =========================================================================================================================
+// =========================================================================================================================
+// =========================================================================================================================
+
 
 
 function getINTRTS(){
 
-      console.log("The GET RTS function is starting")
+      console.log("The GET INT RTS function is starting")
     
       const RTSdata = {
         "namedQuery": "report_query_payrollextract_b0e1556ea666496ba627a81cf58a623d",
@@ -1267,7 +1315,7 @@ function getINTRTS(){
               };
     
         axios
-        .post("https://int-graphql.logistixai.com/graphql", RTSdata, {headers})
+        .post("https://graphql.logistixai.com/graphql", RTSdata, {headers})
         .then((response) => {
           
           // now lets just console log the response
@@ -1277,14 +1325,14 @@ function getINTRTS(){
           });
     
         }
-    
+        
 
 
 
   getBearer();
   getINTBearer();
 
-  setTimeout(getINTRTS, 3000);
+  setTimeout(getRTS, 3000);
   // setTimeout(submitData, 2000);
 
   // [3].jobs[0].customer.contactFirstName
