@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=390, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+  <title>Sales Lead UI</title>
+  <link rel="icon" type="image/x-icon" href="../images/2333453.png">;
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/css/bootstrap.min.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+  <link rel="stylesheet" href="style.css">
+
+  <script src="../Scripts/LowesDetail.js"></script>
+
+  <!-- <script src="login.js"></script> -->
+
+  <!-- Sidebar Script -->
+  <script>
+      function toggleSidebar() {
+      var sidebar = document.getElementById('sidebar');
+      sidebar.classList.toggle('collapsed');
+    }
+  </script>
+
+  <style>
+        #sidebar {
+      width: 255px;
+      position: fixed;
+      top: 0;
+      left: -250px;
+      height: 100vh;
+      background-color: #7d8cab;
+      transition: left 0.3s ease-in-out;
+      color: white;
+      padding-left: 15px;
+    }
+
+    #sidebar.collapsed {
+      left: 0;
+    }
+    body{
+      background: linear-gradient(to right, rgb(56, 93, 97), rgb(97, 97, 97));
+    }
+  </style>
+
+
+
+
+  <style>
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateX(100%);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .slide-in {
+      animation: slideIn 0.85s ease-in-out;
+      animation-delay: 0.2s;
+      opacity: 0;
+    }
+
+    /* Add a class to trigger the animation on page load */
+    .trigger-animation {
+      animation-name: slideIn;
+      opacity: 1;
+    }
+
+    /* ------------------------------------------------------------------------------------------ */
+
+    @keyframes slideIn2 {
+      from {
+        opacity: 0;
+        transform: translateX(-700%);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .slide-in2 {
+      animation: slideIn2 1.5s ease-in-out;
+      animation-delay: 0.2s;
+      opacity: 0;
+    }
+
+    /* Add a class to trigger the animation on page load */
+    .trigger-animation2 {
+      animation-name: slideIn2;
+      opacity: 1;
+    }
+
+
+  </style>
+
+<script>
+      // Trigger the animation on page load
+        window.addEventListener('load', function() {
+        var elements = document.getElementsByClassName('slide-in');
+        console.log(elements);
+        for (var i = 0; i < elements.length; i++) {
+        elements[i].classList.add('trigger-animation');
+        }
+      });
+
+
+            // Trigger the animation on page load
+        window.addEventListener('load', function() {
+        var elements = document.getElementsByClassName('slide-in2');
+        console.log(elements);
+        for (var i = 0; i < elements.length; i++) {
+        elements[i].classList.add('trigger-animation2');
+        }
+      });
+</script>
+
+
+</head>
+
+
+
+<!-- The following program is to create a sales lead in LogistixAI from a phone, tablet, or any other device
+using the most constants possible for the given application. This will provide versitility, ease of use, and
+most importantly availability to anyone who needs to put in a lead for any reason, be it the Home depot API
+being down, not to mention that all Remarkable, Vantage, and private jobs will have to be put in manually until 
+those branches are more established and there are things like a customer facing portal that we can offer.  -->
+
+<!-- So far, this is just the UI, I need to compare with what I have done at home in Javascript and put it all
+together. -->
+
+<!-- Outcomes
+1. Customer is created in AI with phone number, email, and address
+2. A lead with the appropriate order sourcservicee is created in Logistix, and the appropriate flags applied to these jobs
+3. For all HD bath jobs, the link to HD  center should populated via custom API into logistix.
+5. 5 Links should appear, 
+  1. A link to the customers new sales lead
+  2. A link to the HD Service center project, if it is from HD source
+  3. A link to the customer profile in Logistix
+  4. A link to the address on google maps ;)
+  5. A button for phone interfaces that will allow the user to immediately call the customer
+*** Things to consider
+  > Need to check for customer names, numbers, and addresses perhaps that are already in the system, no duplicates
+  > Need a standardized way to start labeling private jobs, and all internals, think about how Logistix has unique
+      ID's for every job, reguardless of the source or if they already have one or not. 
+  > ....
+
+-->
+
+
+<body>
+  <div id="sidebar">
+    <br><br>
+    <div class="row justify-content-center">
+    <h3 style="padding-left: 55px; font-weight: bolder;">🛠  Tools</h3>
+    </div>
+    <hr>
+    <ul>
+      <li><a href="#">New Sales Lead</a></li>
+      <br>
+      <li><a href="#">Schedule Viewer</a></li>
+      <br>
+      <li><a href="#">Support Request</a></li>
+      <br>
+      <li><a href="#">Help / Feedback</a></li>
+      <br>
+      <li><a href="library.html">Paperwork Templates</a></li>
+      <br>
+      <li><a href="badge.html">Installer Badges</a></li>
+      <br>
+    </ul>
+    <div class="text-center">
+      <button type="submit" id="getBearerButton" style="width: 200px" class="btn btn-warning">Bearer</button>
+      <hr>
+      <input type="text" id="bearerConfirm" placeholder="Token" style="width: 80%">    </div>
+  </div>
+  <hr>
+
+
+  <div class="container">
+
+    <div class="row justify-content-center">
+
+      
+      <div class="col-md-8 mt-5">
+        <img src="../images/incredible Logo.png" class="slide-in" alt="">
+
+        <button type="button" id="sideButton" class="btn btn-warning slide-in2" onclick="toggleSidebar()">👓</button> 
+        <hr><br>
+        <h3 class="text-center slide-in"><strong>Manually input Lowes Detail</strong></h3>
+
+        <form>
+          <div class="mb-3">
+            <label for="email" class="form-label slide-in">Customer Name</label>
+            <span><input type="text" class="form-control slide-in" id="FirstName" placeholder="First Name" ><input type="text" class="form-control slide-in" id="LastName" placeholder="Last Name"></span>
+          </div>
+          <div class="mb-3,">
+            <label for="password" class="form-label slide-in">Phone Number</label>
+            <input type="text" class="form-control slide-in" id="phone" placeholder="Enter Phone Number">
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label slide-in">Email</label>
+            <input type="email" class="form-control slide-in" id="email" placeholder="Enter email" >
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label slide-in">Customer Address</label>
+            <input type="text" class="slide-in form-control" id="street" placeholder="Street" >
+            <input type="text" class="slide-in form-control" id="city" placeholder="City" >
+            <input type="text" class="slide-in form-control" id="state" placeholder="State" >
+            <input type="text" class="slide-in form-control" id="zip" placeholder="Zip" >
+          </div>
+
+            <hr>
+
+          <!-- <div class="mb-3 text-center group slide-in2">
+            <label class="form-label source">Source : <div>   </div></label>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="role" id="role1" value="Home Depot" checked>
+              <label class="form-check-label" for="role1">
+                Home Depot
+              </label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="role" id="role2" value="Remarkable">
+              <label class="form-check-label" for="role2">
+                Remarkable
+              </label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="role" id="role3" value="Vantage">
+              <label class="form-check-label" for="role3">
+                Vantage
+              </label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="role" id="role4" value="Private / Other">
+              <label class="form-check-label" for="role4">
+                Private / Other
+              </label>
+            </div>
+          </div> -->
+            <h3>The Order Source is set at a constant: Lowes</h3>
+          <hr>
+          <div class="mb-3 slide-in2">
+
+            <p>Please input any optional notes below, Optional</p>
+            
+            <div class="row justify-content-center mt-5">
+              <label for="LeadNumber" class="form-label">Job Number</label>
+              <input type="text" style="width: 90%;" class="form-control" id="LeadNumber"  placeholder="Should be 9 digits, no letters">
+              <label for="StoreNumber" class="form-label">Store  (Required) </label>
+              <input type="text" style="width: 90%;" class="form-control" id="StoreNumber"  placeholder="Input the store">
+              <br>
+
+              <label class="form-label">Optional Notes : </label>
+                <textarea class="form-control" style="width:90%" rows="5" id="jobnotes" placeholder="Example: Door Detail, Window Detail, Kitchen Detail.. etc"></textarea>
+             
+            </div>
+            
+          </div>
+        
+          <hr>
+        
+          
+        </form>
+
+        <div class="text-center" id="buttonsToHide">
+          <button id="helpmebutton" class="btn btn-success">Help </button> || 
+          <button id="customerButton" style="width: 250px" class="btn btn-info">Create Customer and Detail</button> 
+        </div>
+        
+
+        <hr>
+        <span>Customer URL:</span><input type="text" id="textfield2" placeholder="Customer internal GUID will appear here" style="width: 100%">
+        
+        <br>
+        <span>Logistix Internal #:</span><input type="text" id="textfield5" placeholder="This is the Etteo Order ID" style="width: 100%">
+
+
+      </div>
+
+    </div>
+    
+  </div>
+
+
+  <script>
+  document.getElementById('customerButton').addEventListener('click', function() {
+  if(bearerToken == null){
+    alert("Please Get a Bearer Token"); 
+    return;
+    }
+    LeadNumber = document.getElementById("LeadNumber").value;
+    if(LeadNumber == ""){
+      alert("You must enter Job Numbah to continue 🍔")
+    return;  
+  }
+  console.log('Button 2 clicked');
+  createCustomer();
+
+});
+
+
+  // JavaScript code for button click event handling
+  document.getElementById('helpmebutton').addEventListener('click', function() {
+  console.log('Button tester clicked');
+  alert("I dont have time to help, ask Corin 😢")
+  // Maybe go find the code from the original paperwork Submission thingy
+  
+});
+
+</script>
+
+  <!-- Bootstrap JS -->
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/js/bootstrap.bundle.min.js"></script>
+</body>
+<footer class="footer mt-5 text-center">
+
+  <p>&copy; 2024 JW / Incredible / LogistixAI. Only for Internal use. All rights reserved</p>
+ 
+</footer>
+</html>
+
+
+<!-- Guid for HD Appliance Flag:     1af3e3e4-2d45-4962-8836-97829f2727d2    -->
+
