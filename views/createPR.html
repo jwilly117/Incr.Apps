@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>External Link Update</title>
+  <link rel="icon" type="image/x-icon" href="../images/coding.png">;
+  <!-- Include Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+
+    <style>
+        body{
+          background: linear-gradient(to right, rgb(60, 128, 122), rgb(30, 22, 77));
+            color: white;
+        }
+
+    </style>
+
+
+
+</head>
+<body>
+  <div class="container">
+    <br><br><br>
+    <h1>Create Internal PR</h1>
+
+    <form>
+      <hr>  
+      <p>
+        Use this form to create an internal PR in LogistixAI based on the original Job GUID
+      </p>
+      <div class="form-group">
+        <label for="field1">Original Job GUID</label>
+        <input type="text" class="form-control" id="field1" name="field1">
+      </div>
+
+      <div class="form-group">
+        <label for="field2">PR Amount</label>
+        <input type="text" class="form-control" id="field2" name="field2">
+      </div>
+
+      <div class="form-group">
+        <label for="field3">PR Description</label>
+        <input type="text" class="form-control" id="field3" name="field3">
+      </div>
+      <br><hr>
+
+      <button type="button" class="btn btn-primary" onclick="handleSubmit()">Submit</button>
+    </form>
+  </div>
+
+
+  <!-- Include Bootstrap JS -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+
+  <!-- Include Bootstrap JS -->
+  <!-- <script src="../Scripts/main.js"></script> -->
+  <script src="../Scripts/CreatePR.js"></script>
+  
+  <script>
+    var bearerToken;
+
+    
+
+    function handleSubmit() {
+        var field1Value = document.getElementById('field1').value;
+
+        getJobInformation(field1Value);
+    }
+  </script>
+

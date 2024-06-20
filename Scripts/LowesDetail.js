@@ -328,6 +328,7 @@ function createLead(customerid,addressid,phonenumberid,emailid){
 
 // Add external link takes the job number and uses the job guid to attach a URL, and soon other things to the job
 
+
  function updateExternalLink(lead){
 
      console.log("Lead Number" + LeadNumber);
