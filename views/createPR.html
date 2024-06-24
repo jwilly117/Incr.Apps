@@ -54,7 +54,7 @@
         <textarea class="form-control form-control-lg" id="Additional" rows="3"></textarea>
       </div>
 
-      <button type="button" class="btn btn-primary" style="width: 200px; margin-right: 20px;" onclick="handleSubmit()">Submit</button>
+      <button type="button" class="btn btn-primary" id="submitButton" style="width: 200px; margin-right: 20px;" onclick="handleSubmit()">Submit</button>
       <button type="button" class="btn btn-secondary" style="width: 200px;" onclick="handlereset()">Reset</button>
     </form>
 <br>
@@ -118,7 +118,11 @@
     // Actions when Submit is clicked - nest all API calls after this.
     function handleSubmit() {
 
+         // Event listener to change the button text once clicked
+         document.getElementById('submitButton').textContent = "Working on it...";      
+
         var originalURLValue = document.getElementById('originalURL').value;
+
 
         getJobInformation(originalURLValue);
         // updateExternalLink(originalURLValue);
@@ -139,6 +143,7 @@
          document.getElementById('Additional').value = '';
          document.getElementById('originalURL').value = '';
 
+         document.getElementById('submitButton').textContent = "Submit";      
 
 
     }

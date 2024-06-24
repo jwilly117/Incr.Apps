@@ -400,6 +400,8 @@ function generatePR(){
                   document.getElementById('originalURL').value = '';
                   document.getElementById('Total').value = '';
                   document.getElementById('Additional').value = '';
+                  document.getElementById('submitButton').textContent = "Finished!";      
+
 
                    flagGuid = newGuid;
                    console.log(flagGuid);
