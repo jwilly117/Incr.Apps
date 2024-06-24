@@ -433,6 +433,158 @@ function generatePR(){
 }
 
 
+function makeDesignReview(){
+
+  var localVarforLowes = document.getElementById('prNum').value;
+
+
+
+    var total = document.getElementById('Total').value;
+
+    lowesPRNum = localVarforLowes;
+    var newPRExternalSourceID = orderGuid2 + "-" + lowesPRNum;
+    var peearrnotes = document.getElementById('Additional').value;
+    prnotes = "$" + total + " --- 👷 Original Service Provider: " + provider + " --- 📝 Notes: " + peearrnotes;
+
+
+    const token = bearerToken;
+
+    const headers = {
+        'Authorization': `Bearer ${token}`
+      };
+
+
+   const PRGenerationData = {
+     "customerId":customerGUID,     // 
+     "addressId":addressID,    // 
+     "phoneNumberId":phoneNumberID,    // 
+     "emailId":emailID,    // 
+
+     "stateId":11,   // 
+     "marketId":928,  // 
+     "lineOfBusinessId":[
+         {
+            // Leave all PR types as job - makes most sense and easier for sorting
+           "id":"55ddfa7e-7ecd-4a4b-bb6e-16dbbc73d69b",  // 
+           "name":"Job"  // 
+         }
+     ],
+     "orderSourceId":"da959587-a238-4b08-82a9-34cf5f81c140",  // 
+     "hasExternalSourceId":true,  // 
+     "externalSourceId": newPRExternalSourceID,
+     "services":[
+         {
+            // Leave all PR types as job 
+           "lineOfBusinessId": "55ddfa7e-7ecd-4a4b-bb6e-16dbbc73d69b",  // 
+           "serviceMasterId":"19118795-cac7-4f5a-abaa-fdf2d1e52537",  // 
+
+          //  Need to completely change this*******
+           "lineItems":[
+               {
+                 "description":prnotes,
+                 "lineItemId":"24555416-4d59-4f15-b5dd-07e7cd06e4f7",  // 
+                 "locationId":"00000000-0000-0000-0000-000000000000",  // 
+            // Leave all PR types as job 
+                 "lineItemName":"Payment Request - Lowes",  // 
+                 "lineItemTime":1  // 
+               }
+           ]
+
+         }
+     ],
+     "lineOfBusinessList":[
+         // Leave all PR types as job 
+         "55ddfa7e-7ecd-4a4b-bb6e-16dbbc73d69b"  // 
+     ],
+     "PickUpLocation":{
+         "contactTypeId":1,  // 
+         "contactFirstName":"JW",  // 
+         "originFacilityAliasID": 8412,   // 🦧🦧🦧🦧🦧
+         "contactEntityTypeId":1,  // 
+         "addresses":[
+           {
+               "addressLine1":"1394 Broadway Ave",
+               "addressLine2":null,
+               "state":"Georgia",
+               "city":"Braselton",
+               "postalCode":"30517"
+           }
+         ],
+         "emails":[
+           {
+               "emailAddress":"pr@incredibleinstallations.com",
+               "emailTypeId":1,
+               "emailType":"WORK"
+           }
+         ],
+         "phoneNos":[
+           {
+               "phoneNumber":"7704500458",
+               "phoneNumberTypeId":1,
+               "phoneNumberType":"WORK",
+               "countryCode":"+1",
+               "smsFl":true
+           }
+         ],
+         "storeNumber":0,  // ✔️✔️✔️
+     },
+     "emailIds":[
+        116528
+     ]
+   }
+           axios.post('https://api.logistixai.com/api/orders/V5', PRGenerationData, { headers })
+           .then(response => {
+                   console.log('Response:', response.data);
+                   console.log(response.data.result.orderId);
+
+                   var newGuid = response.data.result.orderId;
+
+                  //  populate the link at the bottom
+                   document.getElementById('logistixAILINK').value = "https://portal.logistixai.com/order/detail/" + newGuid;
+
+                  //  now store that in a variable
+                  var newURLValue = document.getElementById('logistixAILINK').value;
+
+                  // change the value attached to the href on the button
+                   var link = document.getElementById('dynamicLink');
+                   link.href = newURLValue;
+                   link.style.display = 'inline-block'; // Make the button visible
+                   setTimeout(function() {
+                     link.classList.add('show'); // Trigger the animation
+                   }, 10); // Small delay to ensure the display change is processed before the animation starts
+
+                  // Clear the inputs
+                  document.getElementById('originalURL').value = '';
+                  document.getElementById('Total').value = '';
+                  document.getElementById('Additional').value = '';
+                  document.getElementById('submitButton').textContent = "Finished!";      
+
+
+                   flagGuid = newGuid;
+                   console.log(flagGuid);
+                   setTimeout(function() {
+                    console.log('Add flag After 3 seconds.... 🤞');    // ✔️✔️✔️
+                    // updateFinancials(newGuid);
+                    // updateExternalLink(originatingLogGuid, newGuid);
+                    addFlag(flagGuid);
+
+     
+                  }, 3000);
+
+               })
+               .catch(error => {
+                   console.error('Error:', error);
+                   alert("🦆 Bad API Request, Please check your fields\n and try again, or Contact Jake")
+               });
+
+
+           // Need to change this to the next function in the phase, whatever that is. 
+           
+
+
+
+
+}
 /* FULL STEP BY STEP
 
 1. Create a default payload for the "Other" field from the returned✔️

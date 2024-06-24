@@ -123,13 +123,27 @@
     // Actions when Submit is clicked - nest all API calls after this.
     function handleSubmit() {
 
-         // Event listener to change the button text once clicked
-         document.getElementById('submitButton').textContent = "Working on it...";      
-
+        // gather GUID from first form field
         var originalURLValue = document.getElementById('originalURL').value;
 
 
-        getJobInformation(originalURLValue);
+         // Event listener to change the button text once clicked
+         document.getElementById('submitButton').textContent = "Working on it...";      
+
+
+        //  Compare value of quickcreateValue on a switch statement
+        var QuickCreateValue = document.getElementById('QuickCreateSelection').value;
+
+
+
+
+
+
+
+
+
+
+
         // updateExternalLink(originalURLValue);
         
         // getCustomerInfo();
@@ -141,6 +155,7 @@
 
          var originalURLValue = document.getElementById('originalURL').value;
          var QuickCreateValue = document.getElementById('QuickCreateSelection').value;
+        console.log(QuickCreateValue);
          
 
          document.getElementById('originalURL').value = '';
@@ -148,7 +163,15 @@
          document.getElementById('Additional').value = '';
          document.getElementById('originalURL').value = '';
 
-         document.getElementById('submitButton').textContent = "Submit";      
+         document.getElementById('submitButton').textContent = "Submit";   
+         
+         if(QuickCreateValue == "🟦 Lowes KIT - Design Review *WIP*"){
+          console.log("This path will follow the function call order for design reviews....");
+
+        }
+        else{
+          console.log("Default function call order for Lowes PRs and Exceptions....")
+        }
 
 
     }
