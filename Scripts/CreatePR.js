@@ -9,6 +9,15 @@ var customerGUID;
 var orderGuid2 ="";
 var flagGuid = "";
 
+var addressID;
+var phoneNumberID;
+var emailID;
+
+var originatingLogGuid;
+
+var prnotes = "";
+
+
 const data = {
     "userName": "jakesapi@logistixai.com",
     "password": "B=n!v;(]89hCL5VH"
@@ -39,10 +48,13 @@ function getBearer() {
 // =======================================================================================================================
 // =======================================================================================================================
 
+function setGuid(datGUID){
+  originatingLogGuid = datGUID;
+}
 
 
 function getJobInformation(orderGuid){
-    flagGuid = orderGuid;
+
     const token = bearerToken;
   
     const headers = {
@@ -59,8 +71,8 @@ function getJobInformation(orderGuid){
       .then((response) => {
         console.log("🟥 GetJobInformation Response:", response.data);
         customerGUID = response.data.result.order.contacts[0].contactMasterGuid;
-
-        // Get and assign the externalID which is also kinda internal?
+        setGuid(orderGuid);
+        // Get and assign the customer guids and info which is also kinda internal?
         orderGuid2 = response.data.result.order.orderSource.externalOrderId;
 
         // Call next function
@@ -77,7 +89,7 @@ function getJobInformation(orderGuid){
 
 function getCustomerInfo(guid) {
     const token = bearerToken;
-  
+
     const headers = {
       Authorization: `Bearer ${token}`,
     };
@@ -91,8 +103,16 @@ function getCustomerInfo(guid) {
       .then((response) => {
         console.log("🟥 GetCustomerInfo Response:", response.data);
 
+
+        // Get and assign the customer guids and info which is also kinda internal?
+        addressID = response.data.result.addresses[0].addressId;
+        phoneNumberID = response.data.result.phoneNos[0].phoneId;
+        emailID = response.data.result.emails[0].emailId;
+
+        generatePR();
+
         // Now to test the financial updating
-        updateFinancials();
+        // updateFinancials();
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -100,7 +120,7 @@ function getCustomerInfo(guid) {
 }
 
 
-function updateFinancials() {
+function updateFinancials(guid) {
   const token = bearerToken;
 
   // Get the dollar amount
@@ -111,7 +131,7 @@ function updateFinancials() {
     Authorization: `Bearer ${token}`,
   };
 
-  var financialURL = "https://api.logistixai.com/api/orders/v5/d51b385a-054e-4bec-9816-467d290e0e6c/financial";
+  var financialURL = "https://api.logistixai.com/api/orders/v5/" + guid;
 
 
   const financialdata = 
@@ -144,7 +164,6 @@ axios.put(financialURL, financialdata, { headers })
       console.log("🟩 Finaicial Data updated successfully: ")
       console.log(response);
 
-      updateExternalLink(orderGuid2);
 
     })
     .catch(error => {
@@ -156,9 +175,9 @@ axios.put(financialURL, financialdata, { headers })
 }
 
 
-function updateExternalLink(originalJobGuid) {
+function updateExternalLink(originalJobGuid, newOne) {
 
-  var externalURL = "https://www.youtube.com/watch?v=qHI-G4X4A_Q";
+  var externalURL = "https://portal.logistixai.com/order/detail/" + originalJobGuid;
   
 
   const token = bearerToken;
@@ -206,13 +225,12 @@ function updateExternalLink(originalJobGuid) {
             ]
 
         }
-                axios.put('https://api.logistixai.com/api/orders/v5/'+ originalJobGuid, extraData, { headers })
+                axios.put('https://api.logistixai.com/api/orders/v5/'+ newOne, extraData, { headers })
                 .then(response => {
+
                       console.log("🟩 External Link updated Successfully: " + externalURL) 
                       console.log(response);
 
-
-                      addFlag(flagGuid);
 
 
                     })
@@ -250,19 +268,149 @@ function addFlag(flagsignal){
        .catch((error) => {
          console.error("Error:", error);
        });
-   }, 3000);
+   }, 50);
+
+
 }
 
 
+function generatePR(){
+
+
+
+
+    var total = document.getElementById('Total').value;
+
+    
+    var newPRExternalSourceID = orderGuid2 + "-PR1"
+    var peearrnotes = document.getElementById('Additional').value;
+    prnotes = "$" + total + " --- 📝 Notes: " + peearrnotes;
+
+
+    const token = bearerToken;
+
+    const headers = {
+        'Authorization': `Bearer ${token}`
+      };
+
+
+   const PRGenerationData = {
+     "customerId":customerGUID,     // ✔️✔️✔️
+     "addressId":addressID,    // ✔️✔️✔️
+     "phoneNumberId":phoneNumberID,    // ✔️✔️✔️
+     "emailId":emailID,    // ✔️✔️✔️
+
+     "stateId":11,   // ✔️✔️✔️
+     "marketId":928,  // ✔️✔️✔️
+     "lineOfBusinessId":[
+         {
+            // Leave all PR types as job - makes most sense and easier for sorting
+           "id":"55ddfa7e-7ecd-4a4b-bb6e-16dbbc73d69b",  // ✔️✔️✔️
+           "name":"Job"  // ✔️✔️✔️
+         }
+     ],
+     "orderSourceId":"da959587-a238-4b08-82a9-34cf5f81c140",  // ✔️✔️✔️
+     "hasExternalSourceId":true,  // ✔️✔️✔️
+     "externalSourceId": newPRExternalSourceID,
+     "services":[
+         {
+            // Leave all PR types as job 
+           "lineOfBusinessId": "55ddfa7e-7ecd-4a4b-bb6e-16dbbc73d69b",  // ✔️✔️✔️
+           "serviceMasterId":"19118795-cac7-4f5a-abaa-fdf2d1e52537",  // ✔️✔️✔️
+
+          //  Need to completely change this*******
+           "lineItems":[
+               {
+                 "description":prnotes,
+                 "lineItemId":"24555416-4d59-4f15-b5dd-07e7cd06e4f7",  // ✔️✔️✔️
+                 "locationId":"00000000-0000-0000-0000-000000000000",  // ✔️✔️✔️
+            // Leave all PR types as job 
+                 "lineItemName":"Payment Request - Lowes",  // ✔️✔️✔️
+                 "lineItemTime":1  // ✔️✔️✔️
+               }
+           ]
+
+         }
+     ],
+     "lineOfBusinessList":[
+         // Leave all PR types as job 
+         "55ddfa7e-7ecd-4a4b-bb6e-16dbbc73d69b"  // ✔️✔️✔️
+     ],
+     "PickUpLocation":{
+         "contactTypeId":1,  // ✔️✔️✔️
+         "contactFirstName":"JW",  // ✔️✔️✔️
+         "originFacilityAliasID": 8412,   // 🦧🦧🦧🦧🦧
+         "contactEntityTypeId":1,  // ✔️✔️✔️
+         "addresses":[
+           {
+               "addressLine1":"1394 Broadway Ave",
+               "addressLine2":null,
+               "state":"Georgia",
+               "city":"Braselton",
+               "postalCode":"30517"
+           }
+         ],
+         "emails":[
+           {
+               "emailAddress":"pr@incredibleinstallations.com",
+               "emailTypeId":1,
+               "emailType":"WORK"
+           }
+         ],
+         "phoneNos":[
+           {
+               "phoneNumber":"7704500458",
+               "phoneNumberTypeId":1,
+               "phoneNumberType":"WORK",
+               "countryCode":"+1",
+               "smsFl":true
+           }
+         ],
+         "storeNumber":0,  // ✔️✔️✔️
+     },
+     "emailIds":[
+        116528
+     ]
+   }
+           axios.post('https://api.logistixai.com/api/orders/V5', PRGenerationData, { headers })
+           .then(response => {
+                   console.log('Response:', response.data);
+                   console.log(response.data.result.orderId);
+
+                   var newGuid = response.data.result.orderId;
+                   document.getElementById('logistixAILINK').value = "https://portal.logistixai.com/order/detail/" + newGuid;
+                   flagGuid = newGuid;
+                   console.log(flagGuid);
+                   setTimeout(function() {
+                    console.log('Add flag After 3 seconds.... 🤞');    // ✔️✔️✔️
+                    // updateFinancials(newGuid);
+                    // updateExternalLink(originatingLogGuid, newGuid);
+                    addFlag(flagGuid);
+
+     
+                  }, 3000);
+
+               })
+               .catch(error => {
+                   console.error('Error:', error);
+                   alert("🦆 Bad API Request, Please check your fields\n and try again, or Contact Jake")
+               });
+
+
+           // Need to change this to the next function in the phase, whatever that is. 
+           
+
+
+
+
+}
 
 
 /* FULL STEP BY STEP
 
-1. Create a default payload for the "Other" field from the returned
+1. Create a default payload for the "Other" field from the returned✔️
    data from the previous api calls.
-2. Create a function: generatePR() which submits that payload
-
-
+2. Create a function: generatePR() which submits that payload ✔️
 4. Now we have to get that job info from the response and give the user a URL. ✔️
 5. Submit the flag assignment   560b2bad-ac14-48c0-a39b-e7f3cce864e4 ✔️
 6. Create a function: updateFinancials() which posts to the financial tab.  ✔️    
@@ -274,6 +422,8 @@ function addFlag(flagsignal){
 
 
 END */
+
+
 
 // =======================================================================================================================
 // =======================================================================================================================

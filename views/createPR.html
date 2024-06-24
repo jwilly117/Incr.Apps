@@ -25,7 +25,7 @@
         Use this form to create an internal PR in LogistixAI based on the original Job GUID
       </p>
       <div class="form-group">
-        <label for="originalURL">Original Job URL - d51b385a-054e-4bec-9816-467d290e0e6c</label>
+        <label for="originalURL">Original Job GUID  </label>
         <input type="text" class="form-control" id="originalURL" name="originalURL">
       </div>
 
@@ -56,7 +56,11 @@
       <button type="button" class="btn btn-primary" style="width: 200px; margin-right: 20px;" onclick="handleSubmit()">Submit</button>
       <button type="button" class="btn btn-secondary" style="width: 200px;" onclick="handlereset()">Reset</button>
     </form>
+<br>
 
+    <!-- This is where the link to the newly created job goes -->
+    <label for="logistixAILINK" style="font-size: smaller;">Logistix Link:</label>
+    <input type="text" id="logistixAILINK" placeholder="Once created, a link / URL will appear here" style="width: 100%; font-size: smaller; ">
 
     <hr>  
     <!-- <p style="align-items: center;">For any questions, comments, or concerns, please email support@incredibleinstallations.com</p> -->
@@ -114,7 +118,7 @@
 
          document.getElementById('originalURL').value = '';
          document.getElementById('Total').value = '';
-         document.getElementById('Additional').value = '';
+         document.getElementById('Additional').value = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus atque placeat voluptatem voluptatibus, quaerat quasi minus laudantium ipsam vero autem repellat pariatur corporis nulla omnis beatae deleniti doloremque modi officia.';
          document.getElementById('originalURL').value = '44cc72fe-e65b-405f-9f78-4accd1ab68fa';
 
 
