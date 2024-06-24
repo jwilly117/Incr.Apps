@@ -288,7 +288,7 @@ function generatePR(){
     var total = document.getElementById('Total').value;
 
     lowesPRNum = localVarforLowes;
-    var newPRExternalSourceID = orderGuid2 + lowesPRNum;
+    var newPRExternalSourceID = orderGuid2 + "-" + lowesPRNum;
     var peearrnotes = document.getElementById('Additional').value;
     prnotes = "$" + total + " --- 👷 Original Service Provider: " + provider + " --- 📝 Notes: " + peearrnotes;
 
