@@ -18,6 +18,7 @@ var originatingLogGuid;
 var prnotes = "";
 var provider = "";
 var providerID = "";
+var lowesPRNum = "";
 
 const data = {
     "userName": "jakesapi@logistixai.com",
@@ -48,6 +49,7 @@ function getBearer() {
 // =======================================================================================================================
 // =======================================================================================================================
 // =======================================================================================================================
+
 
 function setGuid(datGUID){
   originatingLogGuid = datGUID;
@@ -279,13 +281,14 @@ function addFlag(flagsignal){
 
 function generatePR(){
 
+  var localVarforLowes = document.getElementById('prNum').value;
 
 
 
     var total = document.getElementById('Total').value;
 
-    
-    var newPRExternalSourceID = orderGuid2 + "-PR1"
+    lowesPRNum = localVarforLowes;
+    var newPRExternalSourceID = orderGuid2 + lowesPRNum;
     var peearrnotes = document.getElementById('Additional').value;
     prnotes = "$" + total + " --- 👷 Original Service Provider: " + provider + " --- 📝 Notes: " + peearrnotes;
 
