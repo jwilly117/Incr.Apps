@@ -62,6 +62,23 @@
     <!-- This is where the link to the newly created job goes -->
     <label for="logistixAILINK" style="font-size: smaller;">Logistix Link:</label>
     <input type="text" id="logistixAILINK" placeholder="Once created, a link / URL will appear here" style="width: 100%; font-size: smaller; ">
+    <br><br>
+
+    <style>
+      #dynamicLink {
+        display: none;
+        position: relative;
+        left: -500px;
+        transition: left 1.2s ease-in-out;
+      }
+      #dynamicLink.show {
+        display: inline-block;
+        left: 0;
+      }
+    </style>
+
+    <a id="dynamicLink" href="#" class="btn btn-primary" target="_blank" style="display:none; width: 350px;">Open Exception in LogistixAI</a>
+
 
     <hr>  
     <!-- <p style="align-items: center;">For any questions, comments, or concerns, please email support@incredibleinstallations.com</p> -->
@@ -119,8 +136,8 @@
 
          document.getElementById('originalURL').value = '';
          document.getElementById('Total').value = '';
-         document.getElementById('Additional').value = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus atque placeat voluptatem voluptatibus, quaerat quasi minus laudantium ipsam vero autem repellat pariatur corporis nulla omnis beatae deleniti doloremque modi officia.';
-         document.getElementById('originalURL').value = '44cc72fe-e65b-405f-9f78-4accd1ab68fa';
+         document.getElementById('Additional').value = '';
+         document.getElementById('originalURL').value = '';
 
 
 

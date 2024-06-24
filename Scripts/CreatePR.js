@@ -381,7 +381,26 @@ function generatePR(){
                    console.log(response.data.result.orderId);
 
                    var newGuid = response.data.result.orderId;
+
+                  //  populate the link at the bottom
                    document.getElementById('logistixAILINK').value = "https://portal.logistixai.com/order/detail/" + newGuid;
+
+                  //  now store that in a variable
+                  var newURLValue = document.getElementById('logistixAILINK').value;
+
+                  // change the value attached to the href on the button
+                   var link = document.getElementById('dynamicLink');
+                   link.href = newURLValue;
+                   link.style.display = 'inline-block'; // Make the button visible
+                   setTimeout(function() {
+                     link.classList.add('show'); // Trigger the animation
+                   }, 10); // Small delay to ensure the display change is processed before the animation starts
+
+                  // Clear the inputs
+                  document.getElementById('originalURL').value = '';
+                  document.getElementById('Total').value = '';
+                  document.getElementById('Additional').value = '';
+
                    flagGuid = newGuid;
                    console.log(flagGuid);
                    setTimeout(function() {
