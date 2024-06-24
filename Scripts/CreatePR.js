@@ -256,24 +256,24 @@ function addFlag(flagsignal){
 
 
 
-/* Next Steps
-1. Gather all necessary information and list below
-2. Create a default payload for the "Other" field from the returned data from the previous api calls.
-3. Create a function: generatePR() which submits that payload
+/* FULL STEP BY STEP
+
+1. Create a default payload for the "Other" field from the returned
+   data from the previous api calls.
+2. Create a function: generatePR() which submits that payload
+
 
 4. Now we have to get that job info from the response and give the user a URL. ✔️
 5. Submit the flag assignment   560b2bad-ac14-48c0-a39b-e7f3cce864e4 ✔️
 6. Create a function: updateFinancials() which posts to the financial tab.  ✔️    
 7. Update the external link to the original job.  ✔️                       
 
-** Here is the list of all the different values I will need to be aware of and input for the generatePR() data. 
+** Here is the list of all the different values I will need to input. 
 > 
 
 
 
-*/
-
-
+END */
 
 // =======================================================================================================================
 // =======================================================================================================================
