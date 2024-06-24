@@ -1,13 +1,13 @@
-
-// All LogistixAI scripts will be kept here for ease of access and hopefully they keep the documentation consistent
-// Will 1st move over the functions from the very first CreateLead Sheet
-
-// Get Bearer - basic Auth
+// =======================================================================================================================
+// =======================================================================================================================
+// =======================================================================================================================
 
 
 var LeadNumber = "";
 var bearerToken;
 var customerGUID;
+var orderGuid2 ="";
+var flagGuid = "";
 
 const data = {
     "userName": "jakesapi@logistixai.com",
@@ -19,9 +19,10 @@ function getBearer() {
     axios
       .post("https://api.logistixai.com/api/users/v1/login", data)
       .then((response) => {
-        console.log("The Bearer token is ");
-        console.log("=================================");
-        console.log(response.data.access_token);
+
+        console.log("===================================================");
+        console.log("🟦 JW Bearer token: ");
+        console.log(response.data.access_token)
         //   alert(response.data.access_token);
 
         bearerToken = response.data.access_token;
@@ -31,25 +32,17 @@ function getBearer() {
       .catch((error) => {
         console.error(error);
       });
-  }
-  
-
-// ========================================================================================= 
-// =========================================================================================
-
-/*
-Psuedo code
-See if we can get the job information, 
-From there, see if we can get customer information from the job
-Take the job number and create another job with line item of PR
+}
 
 
+// =======================================================================================================================
+// =======================================================================================================================
+// =======================================================================================================================
 
 
-
-*/
 
 function getJobInformation(orderGuid){
+    flagGuid = orderGuid;
     const token = bearerToken;
   
     const headers = {
@@ -64,7 +57,15 @@ function getJobInformation(orderGuid){
     axios
       .get(customerAPIURL, { headers })
       .then((response) => {
-        console.log("Response:", response.data);
+        console.log("🟥 GetJobInformation Response:", response.data);
+        customerGUID = response.data.result.order.contacts[0].contactMasterGuid;
+
+        // Get and assign the externalID which is also kinda internal?
+        orderGuid2 = response.data.result.order.orderSource.externalOrderId;
+
+        // Call next function
+        getCustomerInfo(customerGUID);
+
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -88,13 +89,10 @@ function getCustomerInfo(guid) {
     axios
       .get(customerAPIURL, { headers })
       .then((response) => {
-        console.log("Response:", response.data);
-        var saddressID = response.data.result.addresses[0].addressId;
-        console.log(saddressID);
-        var sphoneNumberID = response.data.result.phoneNos[0].phoneId;
-        var semailID = response.data.result.emails[0].emailId;
-        var sstateID = 11;
-        createLead(guid, saddressID, sphoneNumberID, semailID);
+        console.log("🟥 GetCustomerInfo Response:", response.data);
+
+        // Now to test the financial updating
+        updateFinancials();
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -102,40 +100,185 @@ function getCustomerInfo(guid) {
 }
 
 
+function updateFinancials() {
+  const token = bearerToken;
+
+  // Get the dollar amount
+  var total = document.getElementById('Total').value;
+
+  
+  const headers = {
+    Authorization: `Bearer ${token}`,
+  };
+
+  var financialURL = "https://api.logistixai.com/api/orders/v5/d51b385a-054e-4bec-9816-467d290e0e6c/financial";
 
 
-// =========================================================================================
-// addFlag simply uses the guid for the job and the guid for the specific flag to attach a flag before you even go into the job. 
-
-function addFlag(orderyup){
-
-    // const flagdata
-  
-  
-     var flagurl = "https://api.logistixai.com/api/orders/v1/" + orderyup +  "/flags";
-  
-     const flagdata = 
-         [{"flagTypeId":"5b4b8ce2-f4a1-47d1-922e-5a12ff5b3b40"}];
-  
-     const token = bearerToken;
-  
-     const headers = {
-           'Authorization': `Bearer ${token}`
-         };
-  
-  
-     setTimeout(function () {
-       axios
-         .post(flagurl, flagdata, { headers })
-         .then((response) => {
-           console.log("Response:", response.data);
-           console.log("YOU DID IT!!!!");
-         })
-         .catch((error) => {
-           console.error("Error:", error);
-         });
-     }, 2000);
+  const financialdata = 
+  {
+    "systemBilling": {
+        "lineOfBusiness": {
+            "lineOfBusinessGuid": "55ddfa7e-7ecd-4a4b-bb6e-16dbbc73d69b",
+            "lineOfBusinessDescription": "Job (Lowe's & HD)"
+        },
+        "serviceMasterGuid": "19118795-cac7-4f5a-abaa-fdf2d1e52537",
+        "serviceMasterName": "🟦 Lowes - PR",
+        "grossTotal": total
+    },
+    "assignedServiceProviderBilling": {
+        "assignedServiceProviderGuid": null,
+        "assignedServiceProviderName": null,
+        "assignedResourceGuid": null,
+        "assignedResourceName": null,
+        "lineOfBusiness": null,
+        "serviceMasterGuid": "19118795-cac7-4f5a-abaa-fdf2d1e52537",
+        "serviceMasterName": "🟦 Lowes - PR",
+        "percentageRate": "100.00"
+    }
 }
+
+// Now We PUT it to the job
+axios.put(financialURL, financialdata, { headers })
+.then(response => {
+      //  Confirm in the console financial data sucess
+      console.log("🟩 Finaicial Data updated successfully: ")
+      console.log(response);
+
+      updateExternalLink(orderGuid2);
+
+    })
+    .catch(error => {
+      // Log any errors
+      console.error('Error:', error);
+        
+    });
+
+}
+
+
+function updateExternalLink(originalJobGuid) {
+
+  var externalURL = "https://www.youtube.com/watch?v=qHI-G4X4A_Q";
   
 
-  getBearer();
+  const token = bearerToken;
+
+        const headers = {
+            'Authorization': `Bearer ${token}`
+        };
+
+
+        // Here is where I will make the Axios POST
+        const extraData = 
+            {
+            "notes":[
+                {
+                    "note":""
+                },
+                {
+                    "note":""
+                }
+            ],
+            "imsUrl": externalURL,
+                "workOrderCost":[
+                {
+                    "itemNumber":"",
+                    "unitCost":""
+                }
+            ],
+            "activities":[
+                {
+                    "subject":"",
+                    "status":"",
+                    "type":" ",
+                    "dueDate":"",
+                    "crewLeading":""
+                }
+            ],
+            "jobPayments":[
+                {
+                    "paymentNumber":"",
+                    "requestedAmount":"",
+                    "paymentDescription":"",
+                    "type":"",
+                    "status":""
+                }
+            ]
+
+        }
+                axios.put('https://api.logistixai.com/api/orders/v5/'+ originalJobGuid, extraData, { headers })
+                .then(response => {
+                      console.log("🟩 External Link updated Successfully: " + externalURL) 
+                      console.log(response);
+
+
+                      addFlag(flagGuid);
+
+
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        
+                    });
+
+}
+
+
+function addFlag(flagsignal){
+
+
+   var flagurl = "https://api.logistixai.com/api/orders/v1/" + flagsignal +  "/flags";
+
+   const flagdata = 
+   [{"flagTypeId":"560b2bad-ac14-48c0-a39b-e7f3cce864e4"}];
+
+   const token = bearerToken;
+
+   const headers = {
+         'Authorization': `Bearer ${token}`
+       };
+
+
+
+   setTimeout(function () {
+     axios
+       .post(flagurl, flagdata, { headers })
+       .then((response) => {
+         console.log("🟩 Flag Data Added Successfully: ");
+         console.log(response);
+       })
+       .catch((error) => {
+         console.error("Error:", error);
+       });
+   }, 3000);
+}
+
+
+
+
+/* Next Steps
+1. Gather all necessary information and list below
+2. Create a default payload for the "Other" field from the returned data from the previous api calls.
+3. Create a function: generatePR() which submits that payload
+
+4. Now we have to get that job info from the response and give the user a URL. ✔️
+5. Submit the flag assignment   560b2bad-ac14-48c0-a39b-e7f3cce864e4 ✔️
+6. Create a function: updateFinancials() which posts to the financial tab.  ✔️    
+7. Update the external link to the original job.  ✔️                       
+
+** Here is the list of all the different values I will need to be aware of and input for the generatePR() data. 
+> 
+
+
+
+*/
+
+
+
+// =======================================================================================================================
+// =======================================================================================================================
+// =======================================================================================================================
+
+
+// Start it off by getting authenticated
+getBearer();

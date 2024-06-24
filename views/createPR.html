@@ -17,7 +17,7 @@
 <body>
   <div class="container">
     <br><br><br>
-    <h1>Create Internal PR</h1>
+    <h1>Create Internal PR / Exception</h1>
 
     <form>
       <hr>  
@@ -25,45 +25,104 @@
         Use this form to create an internal PR in LogistixAI based on the original Job GUID
       </p>
       <div class="form-group">
-        <label for="field1">Original Job GUID</label>
-        <input type="text" class="form-control" id="field1" name="field1">
+        <label for="originalURL">Original Job URL - d51b385a-054e-4bec-9816-467d290e0e6c</label>
+        <input type="text" class="form-control" id="originalURL" name="originalURL">
+      </div>
+
+
+      <!-- Need to figure out how to fire off a jacascript function when one of 
+        these is clicked so that it populates the feilds below -->
+      <div class="form-group">
+        <label for="QuickCreateSelection">🌟 Quick Create</label>
+        <select multiple class="form-control form-control-lg" id="QuickCreateSelection" style="height: 155px;">
+          <option>🟦 Lowes PR - Trip Charge</option>
+          <option>🟦 Lowes PR - Additional or Missing Labor</option>
+          <option>🟦 Lowes PR - Other *WIP* - Please provide description</option>
+          <option>🟦 Lowes KIT - Design Review</option>
+          <option>🟨 Home Depot - *WIP*</option>
+        </select>
       </div>
 
       <div class="form-group">
-        <label for="field2">PR Amount</label>
-        <input type="text" class="form-control" id="field2" name="field2">
+        <label for="Total">PR Amount</label>
+        <input type="text" class="form-control" id="Total" name="Total">
       </div>
 
       <div class="form-group">
-        <label for="field3">PR Description</label>
-        <input type="text" class="form-control" id="field3" name="field3">
+        <label for="Additional">Description / Additional info</label>
+        <textarea class="form-control form-control-lg" id="Additional" rows="3"></textarea>
       </div>
-      <br><hr>
 
-      <button type="button" class="btn btn-primary" onclick="handleSubmit()">Submit</button>
+      <button type="button" class="btn btn-primary" style="width: 200px; margin-right: 20px;" onclick="handleSubmit()">Submit</button>
+      <button type="button" class="btn btn-secondary" style="width: 200px;" onclick="handlereset()">Reset</button>
     </form>
+
+
+    <hr>  
+    <!-- <p style="align-items: center;">For any questions, comments, or concerns, please email support@incredibleinstallations.com</p> -->
+
+    <footer class="footer mt-5 text-center">
+
+      <p> For any questions, comments, or concerns, please email support@incredibleinstallations.com</p>
+
+      <p>2023   <strong>Jake W</strong> | Ellis Ventures&copy; | LogistixAI. Only for Internal use. ll rights reserved</p>
+      <p style="font-size: xx-small;"> V - 6.23.24</p>
+     
+    </footer>
+
   </div>
 
 
   <!-- Include Bootstrap JS -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+
+  
 </body>
 </html>
 
 
   <!-- Include Bootstrap JS -->
   <!-- <script src="../Scripts/main.js"></script> -->
-  <script src="../Scripts/CreatePR.js"></script>
+<script src="../Scripts/CreatePR.js"></script>
   
+
+
   <script>
+
+    // Declare Bearer for all actions
     var bearerToken;
 
+    // Actions when Submit is clicked - nest all API calls after this.
+    function handleSubmit() {
+
+        var originalURLValue = document.getElementById('originalURL').value;
+
+        getJobInformation(originalURLValue);
+        // updateExternalLink(originalURLValue);
+        
+        // getCustomerInfo();
+    }
     
 
-    function handleSubmit() {
-        var field1Value = document.getElementById('field1').value;
+    // Clear all fields when reset is clicked   QuickCreateSelection
+    function handlereset() {
 
-        getJobInformation(field1Value);
+         var originalURLValue = document.getElementById('originalURL').value;
+         var QuickCreateValue = document.getElementById('QuickCreateSelection').value;
+         
+
+         document.getElementById('originalURL').value = '';
+         document.getElementById('Total').value = '';
+         document.getElementById('Additional').value = '';
+         document.getElementById('originalURL').value = '44cc72fe-e65b-405f-9f78-4accd1ab68fa';
+
+
+
     }
+
+
+
+
   </script>
 
