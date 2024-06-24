@@ -16,7 +16,8 @@ var emailID;
 var originatingLogGuid;
 
 var prnotes = "";
-
+var provider = "";
+var providerID = "";
 
 const data = {
     "userName": "jakesapi@logistixai.com",
@@ -73,6 +74,8 @@ function getJobInformation(orderGuid){
         customerGUID = response.data.result.order.contacts[0].contactMasterGuid;
         setGuid(orderGuid);
         // Get and assign the customer guids and info which is also kinda internal?
+        provider = response.data.result.order.services[0].serviceProvider;
+        providerID = response.data.result.order.services[0].serviceProviderId;
         orderGuid2 = response.data.result.order.orderSource.externalOrderId;
 
         // Call next function
@@ -284,7 +287,7 @@ function generatePR(){
     
     var newPRExternalSourceID = orderGuid2 + "-PR1"
     var peearrnotes = document.getElementById('Additional').value;
-    prnotes = "$" + total + " --- 📝 Notes: " + peearrnotes;
+    prnotes = "$" + total + " --- 👷 Original Service Provider: " + provider + " --- 📝 Notes: " + peearrnotes;
 
 
     const token = bearerToken;
