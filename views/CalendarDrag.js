@@ -220,7 +220,7 @@ function submitDataMonday(tech, installerNumber) {
       // Here we can test if an array is empty, and call more funcitons inside of it
 
       if (slots.jobs.length === 0) {
-        document.getElementById(currentID).style.backgroundColor = "#88AFD2";
+        document.getElementById(currentID).style.backgroundColor = "#012166";
 
         document.getElementById(currentID).textContent = slots.slotTime;
       } else {
@@ -232,7 +232,9 @@ function submitDataMonday(tech, installerNumber) {
         // " " +
         // response.data.result.markets[0].serviceProviders[0].resources[1].slots[3].jobs[0].customer.contactLastName 
         document.getElementById(currentID).textContent = slots.jobs[0].customer.contactFirstName + " " + slots.jobs[0].customer.contactLastName;
-        document.getElementById(currentID).style.background = "linear-gradient(to right, #ffbc90, rgb(245, 152, 105))";
+        document.getElementById(currentID).style.background = "linear-gradient(to right, #012166, #00478c)";
+        document.getElementById(currentID).style.color = "white";
+
         // element.style.backgroundColor = "lightblue";
         document.getElementById("moreInfo").textContent = slots.jobs[0].customer.addresses[0].addressLine1;
         document.getElementById("phone").textContent = slots.jobs[0].customer.phoneNos[0].phoneNumber;
