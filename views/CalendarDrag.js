@@ -240,8 +240,9 @@ function submitDataMonday(tech, installerNumber) {
         // var firstLast = response.data.result.markets[0].serviceProviders[0].resources[1].slots[3].jobs[0].customer.contactFirstName +
         // " " +
         // response.data.result.markets[0].serviceProviders[0].resources[1].slots[3].jobs[0].customer.contactLastName 
-        document.getElementById(currentID).innerHTML = slot.jobs[0].customer.contactFirstName + "<br>" + slot.jobs[0].customer.contactLastName;
-        // document.getElementById(currentID).style.background = "linear-gradient(to right, #012166, #00478c)";
+          // response.data.result.markets[0].serviceProviders[0].resources[1].slots[3].jobs[0].customer.contactLastName 
+          document.getElementById(currentID).innerHTML = slot.jobs[0].customer.contactFirstName + "<br>" + slot.jobs[0].customer.contactLastName +
+           "<hr>" + "<strong>" + slot.jobs[0].lineOfBusiness.lineOfBusinessDescription.match(/^\w+/)[0] + "</strong>";        // document.getElementById(currentID).style.background = "linear-gradient(to right, #012166, #00478c)";
         document.getElementById(currentID).style.background = "#012166";
 
         document.getElementById(currentID).style.color = "white";
@@ -468,8 +469,9 @@ function submitDataTuesday(tech, installerNumber) {
         // var firstLast = response.data.result.markets[0].serviceProviders[0].resources[1].slots[3].jobs[0].customer.contactFirstName +
         // " " +
         // response.data.result.markets[0].serviceProviders[0].resources[1].slots[3].jobs[0].customer.contactLastName 
-        document.getElementById(currentID).innerHTML = slot.jobs[0].customer.contactFirstName + "<br>" + slot.jobs[0].customer.contactLastName;
-        // document.getElementById(currentID).style.background = "linear-gradient(to right, #012166, #00478c)";
+          // response.data.result.markets[0].serviceProviders[0].resources[1].slots[3].jobs[0].customer.contactLastName 
+          document.getElementById(currentID).innerHTML = slot.jobs[0].customer.contactFirstName + "<br>" + slot.jobs[0].customer.contactLastName +
+           "<hr>" + "<strong>" + slot.jobs[0].lineOfBusiness.lineOfBusinessDescription.match(/^\w+/)[0] + "</strong>";        // document.getElementById(currentID).style.background = "linear-gradient(to right, #012166, #00478c)";
                 document.getElementById(currentID).style.background = "#012166";
 
         document.getElementById(currentID).style.color = "white";
@@ -703,8 +705,9 @@ function submitDataWednesday(tech, installerNumber){
         // var firstLast = response.data.result.markets[0].serviceProviders[0].resources[1].slots[3].jobs[0].customer.contactFirstName +
         // " " +
         // response.data.result.markets[0].serviceProviders[0].resources[1].slots[3].jobs[0].customer.contactLastName 
-        document.getElementById(currentID).innerHTML = slot.jobs[0].customer.contactFirstName + "<br>" + slot.jobs[0].customer.contactLastName;
-        // document.getElementById(currentID).style.background = "linear-gradient(to right, #012166, #00478c)";
+          // response.data.result.markets[0].serviceProviders[0].resources[1].slots[3].jobs[0].customer.contactLastName 
+          document.getElementById(currentID).innerHTML = slot.jobs[0].customer.contactFirstName + "<br>" + slot.jobs[0].customer.contactLastName +
+           "<hr>" + "<strong>" + slot.jobs[0].lineOfBusiness.lineOfBusinessDescription.match(/^\w+/)[0] + "</strong>";        // document.getElementById(currentID).style.background = "linear-gradient(to right, #012166, #00478c)";
         document.getElementById(currentID).style.background = "#012166";
         document.getElementById(currentID).style.color = "white";
 
@@ -934,7 +937,8 @@ function submitDataThursday(tech, installerNumber){
           // var firstLast = response.data.result.markets[0].serviceProviders[0].resources[1].slots[3].jobs[0].customer.contactFirstName +
           // " " +
           // response.data.result.markets[0].serviceProviders[0].resources[1].slots[3].jobs[0].customer.contactLastName 
-          document.getElementById(currentID).innerHTML = slot.jobs[0].customer.contactFirstName + "<br>" + slot.jobs[0].customer.contactLastName;
+          document.getElementById(currentID).innerHTML = slot.jobs[0].customer.contactFirstName + "<br>" + slot.jobs[0].customer.contactLastName +
+           "<hr>" + "<strong>" + slot.jobs[0].lineOfBusiness.lineOfBusinessDescription.match(/^\w+/)[0] + "</strong>";
           // document.getElementById(currentID).style.background = "linear-gradient(to right, #012166, #00478c)";
           document.getElementById(currentID).style.background = "#012166";
           document.getElementById(currentID).style.color = "white";
@@ -1163,8 +1167,9 @@ function submitDataFriday(tech, installerNumber){
           // var firstLast = response.data.result.markets[0].serviceProviders[0].resources[1].slots[3].jobs[0].customer.contactFirstName +
           // " " +
           // response.data.result.markets[0].serviceProviders[0].resources[1].slots[3].jobs[0].customer.contactLastName 
-          document.getElementById(currentID).innerHTML = slot.jobs[0].customer.contactFirstName + "<br>" + slot.jobs[0].customer.contactLastName;
-          // document.getElementById(currentID).style.background = "linear-gradient(to right, #012166, #00478c)"; 
+          // response.data.result.markets[0].serviceProviders[0].resources[1].slots[3].jobs[0].customer.contactLastName 
+          document.getElementById(currentID).innerHTML = slot.jobs[0].customer.contactFirstName + "<br>" + slot.jobs[0].customer.contactLastName +
+           "<hr>" + "<strong>" + slot.jobs[0].lineOfBusiness.lineOfBusinessDescription.match(/^\w+/)[0] + "</strong>";          // document.getElementById(currentID).style.background = "linear-gradient(to right, #012166, #00478c)"; 
           document.getElementById(currentID).style.background = "#012166";
           document.getElementById(currentID).style.color = "white";
   
@@ -1216,7 +1221,7 @@ function submitDataFriday(tech, installerNumber){
     // bearerToken = response.data.access_token;
     // document.getElementById("bearerConfirm").value = bearerToken;
     // countdownTimer(3599);
-  }
+}
 
 
 
