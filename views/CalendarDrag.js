@@ -3,6 +3,7 @@ var counter = 0;
 
 var bearerToken;
 var INTbearerToken;
+var currentID;
 
 var brandon ="5ab641a2-afc4-486f-9d32-69af7dd7e3ab";
 // var reed = "e77ac0e1-190e-464f-8827-de037afbcb14";
@@ -212,8 +213,8 @@ function submitDataMonday(tech, installerNumber) {
     console.log(slots);
     // slots.forEach(element => {
     //   console.log(element.slotTime);
-      var currentID = "I"+installerNumber+"-0-" + slots.slotTime;
-      console.log(currentID);
+      currentID = "I"+installerNumber+"-0-" + slots.slotTime;
+      console.log("Current ID: " + currentID);
       
 
       // Here we can test if an array is empty, and call more funcitons inside of it
