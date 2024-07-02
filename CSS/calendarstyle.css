@@ -111,7 +111,10 @@ p{
     text-align: center;
     border: 1px solid #ddd;
     transition: background-color 1.3s ease;
-    
+    width: 100px; /* Set your desired width */
+    /* white-space: nowrap; Prevent text wrapping */
+    /* overflow: hidden; Hide overflow if any */
+    font-size: small;
     
 }
 
