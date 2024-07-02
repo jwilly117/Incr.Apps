@@ -208,35 +208,36 @@ function submitDataMonday(tech, installerNumber) {
     // console.log(response.data.result.markets[0].serviceProviders[0].resources[1].slots[3].jobs[0].customer.contactFirstName);
     // console.log(response.data.result.markets[0].serviceProviders[0].resources[1].slots[3].jobs[0].customer.contactLastName);
     // console.log(response.data.access_token);
-    var slots = response.data.result.markets[0].serviceProviders[0].resources[1].slots;
-    slots.forEach(element => {
-      console.log(element.slotTime);
-      var currentID = "I"+installerNumber+"-0-" + element.slotTime;
+    var slots = response.data.result.markets[0].serviceProviders[0].resources[1].slots[8];
+    console.log(slots);
+    // slots.forEach(element => {
+    //   console.log(element.slotTime);
+      var currentID = "I"+installerNumber+"-0-" + slots.slotTime;
       console.log(currentID);
       
 
       // Here we can test if an array is empty, and call more funcitons inside of it
 
-      if (element.jobs.length === 0) {
+      if (slots.jobs.length === 0) {
         document.getElementById(currentID).style.backgroundColor = "#88AFD2";
 
-        document.getElementById(currentID).textContent = element.slotTime;
+        document.getElementById(currentID).textContent = slots.slotTime;
       } else {
         counter++;
-        var secret = element.jobs[0].orderId;
+        var secret = slots.jobs[0].orderId;
         document.getElementById(currentID).setAttribute("data-value", secret);
         // console.log(currentID.dataset.value);
         // var firstLast = response.data.result.markets[0].serviceProviders[0].resources[1].slots[3].jobs[0].customer.contactFirstName +
         // " " +
         // response.data.result.markets[0].serviceProviders[0].resources[1].slots[3].jobs[0].customer.contactLastName 
-        document.getElementById(currentID).textContent = element.jobs[0].customer.contactFirstName + " " + element.jobs[0].customer.contactLastName;
+        document.getElementById(currentID).textContent = slots.jobs[0].customer.contactFirstName + " " + slots.jobs[0].customer.contactLastName;
         document.getElementById(currentID).style.background = "linear-gradient(to right, #ffbc90, rgb(245, 152, 105))";
         // element.style.backgroundColor = "lightblue";
-        document.getElementById("moreInfo").textContent = element.jobs[0].customer.addresses[0].addressLine1;
-        document.getElementById("phone").textContent = element.jobs[0].customer.phoneNos[0].phoneNumber;
-        document.getElementById("name").textContent = element.jobs[0].customer.contactFirstName + " " + element.jobs[0].customer.contactLastName;
-        document.getElementById("lineItems").textContent = "Service: " + element.jobs[0].lineItemList[0].lineItemName;
-        document.getElementById("description").textContent = element.jobs[0].lineItemList[0].description;
+        document.getElementById("moreInfo").textContent = slots.jobs[0].customer.addresses[0].addressLine1;
+        document.getElementById("phone").textContent = slots.jobs[0].customer.phoneNos[0].phoneNumber;
+        document.getElementById("name").textContent = slots.jobs[0].customer.contactFirstName + " " + slots.jobs[0].customer.contactLastName;
+        document.getElementById("lineItems").textContent = "Service: " + slots.jobs[0].lineItemList[0].lineItemName;
+        document.getElementById("description").textContent = slots.jobs[0].lineItemList[0].description;
 
 
 
@@ -245,7 +246,7 @@ function submitDataMonday(tech, installerNumber) {
         
 
       }
-    });
+    // });
     //   alert(response.data.access_token);
 
 
