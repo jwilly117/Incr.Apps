@@ -1164,7 +1164,10 @@ function getOrderInfo(guid) {
 
 
       // This is where we will populate the Modal :D
-      document.getElementById("name").textContent = "👤 " + response.data.result.order.contacts[0].contactBusinessName;
+      console.log(response.data.result);
+      var fullname = response.data.result.order.contacts[0].contactFirstName + " " + response.data.result.order.contacts[0].contactLastName;
+      document.getElementById("name").textContent = "👤 " + fullname;
+      //
       document.getElementById("moreInfo").textContent = "🏠 " + response.data.result.order.contacts[0].addresses[0].addressLine1;
       document.getElementById("phone").textContent = "📞 " + response.data.result.order.contacts[0].phoneNos[0].phoneNumber;
       var status = response.data.result.orderStatus;
