@@ -105,17 +105,23 @@ p{
     background-color: #F76A8C;
     color: #fff;
   }
-  td{
-    border-radius: 5px;
-    transition: background-color 0.8s ease; /* Add the transition property */
+
+  td {
+    padding: 20px;
     text-align: center;
+    border: 1px solid #ddd;
+    transition: background-color 1.3s ease;
+    
+    
+}
 
 
-  }
-  td:hover{
+
+
+  /* td:hover{
     background-color: #bccadf;
   }
-  
+   */
   .modal, .fade {
 /* display: flex !important; */
 align-items: center;

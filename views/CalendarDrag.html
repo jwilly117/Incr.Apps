@@ -20,6 +20,11 @@
 
   <link rel="stylesheet" href="../CSS/calendarstyle.css">
 
+  <style>
+    td{
+      transition: background 1s ease;
+    }
+  </style>
   
 </head>
 <body>
@@ -167,7 +172,7 @@
                 </tr>
               </thead>
           <tr>
-            <td style="width: 100px;">Inst. 1 - Luke / Max Grant</td>
+            <td style="width: 100px;">Inst. 1 - <strong>Sheila Calderbank</strong></td>
             <td>
                 <table class="nested-table">
                     <thead>
@@ -352,7 +357,7 @@
           </tr>
           <tr>
             <td>
-              Installer 2: Null
+              Installer 2: <strong>Kaitlyn Breton?</strong>
             </td>
             <td>
               <table class="nested-table">
@@ -527,7 +532,7 @@
             <!-- <td>Cell 14</td> -->
           </tr>
           <tr>
-            <td>Installer 3: Null</td>
+            <td>Installer 3: <strong>Luke Yanders</strong></td>
             <td>
               <table class="nested-table">
                 <thead>
@@ -697,7 +702,7 @@
             <!-- <td>Cell 21</td> -->
           </tr>
           <tr>
-            <td>Installer 4: Null</td>
+            <td>Installer 4: <strong>Null</strong></td>
             <td>
               <table class="nested-table">
                 <thead>
@@ -871,7 +876,7 @@
             <!-- <td>Cell 28</td> -->
           </tr>
           <tr>
-            <td>Installer 5: Null</td>
+            <td>Installer 5: <strong>Null</strong></td>
             <td>
               <table class="nested-table">
                 <thead>
@@ -1146,10 +1151,12 @@ flatpickr("#datepicker", {
 
         // Continue with your function calls
         submitDataMonday(brandon, 1);
-        submitDataMonday(paul, 2);
-        submitDataMonday(reed, 3);
-        submitDataMonday(jeanne, 4);
-        submitDataMonday(ryan, 5);
+        submitDataMonday(reed, 2);
+        submitDataMonday(jeanne, 3);
+        // submitDataMonday(paul, 4);
+        // submitDataMonday(gabe, 5);
+        // submitDataMonday(ryan, 6);
+
         // submitDataTuesday();
 
         // Update the header
