@@ -274,7 +274,7 @@ function submitDataMonday(tech, installerNumber) {
   });
 
   
-  // submitDataTuesday(tech, installerNumber);
+  submitDataTuesday(tech, installerNumber);
 
 }
 
@@ -287,7 +287,7 @@ function submitDataTuesday(tech, installerNumber) {
   // Sample data to be sent to the API
   const dataTuesday = 
 {
-  "serviceDate": "2023-07-26T00:00:00.000Z",
+  "serviceDate": realTimePlusOneDay,
   "marketId": 928,
   "stateId": 11,
   "serviceProviders": [
@@ -422,73 +422,80 @@ function submitDataTuesday(tech, installerNumber) {
             'Authorization': `Bearer ${token}`
         };
 
-  axios
-  .post("https://api.logistixai.com/api/orders/v1/fetch-route-board", dataTuesday, {headers})
-  .then((response) => {
-    console.log("The Bearer token is ");
-    console.log(response.data.result.markets[0].serviceProviders[0].resources[1].slots);
-    // console.log(response.data.result.markets[0].serviceProviders[0].resources[1].slots[3].jobs[0].customer.contactFirstName);
-    // console.log(response.data.result.markets[0].serviceProviders[0].resources[1].slots[3].jobs[0].customer.contactLastName);
-    // console.log(response.data.access_token);
-    var slots = response.data.result.markets[0].serviceProviders[0].resources[1].slots;
-    slots.forEach(element => {
-      console.log(element.slotTime);
-      var currentID = "I"+installerNumber+"-1-" + element.slotTime;
-      console.log(currentID);
+        axios
+        .post("https://api.logistixai.com/api/orders/v1/fetch-route-board", dataTuesday, {headers})
+        .then((response) => {
+          console.log("The Bearer token is ");
+          console.log(response.data.result.markets[0].serviceProviders[0].resources[1].slots);
+          console.log("Work Please");
+          // console.log(response.data.result.markets[0].serviceProviders[0].resources[1].slots[3].jobs[0].customer.contactFirstName);
+          // console.log(response.data.result.markets[0].serviceProviders[0].resources[1].slots[3].jobs[0].customer.contactLastName);
+          // console.log(response.data.access_token);
+          var slots = response.data.result.markets[0].serviceProviders[0].resources[1].slots[8];
+          console.log(slots);
+          // slots.forEach(element => {
+          //   console.log(element.slotTime);
+            currentID = "I"+installerNumber+"-1-" + slots.slotTime;
+            console.log("Current ID: " + currentID);
+            
       
-
-      // Here we can test if an array is empty, and call more funcitons inside of it
-
-      if (element.jobs.length === 0) {
-        document.getElementById(currentID).style.backgroundColor = "#88AFD2";
-
-        document.getElementById(currentID).textContent = element.slotTime;
-      } else {
-        counter++;
-        // var firstLast = response.data.result.markets[0].serviceProviders[0].resources[1].slots[3].jobs[0].customer.contactFirstName +
-        // " " +
-        // response.data.result.markets[0].serviceProviders[0].resources[1].slots[3].jobs[0].customer.contactLastName 
-        document.getElementById(currentID).textContent = element.jobs[0].customer.contactFirstName + " " + element.jobs[0].customer.contactLastName;
-        document.getElementById(currentID).style.background = "linear-gradient(to right, #ffbc90, rgb(245, 152, 105))";
-        // element.style.backgroundColor = "lightblue";
-        document.getElementById("moreInfo").textContent = element.jobs[0].customer.addresses[0].addressLine1;
-        document.getElementById("phone").textContent = element.jobs[0].customer.phoneNos[0].phoneNumber;
-        document.getElementById("name").textContent = element.jobs[0].customer.contactFirstName + " " + element.jobs[0].customer.contactLastName;
-        document.getElementById("lineItems").textContent = "Service: " + element.jobs[0].lineItemList[0].lineItemName;
-        document.getElementById("description").textContent = element.jobs[0].lineItemList[0].description;
-
-
-
-        document.getElementById(currentID).setAttribute("data-toggle", "modal");
-        document.getElementById(currentID).setAttribute("data-target", "#infoModal");
-
-
-      }
-    });
-    //   alert(response.data.access_token);
-
-
-    // console.log(firstLast);
-    var element = document.getElementById("I1-0-11am");
-
-      // Change the background color
-      // element.style.backgroundColor = "lightblue";
-      // element.style.font_weigt = "bolder";
-      // document.getElementById("I1-0-11am").textContent = firstLast;
+            // Here we can test if an array is empty, and call more funcitons inside of it
       
-      // 
+            if (slots.jobs.length === 0) {
+              document.getElementById(currentID).style.backgroundColor = "#012166";
       
-      // var mapsURL = "https://www.google.com/maps/place/" + response.data.result.markets[0].serviceProviders[0].resources[1].slots[3].jobs[0].customer.addresses[0].addressLine1;
-      // console.log(mapsURL)
-    // bearerToken = response.data.access_token;
-    // document.getElementById("bearerConfirm").value = bearerToken;
-    // countdownTimer(3599);
-  })
-  .catch((error) => {
-    console.log(error);
-  });
+              document.getElementById(currentID).textContent = slots.slotTime;
+            } else {
+              counter++;
+              var secret = slots.jobs[0].orderId;
+              document.getElementById(currentID).setAttribute("data-value", secret);
+              // console.log(currentID.dataset.value);
+              // var firstLast = response.data.result.markets[0].serviceProviders[0].resources[1].slots[3].jobs[0].customer.contactFirstName +
+              // " " +
+              // response.data.result.markets[0].serviceProviders[0].resources[1].slots[3].jobs[0].customer.contactLastName 
+              document.getElementById(currentID).textContent = slots.jobs[0].customer.contactFirstName + " " + slots.jobs[0].customer.contactLastName;
+              document.getElementById(currentID).style.background = "linear-gradient(to right, #012166, #00478c)";
+              document.getElementById(currentID).style.color = "white";
+      
+              // element.style.backgroundColor = "lightblue";
+              document.getElementById("moreInfo").textContent = slots.jobs[0].customer.addresses[0].addressLine1;
+              document.getElementById("phone").textContent = slots.jobs[0].customer.phoneNos[0].phoneNumber;
+              document.getElementById("name").textContent = slots.jobs[0].customer.contactFirstName + " " + slots.jobs[0].customer.contactLastName;
+              document.getElementById("lineItems").textContent = "Service: " + slots.jobs[0].lineItemList[0].lineItemName;
+              document.getElementById("description").textContent = slots.jobs[0].lineItemList[0].description;
+      
+      
+      
+              document.getElementById(currentID).setAttribute("data-toggle", "modal");
+              document.getElementById(currentID).setAttribute("data-target", "#infoModal");
+              
+      
+            }
+          // });
+          //   alert(response.data.access_token);
+      
+      
+          // console.log(firstLast);
+          var element = document.getElementById("I1-0-11am");
+      
+            // Change the background color
+            // element.style.backgroundColor = "lightblue";
+            // element.style.font_weigt = "bolder";
+            // document.getElementById("I1-0-11am").textContent = firstLast;
+            
+            // 
+            
+            // var mapsURL = "https://www.google.com/maps/place/" + response.data.result.markets[0].serviceProviders[0].resources[1].slots[3].jobs[0].customer.addresses[0].addressLine1;
+            // console.log(mapsURL)
+          // bearerToken = response.data.access_token;
+          // document.getElementById("bearerConfirm").value = bearerToken;
+          // countdownTimer(3599);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
 
-  submitDataWednesday(tech, installerNumber);
+  // submitDataWednesday(tech, installerNumber);
 
 
 }

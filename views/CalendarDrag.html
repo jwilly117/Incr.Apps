@@ -1103,32 +1103,41 @@ myCheckbox.addEventListener('change', handleCheckboxChange);
 
 
 var realTime;
-  // Initialize Flatpickr Date Picker
-  flatpickr("#datepicker", {
+var realTimePlusOneDay;
+
+// Initialize Flatpickr Date Picker
+flatpickr("#datepicker", {
     // mode: pickermode,
-  
     dateFormat: "Y-m-d",  // Format the date as 'YYYY-MM-DD'
     // You can add more options here to customize the date picker as needed
     onChange: function(selectedDates, dateStr, instance) {
 
-      showLoadingSpinner(); // Show the loading spinner when the date changes
-      setTimeout(hideLoadingSpinner, 8000); // Simulating a delay of 2 seconds, hide the loading spinner
-      // Log the selected date to the console
-      console.log("Selected Date:", dateStr);
-      realTime = dateStr + "T00:00:00.000Z"
-      console.log(realTime);
-      submitDataMonday(brandon, 1);
-      submitDataMonday(paul, 2);
-      submitDataMonday(reed, 3);
-      submitDataMonday(jeanne, 4);
-      submitDataMonday(ryan, 5);
-      // submitDataTuesday();
-      document.getElementById("mondayHeader").textContent = "Monday  :   " + dateStr;
-      
+        showLoadingSpinner(); // Show the loading spinner when the date changes
+        setTimeout(hideLoadingSpinner, 8000); // Simulating a delay of 8 seconds, hide the loading spinner
+        // Log the selected date to the console
+        console.log("Selected Date:", dateStr);
 
+        // Initialize realTime with the selected date in ISO format
+        realTime = new Date(dateStr + "T00:00:00.000Z");
+        console.log("realTime:", realTime);
+
+        // Add one day to realTime
+        realTimePlusOneDay = new Date(realTime);
+        realTimePlusOneDay.setDate(realTimePlusOneDay.getDate() + 1);
+        console.log("realTimePlusOneDay:", realTimePlusOneDay.toISOString());
+
+        // Continue with your function calls
+        submitDataMonday(brandon, 1);
+        submitDataMonday(paul, 2);
+        submitDataMonday(reed, 3);
+        submitDataMonday(jeanne, 4);
+        submitDataMonday(ryan, 5);
+        // submitDataTuesday();
+
+        // Update the header
+        document.getElementById("mondayHeader").textContent = "Monday  :   " + dateStr;
     },
-    
-  });
+});
 
 
 </script>
