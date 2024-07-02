@@ -1104,6 +1104,8 @@ myCheckbox.addEventListener('change', handleCheckboxChange);
 
 var realTime;
 var realTimePlusOneDay;
+var realTimePlusTwoDays;
+var realTimePlusThreeDays;
 
 // Initialize Flatpickr Date Picker
 flatpickr("#datepicker", {
@@ -1119,12 +1121,22 @@ flatpickr("#datepicker", {
 
         // Initialize realTime with the selected date in ISO format
         realTime = new Date(dateStr + "T00:00:00.000Z");
-        console.log("realTime:", realTime);
+        console.log("realTime:", realTime.toISOString());
 
         // Add one day to realTime
         realTimePlusOneDay = new Date(realTime);
         realTimePlusOneDay.setDate(realTimePlusOneDay.getDate() + 1);
         console.log("realTimePlusOneDay:", realTimePlusOneDay.toISOString());
+
+        // Add two days to realTime
+        realTimePlusTwoDays = new Date(realTime);
+        realTimePlusTwoDays.setDate(realTimePlusTwoDays.getDate() + 2);
+        console.log("realTimePlusTwoDays:", realTimePlusTwoDays.toISOString());
+
+        // Add three days to realTime
+        realTimePlusThreeDays = new Date(realTime);
+        realTimePlusThreeDays.setDate(realTimePlusThreeDays.getDate() + 3);
+        console.log("realTimePlusThreeDays:", realTimePlusThreeDays.toISOString());
 
         // Continue with your function calls
         submitDataMonday(brandon, 1);
@@ -1138,6 +1150,7 @@ flatpickr("#datepicker", {
         document.getElementById("mondayHeader").textContent = "Monday  :   " + dateStr;
     },
 });
+
 
 
 </script>
