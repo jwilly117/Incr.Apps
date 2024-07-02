@@ -939,7 +939,7 @@ function submitDataFriday(tech, installerNumber){
   {
     // The serviceDate will start on the first day (preferrably monday)
     //  and add one day for each function starting with 'realTime'
-    "serviceDate": realTimePlusOneDay,
+    "serviceDate": realTimePlusFourDays,
     "marketId": 928,
     "stateId": 11,
     "serviceProviders": [

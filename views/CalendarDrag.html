@@ -1106,6 +1106,7 @@ var realTime;
 var realTimePlusOneDay;
 var realTimePlusTwoDays;
 var realTimePlusThreeDays;
+var realTimePlusFourDays;
 
 // Initialize Flatpickr Date Picker
 flatpickr("#datepicker", {
@@ -1137,6 +1138,11 @@ flatpickr("#datepicker", {
         realTimePlusThreeDays = new Date(realTime);
         realTimePlusThreeDays.setDate(realTimePlusThreeDays.getDate() + 3);
         console.log("realTimePlusThreeDays:", realTimePlusThreeDays.toISOString());
+
+        // Add four days to realTime
+        realTimePlusFourDays = new Date(realTime);
+        realTimePlusFourDays.setDate(realTimePlusFourDays.getDate() + 4);
+        console.log("realTimePlusFourDays:", realTimePlusFourDays.toISOString());
 
         // Continue with your function calls
         submitDataMonday(brandon, 1);
