@@ -121,10 +121,10 @@ p{
 
 
 
-  /* td:hover{
+  td:hover{
     background-color: #bccadf;
   }
-   */
+  
   .modal, .fade {
 /* display: flex !important; */
 align-items: center;
