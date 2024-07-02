@@ -17,6 +17,8 @@
 }
 
 
+
+
 function getINTBearer() {
   axios
     .post("https://api.logistixai.com/api/users/v1/login", data)
@@ -202,6 +204,7 @@ function getBearer() {
     .then((response) => {
       console.log("The Bearer token is ");
       console.log(response.data.result.markets[0].serviceProviders[0].resources[1].slots);
+      console.log("Work Please");
       // console.log(response.data.result.markets[0].serviceProviders[0].resources[1].slots[3].jobs[0].customer.contactFirstName);
       // console.log(response.data.result.markets[0].serviceProviders[0].resources[1].slots[3].jobs[0].customer.contactLastName);
       // console.log(response.data.access_token);
