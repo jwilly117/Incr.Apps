@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>External Link Update</title>
+  <link rel="icon" type="image/x-icon" href="../images/coding.png">;
+  <!-- Include Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+
+    <style>
+        body{
+          background: linear-gradient(to right, rgb(60, 128, 122), rgb(30, 22, 77));
+            color: white;
+        }
+
+    </style>
+
+
+
+</head>
+<body>
+  <div class="container">
+    <br><br><br>
+    <h1>Inject IMS note</h1>
+
+    <form>
+      <hr>  
+      <p>
+        Use this for..... notes
+      </p>
+      <div class="form-group">
+        <label for="field1">Job Number</label>
+        <input type="text" class="form-control" id="field1" name="field1">
+      </div>
+
+      <div class="form-group">
+        <label for="field2">Timestamp</label>
+        <input type="text" class="form-control" id="field2" name="field2">
+      </div>
+
+      <div class="form-group">
+        <label for="field3">User</label>
+        <input type="text" class="form-control" id="field3" name="field3">
+      </div>
+
+      <div class="form-group">
+        <label for="field4">Note Content</label>
+        <input type="text" class="form-control" id="field4" name="field4">
+      </div>
+      <br><hr>
+
+      <button type="button" class="btn btn-primary" onclick="handleSubmit()">Submit</button>
+    </form>
+  </div>
+
+
+  <!-- Include Bootstrap JS -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+
+  <!-- Include Bootstrap JS -->
+  <script src="../Scripts/main.js"></script>
+  
+  <script>
+    var bearerToken;
+
+    
+
+    function handleSubmit() {
+      // Retrieve the values from the text fields
+      var field1Value = document.getElementById('field1').value;
+      var field2Value = document.getElementById('field2').value;
+      var field3Value = document.getElementById('field3').value;
+      var field4Value = document.getElementById('field4').value;
+      
+      // Perform any desired actions with the values
+      console.log('Field 1 value:', field1Value);
+      console.log('Field 2 value:', field2Value);
+      console.log('Field 3 value:', field3Value);
+      console.log('Field 4 value:', field4Value);
+      
+      // Add your custom logic here
+      const token = bearerToken;
+
+        const headers = {
+            'Authorization': `Bearer ${token}`
+        };
+
+        // Attach all of the data together
+        var completeNote = "<b>-- 🔷 IMS NOTE 🔷 --</b> <br><hr><br>  📅 <b> </b> " + field2Value + "  <br>  👤 <b>  </b>   " + field3Value + " <br> <hr> <b>Contents: </b> <br>  <i>  " + field4Value + " </i> ";
+
+
+        // Here is where I will make the Axios POST
+        const data3 = 
+        {
+        "notes": [
+            {
+            "note": completeNote
+            }
+        ]
+        };
+
+
+
+                axios.put('https://api.logistixai.com/api/orders/v5/'+ field1Value, data3, { headers })
+                .then(response => {
+                       console.log(response);
+
+
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        
+                    });
+
+      
+      // Example: Display an alert with the values
+      // alert('Field 1 value: ' + field1Value + '\nField 2 value: ' + field2Value);
+
+
+
+      // Clear the text fields
+      document.getElementById('field1').value = '';
+      document.getElementById('field2').value = '';
+      document.getElementById('field3').value = '';
+      document.getElementById('field4').value = '';
+    }
+  </script>
+
