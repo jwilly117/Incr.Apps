@@ -1,6 +1,15 @@
+body{
+  background: linear-gradient(to right, rgb(46, 92, 116), rgb(21, 23, 83));
+    color: white;
+}
+hr{
+  background-color: rgb(164, 164, 164);
+}
 
+.navbar {
+  background: linear-gradient(to right, #aaa9a7, #18262a); /* Gradient background */
+  border-bottom: 3px solid #3d3d3d; /* Bottom border */
+  box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.3);
 
-        body{
-          background: linear-gradient(to right, rgb(46, 92, 116), rgb(21, 23, 83));
-            color: white;
-        }
+}
+
