@@ -92,6 +92,44 @@ function getJobInformation(orderGuid){
 }
 
 
+function getJobInformation2(orderGuid){
+
+  const token = bearerToken;
+
+  const headers = {
+    Authorization: `Bearer ${token}`,
+  };
+
+  var customerAPIURL =
+  "https://api.logistixai.com/api/orders/V5/" + 
+  orderGuid;
+
+
+  axios
+    .get(customerAPIURL, { headers })
+    .then((response) => {
+      console.log("🟥 GetJobInformation 2 Response:", response.data);
+      customerGUID = response.data.result.order.contacts[0].contactMasterGuid;
+      // setGuid(orderGuid);
+      // Get and assign the customer guids and info which is also kinda internal?
+      // provider = response.data.result.order.services[0].serviceProvider;
+      // providerID = response.data.result.order.services[0].serviceProviderId;
+      orderGuid2 = response.data.result.order.orderSource.externalOrderId;
+      console.log("External Order ID for new PR: " + orderGuid2);
+      updateExternalLink(originatingLogGuid, orderGuid2);
+
+
+      // Call next function
+      // getCustomerInfo(customerGUID);
+
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+
+
+}
+
 function getCustomerInfo(guid) {
     const token = bearerToken;
 
@@ -406,6 +444,7 @@ function generatePR(){
                     updateFinancials(newGuid);
                     // updateExternalLink(originatingLogGuid, newGuid);
                     addFlag(flagGuid);
+                    getJobInformation2(newGuid);
 
                     $("#myToastfinancial").toast('show');
 
