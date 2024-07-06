@@ -1,0 +1,25 @@
+
+.login-container {
+    border-radius: 15px;
+    animation: slideUp 0.8s ease-out, pulseShadow 2s infinite;
+}
+
+body{
+    background-color: rgb(97, 95, 134);
+}
+
+
+@keyframes slideUp {
+    from {
+        transform: translateY(100vh); /* Start below the screen */
+    }
+    to {
+        transform: translateY(0); /* End at its normal position */
+    }
+}
+
+
+.key{
+    border-radius: 7px;
+    font-weight: bolder;
+}

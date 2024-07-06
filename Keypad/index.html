@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keypad Login</title>
+    <link rel="stylesheet" href="addstyle.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="login-container">
+        <div class="logo-container">
+            <img src="images/Working Copy.png" alt="Company Logo" id="logo"> <!-- Update src to your logo path -->
+        </div>
+        <h2 style="font-family: Arial, Helvetica, sans-serif;">Enter PIN</h2>
+        <div id="pinDisplay" class="pin-display"></div>
+        <div class="keypad" id="keypad">
+            <button class="key" onclick="enterPin('1')">1</button>
+            <button class="key" onclick="enterPin('2')">2</button>
+            <button class="key" onclick="enterPin('3')">3</button>
+            <button class="key" onclick="enterPin('4')">4</button>
+            <button class="key" onclick="enterPin('5')">5</button>
+            <button class="key" onclick="enterPin('6')">6</button>
+            <button class="key" onclick="enterPin('7')">7</button>
+            <button class="key" onclick="enterPin('8')">8</button>
+            <button class="key" onclick="enterPin('9')">9</button>
+            <button class="key" onclick="clearPin()">C</button>
+            <button class="key" onclick="enterPin('0')">0</button>
+            <button class="key" onclick="checkPin()">Enter</button>
+        </div>
+        <p id="errorMessage" style="color: red; font-family: Arial, Helvetica, sans-serif;"></p>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

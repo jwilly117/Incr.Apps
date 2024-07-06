@@ -28,6 +28,8 @@
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
+      
+    
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item active">
@@ -36,18 +38,21 @@
           <li class="nav-item">
             <a class="nav-link" style="font-size: medium; font-weight: bold; color: #222; margin-left: 40px;" href="" onclick="alert('Coming Soon...')">Update Ext. Links</a>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link" style="font-size: medium; font-weight: bold; color: #222; margin-left: 40px;" href="" onclick="alert('Coming Soon...')">Week View</a>
-          </li>
+          </li> -->
         </ul>
       </div>
   
       <div class="ml-auto">
-        <a href="#" class="btn btn-link">
-          
-          <i class="fa-solid fa-user-gear" style="color: rgb(70, 255, 230); font-size: 23px;"><span style="margin-left: 20px;">⚡</span></i> <!-- Font Awesome user icon -->
-        </a>
+        
       </div>
+
+     
+
+    
+
+
     </nav>
   </header>
 
@@ -155,7 +160,11 @@
       <p> For any questions, comments, or suggestions, please email support@incredibleinstallations.com</p>
 
       <p>2024   <strong>Jake W</strong> | Ellis Ventures&copy; | LogistixAI. Only for Internal use. All rights reserved</p>
-      <p style="font-size: xx-small;"> V - 6.23.25.001</p>
+      <p style="font-size: xx-small;"> V - 6.23.25.001 <br>
+        <a href="#" class="btn btn-link" id="clickLink">
+        <i class="fa-solid fa-user-gear" style="color: rgb(70, 255, 230);">
+          <span style="font-size: larger;">⚡</span></i> <!-- Font Awesome user icon -->
+      </a> </p>
      
     </footer>
 
@@ -227,3 +236,29 @@
     
 
   </script>
+
+   <!-- Now the good stuff -->
+   <script>
+    let clickCount = 0;
+    let clickTimer;
+
+    document.getElementById('clickLink').addEventListener('click', function(event) {
+        console.log("heillfsa");
+        event.preventDefault(); // Prevent the default link behavior
+        clickCount++;
+        
+        if (clickCount === 1) {
+            clickTimer = setTimeout(function() {
+                clickCount = 0;
+            }, 10000);
+        }
+
+        if (clickCount >= 10) {
+            clearTimeout(clickTimer);
+            console.log("Click");
+            window.location.href = '../Keypad/index.html'; // The URL to open
+
+
+        }
+    });
+</script>
