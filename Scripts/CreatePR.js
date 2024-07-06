@@ -136,7 +136,7 @@ function updateFinancials(guid) {
     Authorization: `Bearer ${token}`,
   };
 
-  var financialURL = "https://api.logistixai.com/api/orders/v5/" + guid;
+  var financialURL = "https://api.logistixai.com/api/orders/v5/" + guid + "/financial";
 
 
   const financialdata = 
@@ -399,20 +399,22 @@ function generatePR(){
                      link.classList.add('show'); // Trigger the animation
                    }, 10); // Small delay to ensure the display change is processed before the animation starts
 
-                  // Clear the inputs
-                  document.getElementById('originalURL').value = '';
-                  document.getElementById('Total').value = '';
-                  document.getElementById('Additional').value = '';
-                  document.getElementById('submitButton').textContent = "Finished!";      
-
-
                    flagGuid = newGuid;
                    console.log(flagGuid);
                    setTimeout(function() {
                     console.log('Add flag After 3 seconds.... 🤞');    // ✔️✔️✔️
-                    // updateFinancials(newGuid);
+                    updateFinancials(newGuid);
                     // updateExternalLink(originatingLogGuid, newGuid);
                     addFlag(flagGuid);
+
+                    $("#myToastfinancial").toast('show');
+
+
+                    // Clear the inputs   
+                    document.getElementById('originalURL').value = '';
+                    document.getElementById('Total').value = '';
+                    document.getElementById('Additional').value = '';
+                    document.getElementById('submitButton').textContent = "Finished!";   
 
      
                   }, 3000);

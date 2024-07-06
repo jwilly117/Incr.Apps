@@ -26,8 +26,8 @@
     <form>
       <hr>  
       <p>
-        Use this form to create an internal PR in LogistixAI based on the original Job GUID. </p>
-        <p>I will be making periodic improvements and enhancemenets as time goes on. </p>
+        <!-- Use this form to create an internal PR in LogistixAI based on the original Job GUID. </p> -->
+        <p style="font-weight: bold; color: aqua;"><i>UPDATE - 7.6.2024:</i> <br> The PR Amount has been updated to push to the the financial tab 3 seconds after the PR is created. Give it a try!</p>
       </p>
       <div class="form-group">
         <label for="originalURL">Original Job GUID  </label>
@@ -98,6 +98,19 @@
         Form Submitted - Please Wait
       </div>
     </div>
+
+
+    <!-- This is the toast 2  template -->
+    <div class="toast" id="myToastfinancial" style="position: absolute; top: 20px; right: 20px;" data-delay="3000">
+      <div class="toast-header">
+        <strong class="mr-auto">Financial Tab</strong>
+        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
+      </div>
+      <div class="toast-body" style="color: black;">
+        Total Updated!
+      </div>
+    </div>
+
 
     <hr>  
     <!-- <p style="align-items: center;">For any questions, comments, or concerns, please email support@incredibleinstallations.com</p> -->
