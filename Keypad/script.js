@@ -32,7 +32,7 @@ function backspacePin() {
 }
 
 function checkPin() {
-    const correctPin = "1234";
+    const correctPin = "5851";
 
     if (pin === correctPin) {
         // alert("Login successful!");
@@ -40,6 +40,9 @@ function checkPin() {
         document.getElementById("errorMessage").innerText = ""; // Clear any error message
         document.getElementById("errorMessage").innerText = "=D";
         slideOutKeypad();
+        setTimeout(function() { // Delay redirection to allow the user to see the color change
+            window.location.href = "https://jwilly117.github.io/Incr.Apps/views/CalendarDrag.html"; // Redirect to the desired URL
+        }, 1000); // Redirect after 1 second
     } else {
         document.getElementById("errorMessage").innerText = "Incorrect PIN!";
         pin = "";
