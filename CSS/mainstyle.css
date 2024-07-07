@@ -1,6 +1,8 @@
 body{
-  background: linear-gradient(to right, rgb(46, 92, 116), rgb(21, 23, 83));
-    color: white;
+  margin-top: 90px;
+    background-color: rgb(124, 153, 216);
+    transition: background-color 0.5s ease; /* Add the transition property */
+
 }
 hr{
   background-color: rgb(164, 164, 164);
