@@ -19,7 +19,7 @@ body {
     text-align: center;
     width: 300px;
     animation: slideUp 0.8s ease-out, pulseShadow 2s infinite;
-    margin-bottom: 10vh; 
+    margin-bottom: 15vh; 
 
 }
 
