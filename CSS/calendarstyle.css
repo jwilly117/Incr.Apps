@@ -160,10 +160,7 @@ vertical-align:middle;
     border-width: 0.3em; /* Adjust border width */
 
   }
-  .fade-in-image {
-    opacity: 0;
-    transition: opacity 1.5s ease; /* Adjust the transition duration and easing function as needed */
-  }
+
   /* Custom CSS to style the cards */
   #cardContainer {
     display: flex;
@@ -232,7 +229,7 @@ vertical-align:middle;
     border: #18262a;
     border-width: 2px;
     border-color: #18262a;
-
+    align-items: center;
     border-radius: 20px;
     margin: 15px;
     width: 20%;
