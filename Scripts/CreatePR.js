@@ -474,7 +474,10 @@ function generatePR(){
 }
 
 
-/* FULL STEP BY STEP
+// What the fuck why is Logistix so comlicated 🍿🌭
+
+
+/* FULL STEP BY STEP -- 
 
 1. Create a default payload for the "Other" field from the returned✔️
    data from the previous api calls.
