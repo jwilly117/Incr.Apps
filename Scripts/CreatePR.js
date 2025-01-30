@@ -130,6 +130,7 @@ function getJobInformation2(orderGuid){
 
 }
 
+
 function getCustomerInfo(guid) {
     const token = bearerToken;
 
@@ -474,8 +475,8 @@ function generatePR(){
 }
 
 
-// What the fuck why is Logistix so comlicated 🍿🌭
-
+// What the fuck why is Logistix so  🍿🌭
+comlicated
 
 /* FULL STEP BY STEP -- 
 
